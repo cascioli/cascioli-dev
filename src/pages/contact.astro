@@ -599,7 +599,12 @@ const SOCIALS = [
           signal: pageAbort.signal,
         });
 
-        const data: { ok: boolean; message: string } = await res.json();
+        let data: { ok: boolean; message: string };
+        try {
+          data = await res.json();
+        } catch {
+          throw new Error(`HTTP ${res.status} — non-JSON response`);
+        }
 
         if (data.ok) {
           revealLines([

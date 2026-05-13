@@ -9,7 +9,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
     server: {
       proxy: {
-        '/api': 'http://localhost:8787'
+        '/api/osint': 'http://localhost:8787',
+        '/api/contact': 'http://localhost:8788',
       }
     }
   }

@@ -254,8 +254,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	client := resend.NewClient(apiKey)
 	params := &resend.SendEmailRequest{
-		// From must be a verified sender in your Resend account.
-		From:    "Contact Form <noreply@simonecascioli.it>",
+		From:    "Contact Form <noreply@updates.simonecascioli.it>",
 		To:      []string{"info@simonecascioli.it"},
 		ReplyTo: email,
 		Subject: subject,
