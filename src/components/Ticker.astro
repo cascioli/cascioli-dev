@@ -1,0 +1,31 @@
+---
+interface Props {
+  latestItem?: string;
+}
+const { latestItem = 'LATEST COMMIT — feat: ship Astro site' } = Astro.props;
+
+const items = [
+  { label: 'STATUS: AVAILABLE FOR FREELANCE — Q3 2026', accent: true },
+  { label: 'BASED IN ITALY · CET (UTC+1)' },
+  { label: 'CURRENTLY BUILDING — TYPESCRIPT · REACT · NODE' },
+  { label: latestItem },
+];
+---
+
+<div class="border-b border-zinc-800/80 bg-zinc-950 text-zinc-500 font-mono text-[11px] tracking-wider overflow-hidden shrink-0">
+  <div class="flex whitespace-nowrap marquee-track w-max">
+    {[0, 1].map(() => (
+      <div class="flex items-center gap-8 px-6 py-2" aria-hidden={undefined}>
+        {items.map((item) => (
+          <>
+            {item.accent
+              ? <span class="text-emerald-500">●</span>
+              : <span class="text-zinc-700">/</span>}
+            <span>{item.label}</span>
+          </>
+        ))}
+        <span class="text-zinc-700">/</span>
+      </div>
+    ))}
+  </div>
+</div>

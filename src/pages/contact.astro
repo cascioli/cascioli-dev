@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import CommandPalette from '../components/CommandPalette.astro';
+import type { Note, QuickAction } from '../components/CommandPalette.astro';
+
+const NOTES: Note[] = [];
+
+const QUICK_ACTIONS: QuickAction[] = [
+  { kind: 'page', title: 'Go to Home',  hint: 'navigate', href: '/'      },
+  { kind: 'page', title: 'Go to Work',  hint: 'navigate', href: '/work'  },
+  { kind: 'page', title: 'Go to About', hint: 'navigate', href: '/about' },
+  { kind: 'page', title: 'Go to Notes', hint: 'navigate', href: '/notes' },
+];
+
+const EMAIL = 'rent.dev.commercial@gmail.com';
+
+const SOCIALS = [
+  { label: 'GitHub',   href: 'https://github.com/simlimone'                  },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/simlimone'             },
+  { label: 'X',        href: 'https://x.com/simlimone'                       },
+  { label: 'Read.cv',  href: 'https://read.cv/simlimone'                     },
+];
+---
+
+<Layout title="cascioli. — Contact">
+  <Navbar />
+
+  <main class="px-6 contact-ambient">
+    <article class="max-w-[650px] mx-auto pt-20 lg:pt-28 pb-32">
+
+      <!-- eyebrow -->
+      <div class="head-in font-mono text-[11.5px] tracking-[0.22em] uppercase text-emerald-500 mb-6">
+        Contact &nbsp;·&nbsp; <span class="text-zinc-500">Q3 2026 open</span>
+      </div>
+
+      <!-- headline -->
+      <h1 class="head-in-2 font-sans font-bold tracking-[-0.03em] text-zinc-50 text-[48px] sm:text-[64px] leading-[1.02] mb-8">
+        Costruiamo qualcosa<br class="hidden sm:block" /> di solido<span class="text-emerald-500">.</span>
+      </h1>
+
+      <!-- intro -->
+      <p class="head-in-3 text-zinc-400 text-[17px] leading-[1.75] max-w-[55ch] mb-16">
+        Sono disponibile come <strong class="text-zinc-200 font-medium">Software Architect freelance</strong> a partire
+        dal Q3 2026, con focus su sistemi AI-native e infrastrutture di sicurezza.
+        Se stai costruendo qualcosa che richiede solidità architetturale — dalla progettazione
+        al delivery — parliamoci.
+      </p>
+
+      <!-- email block -->
+      <section class="head-in-4 mb-16">
+        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-3">Email</p>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href={`mailto:${EMAIL}`}
+             class="font-sans font-semibold text-[22px] sm:text-[26px] text-zinc-100 hover:text-emerald-400 transition-colors break-all">
+            {EMAIL}
+          </a>
+          <button id="copyBtn"
+                  class="copy-btn inline-flex items-center gap-1.5 h-8 px-3 rounded-md border border-zinc-700 text-zinc-400 font-mono text-[12px] hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
+                  data-email={EMAIL}>
+            <svg id="copyIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span id="copyLabel">Copia</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- divider -->
+      <hr class="border-zinc-800/60 mb-16" />
+
+      <!-- socials -->
+      <section class="mb-16">
+        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-6">Socials</p>
+        <ul class="flex flex-col gap-1">
+          {SOCIALS.map((s) => (
+            <li>
+              <a href={s.href}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="social-link group inline-flex items-center gap-3 py-2 font-sans text-[18px] text-zinc-400 hover:text-zinc-50 transition-colors">
+                <span>{s.label}</span>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-500 text-[14px] translate-x-0 group-hover:translate-x-1 transition-transform">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- divider -->
+      <hr class="border-zinc-800/60 mb-16" />
+
+      <!-- calendar block -->
+      <section class="cal-box rounded-xl border border-zinc-800 p-6 sm:p-8">
+        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-3">Prenota una call</p>
+        <p class="text-zinc-400 text-[15px] leading-[1.65] mb-6">
+          30 minuti. Niente formalismi. Raccontami il progetto e vediamo se posso essere utile.
+        </p>
+        <a href="https://cal.eu/cascioli"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 h-10 px-5 rounded-md bg-zinc-900 border border-zinc-700 text-zinc-200 font-mono text-[13px] hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-zinc-800 transition-all">
+          Apri calendario
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </section>
+
+    </article>
+  </main>
+
+  <CommandPalette notes={NOTES} quickActions={QUICK_ACTIONS} />
+</Layout>
+
+<style is:global>
+  .contact-ambient {
+    position: relative;
+    min-height: calc(100vh - 64px);
+  }
+  .contact-ambient::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse 60% 50% at 20% 30%, rgba(16,185,129,0.06) 0%, transparent 70%);
+  }
+  .contact-ambient > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cal-box {
+    background: rgba(39, 39, 42, 0.25);
+    backdrop-filter: blur(4px);
+  }
+
+  .copy-btn.copied {
+    border-color: rgba(16,185,129,0.5);
+    color: rgb(52,211,153);
+    background: rgba(16,185,129,0.08);
+  }
+
+  @keyframes headIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+  .head-in   { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) both; }
+  .head-in-2 { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) 0.08s both; }
+  .head-in-3 { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) 0.16s both; }
+  .head-in-4 { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) 0.24s both; }
+</style>
+
+<script>
+  const btn = document.getElementById('copyBtn') as HTMLButtonElement | null;
+  const label = document.getElementById('copyLabel') as HTMLSpanElement | null;
+  const icon = document.getElementById('copyIcon') as SVGElement | null;
+
+  btn?.addEventListener('click', async () => {
+    const email = btn.dataset.email ?? '';
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = email;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+
+    btn.classList.add('copied');
+    if (label) label.textContent = 'Copiato!';
+    if (icon) {
+      icon.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+    }
+
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      if (label) label.textContent = 'Copia';
+      if (icon) {
+        icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+      }
+    }, 2000);
+  });
+</script>

@@ -21,11 +21,33 @@ No test runner configured yet.
 
 ## Architecture
 
-Minimal Astro project — essentially a blank slate. Key conventions as the project grows:
+Personal portfolio site. Dark-mode-only, Zinc/Emerald palette, Geist + Geist Mono fonts.
 
-- Pages → `src/pages/`
-- Components → `src/components/` (create when needed; Astro, React, Vue, Svelte, or Preact)
-- Static assets → `public/`
-- Global CSS → `src/styles/global.css`
+### Routing
 
-Tailwind is configured at the Vite plugin level (`astro.config.mjs`), not via a standalone config file. Add Tailwind customizations using CSS `@theme` blocks inside `src/styles/global.css`.
+| Route     | File                      | Design pattern          |
+|-----------|---------------------------|-------------------------|
+| `/`       | `src/pages/index.astro`   | Hero + project cards    |
+| `/work`   | `src/pages/work.astro`    | VS Code IDE shell       |
+| `/about`  | `src/pages/about.astro`   | Editor/README layout    |
+| `/notes`  | `src/pages/notes.astro`   | Zen editorial feed      |
+
+### Components
+
+- `src/layouts/Layout.astro` — HTML shell, Google Fonts, global CSS. Props: `title`, `bodyClass`.
+- `src/components/Navbar.astro` — sticky nav; reads `Astro.url.pathname` to highlight active link.
+- `src/components/Ticker.astro` — top marquee status strip. Prop: `latestItem`.
+- `src/components/Footer.astro` — site footer (Home page only).
+- `src/components/CommandPalette.astro` — CMD+K search modal. Props: `notes[]`, `quickActions[]`. Dispatches `palette:selectTag` custom event on selection; exposes `window.openCommandPalette()`.
+
+### CSS conventions
+
+- Tailwind at Vite plugin level (`astro.config.mjs`). No `tailwind.config.*`.
+- Font families configured via `@theme` in `src/styles/global.css`.
+- Shared utilities (`.bg-grid`, `.avatar-frame`, `.dot-pulse`, `.marquee-track`, `.caret`) live in `src/styles/global.css`.
+- Page-specific custom CSS (e.g. `.proj-card`, `.badge`, `.proj-row`) goes in `<style is:global>` blocks in each page — required because JavaScript-generated HTML won't get Astro's scoped attribute.
+- Per-page radial gradients (`.bg-radial-home`, `.bg-radial-work`, `.bg-radial-about`) defined in their respective page's `<style is:global>`.
+
+### Assets
+
+Profile images at `public/assets/profilo-bn.jpg` (B/W) and `public/assets/profilo-color.jpg`. Avatar swap (B/W → color on hover) is JS-driven via `data-bw` / `data-color` attributes.
