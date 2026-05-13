@@ -1,43 +1,39 @@
-# Astro Starter Kit: Minimal
+# cascioli.dev
+
+Personal portfolio for [Simone Cascioli](https://cascioli.dev) — Software Architect, AI & Cybersecurity.
+
+## Stack
+
+- **Astro 6** + **Tailwind CSS 4** + **TypeScript**
+- **Go** serverless functions on Vercel (contact form, OSINT domain scan)
+- Dark-mode only · Zinc/Emerald palette · Geist fonts
+
+## Dev
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev        # frontend → localhost:4321
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Go APIs (optional, for contact page):
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+cd api/osint  && go run ./cmd   # → localhost:8787
+cd api/contact && go run ./cmd  # → localhost:8788
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+`RESEND_API_KEY` env var required for the contact form to send emails.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Routes
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Route | Description |
+|-------|-------------|
+| `/` | Hero + project cards |
+| `/work` | VS Code IDE shell |
+| `/about` | Editor/README layout |
+| `/notes` | Editorial feed |
+| `/contact` | Contact form with OSINT terminal |
 
-## 🧞 Commands
+## Deploy
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Deployed on Vercel. Go functions are auto-detected from `api/*/` directories.
