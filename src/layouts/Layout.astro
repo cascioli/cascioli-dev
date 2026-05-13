@@ -1,11 +1,40 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Ticker from '../components/Ticker.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import CommandPalette from '../components/CommandPalette.astro';
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
   bodyClass?: string;
+  tickerText?: string;
+  showFooter?: boolean;
 }
-const { title, bodyClass = 'min-h-screen' } = Astro.props;
+
+const {
+  title,
+  description = 'Software Architect freelance specializzato in sistemi AI-native e cybersecurity. Note, progetti e pensieri di Simone Cascioli.',
+  image,
+  bodyClass = 'min-h-screen',
+  tickerText,
+  showFooter = false,
+} = Astro.props;
+
+const SITE = 'https://cascioli.dev';
+const canonical  = new URL(Astro.url.pathname, SITE).href;
+const ogImage    = new URL(image ?? '/assets/profilo-color.jpg', SITE).href;
+
+const DEFAULT_ACTIONS = [
+  { kind: 'page' as const, title: 'Go to Home',   hint: 'navigate', href: '/'        },
+  { kind: 'page' as const, title: 'Go to Work',   hint: 'navigate', href: '/work'    },
+  { kind: 'page' as const, title: 'Go to About',  hint: 'navigate', href: '/about'   },
+  { kind: 'page' as const, title: 'Go to Notes',  hint: 'navigate', href: '/notes'   },
+  { kind: 'page' as const, title: 'Get in touch', hint: 'navigate', href: '/contact' },
+];
 ---
 
 <!doctype html>
@@ -13,14 +42,54 @@ const { title, bodyClass = 'min-h-screen' } = Astro.props;
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={canonical} />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:locale"      content="it_IT" />
+  <meta property="og:site_name"   content="cascioli." />
+  <meta property="og:image"       content={ogImage} />
+  <meta property="og:image:type"  content="image/jpeg" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height"content="800" />
+  <meta property="og:image:alt"   content={`${title} — cascioli.dev`} />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@simlimone" />
+  <meta name="twitter:creator"     content="@simlimone" />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={ogImage} />
+  <meta name="twitter:image:alt"   content={`${title} — cascioli.dev`} />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+
+  <!-- View Transitions -->
+  <ClientRouter />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body class={bodyClass}>
+  {tickerText && <Ticker latestItem={tickerText} />}
+  <Navbar />
   <slot />
+  {showFooter && <Footer />}
+  <CommandPalette notes={[]} quickActions={DEFAULT_ACTIONS} />
 </body>
 </html>

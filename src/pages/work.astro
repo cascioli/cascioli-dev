@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Ticker from '../components/Ticker.astro';
-import Navbar from '../components/Navbar.astro';
 ---
 
-<Layout title="cascioli. — Work" bodyClass="min-h-screen flex flex-col">
-  <Ticker latestItem="LATEST COMMIT — feat(work): IDE-style archive" />
-  <Navbar />
+<Layout
+  title="cascioli. — Work"
+  description="Progetti selezionati di Simone Cascioli: app mobile, sistemi AI, strumenti di sicurezza e architetture backend in Go, Flutter e Python."
+  bodyClass="min-h-screen flex flex-col"
+  tickerText="LATEST COMMIT — feat(work): IDE-style archive">
 
   <!-- IDE SHELL -->
   <main class="relative flex-1 min-h-0">
@@ -290,7 +290,7 @@ import Navbar from '../components/Navbar.astro';
 </style>
 
 <script>
-const PROJECTS = [
+const PROJECTS: any[] = [
   { id: 'helio',      name: 'helio.ts',      folder: 'web-apps',    title: 'Helio — bookings & calendar for studios',         desc: 'SaaS multi-tenant per la gestione di prenotazioni e disponibilità. Architettura modulare, sync calendari esterni, billing.',                          stack: ['Next.js','TypeScript','Postgres','Tailwind'], year: 2026, status: 'production', featured: true,  links: { github: 'github.com/cascioli/helio',     demo: 'helio.app' } },
   { id: 'nordbrew',   name: 'nordbrew.tsx',   folder: 'web-apps',    title: 'Nordbrew — e-commerce per micro-birrificio',       desc: 'Redesign completo del sito vendite, da Shopify a uno stack headless custom. +38% conversion, -42% LCP.',                                            stack: ['Astro','Tailwind','Node'],                     year: 2025, status: 'production', featured: false, links: { github: 'github.com/cascioli/nordbrew',  demo: 'nordbrew.it' } },
   { id: 'pilot',      name: 'pilot.tsx',      folder: 'web-apps',    title: 'Pilot — dashboard di osservabilità',               desc: 'Pannello interno per monitoring di servizi e job. Metriche real-time, alert e replay degli eventi.',                                               stack: ['React','TypeScript','Node'],                   year: 2024, status: 'production', featured: false, links: { github: null,                            demo: null } },
@@ -307,14 +307,26 @@ const PROJECTS = [
   { id: 'mosaic',     name: 'mosaic.tsx',     folder: 'archive',     title: 'Mosaic — photo gallery builder',                   desc: 'Builder per gallerie fotografiche, masonry layout, ottimizzazione immagini server-side.',                                                          stack: ['Node','TypeScript'],                           year: 2021, status: 'archived',   featured: false, links: { github: null,                            demo: null } },
 ];
 
-const STATUS_PILL = {
+const STATUS_PILL: Record<string, { cls: string; label: string }> = {
   production: { cls: 'pill-prod', label: 'production' },
   wip:        { cls: 'pill-wip',  label: 'wip'        },
   archived:   { cls: 'pill-arch', label: 'archived'   },
   beta:       { cls: 'pill-beta', label: 'beta'       },
 };
 
-const state = { folder: 'all', tech: new Set(), search: '', activeId: null };
+function fileIcon(status: string) {
+  const color = status === 'production' ? '#34d399' : status === 'wip' ? '#f59e0b' : status === 'beta' ? '#60a5fa' : '#71717a';
+  return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+}
+
+let _wc: AbortController | null = null;
+
+document.addEventListener('astro:page-load', () => {
+  _wc?.abort();
+  _wc = new AbortController();
+  const { signal } = _wc;
+
+const state: { folder: string; tech: Set<string>; search: string; activeId: string | null } = { folder: 'all', tech: new Set(), search: '', activeId: null };
 
 const tbody          = document.getElementById('projectsBody');
 const visibleCountEl = document.getElementById('visibleCount');
@@ -322,11 +334,6 @@ const crumbFolderEl  = document.getElementById('crumbFolder');
 const emptyEl        = document.getElementById('empty');
 const statusFolderEl = document.getElementById('statusFolder');
 const statusTechEl   = document.getElementById('statusTech');
-
-function fileIcon(status) {
-  const color = status === 'production' ? '#34d399' : status === 'wip' ? '#f59e0b' : status === 'beta' ? '#60a5fa' : '#71717a';
-  return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
-}
 
 function applyFilters() {
   const q = state.search.trim().toLowerCase();
@@ -469,7 +476,7 @@ tbody.addEventListener('click', (e) => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePreview();
-});
+}, { signal });
 
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
@@ -477,5 +484,6 @@ document.querySelectorAll('.tab').forEach(tab => {
   });
 });
 
-render();
+  render();
+}); // astro:page-load
 </script>

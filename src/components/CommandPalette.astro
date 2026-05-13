@@ -65,8 +65,9 @@ const { notes, quickActions } = Astro.props;
       0 0 60px rgba(16,185,129,0.25);
     transition: opacity 180ms ease, transform 220ms cubic-bezier(0.22,1,0.36,1);
   }
-  .palette-hidden .palette-backdrop { opacity: 0; pointer-events: none; }
-  .palette-hidden .palette-window   { opacity: 0; transform: translateY(-8px) scale(0.985); pointer-events: none; }
+  .palette-hidden { pointer-events: none; }
+  .palette-hidden .palette-backdrop { opacity: 0; }
+  .palette-hidden .palette-window   { opacity: 0; transform: translateY(-8px) scale(0.985); }
   .palette-item { transition: background-color 120ms ease; }
   .palette-item.is-active {
     background-color: rgba(16,185,129,0.10);
@@ -88,8 +89,10 @@ const { notes, quickActions } = Astro.props;
 </style>
 
 <script define:vars={{ notes, quickActions }}>
-  const NOTES = notes;
+  let paletteNotes = [...notes];
   const QUICK_ACTIONS = quickActions;
+
+  document.addEventListener('palette:setNotes', (e) => { paletteNotes = e.detail.notes; });
 
   const TAG_LABELS = {
     'flutter-arch':    'flutter',
@@ -123,7 +126,7 @@ const { notes, quickActions } = Astro.props;
 
   function renderPalette(q) {
     q = (q || '').trim().toLowerCase();
-    const noteResults = NOTES
+    const noteResults = paletteNotes
       .filter(n => !q || n.title.toLowerCase().includes(q) || n.preview.toLowerCase().includes(q) || n.tag.toLowerCase().includes(q))
       .map(n => ({ kind: 'note', title: n.title, hint: '#' + (TAG_LABELS[n.tag] || n.tag) + ' · ' + fmtDateShort(n.date), id: n.id, tag: n.tag }));
 

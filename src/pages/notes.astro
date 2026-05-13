@@ -1,26 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import CommandPalette from '../components/CommandPalette.astro';
-
-const NOTES = [
-  { id: 'flutter-hardening', title: 'Hardening Flutter: Production-ready security',             preview: "Da SSL pinning a obfuscation: come spedire un'app Flutter senza farsi sgridare dal pentester. Un percorso pratico, dalle scelte di architettura al CI/CD.", tag: 'flutter-arch',    date: '2026-05-10', readMin: 9  },
-  { id: 'gemini-structured',  title: 'Structured Output con Gemini: trasformare foto in dati',   preview: 'Pattern per estrarre JSON deterministico da prompt visivi senza perdere la sanità mentale. Schemi, retry policy e fallback.',                              tag: 'ai-engineering', date: '2026-04-28', readMin: 7  },
-  { id: 'fuzzy-router',       title: 'Fuzzy Matching in Go: la logica dietro fuzzyrouter',       preview: 'Trie + Levenshtein-lite: come ho costruito un router HTTP che indovina cosa volevi davvero, senza penalizzare il caso comune.',                            tag: 'independent-dev',date: '2026-04-12', readMin: 12 },
-  { id: 'osint-footprints',   title: 'Mapping Digital Footprints: OSINT & Cybersec',             preview: "Costruire una mappa della propria esposizione pubblica con strumenti open-source. Un grafo per capire — e ridurre — la superficie d'attacco.",            tag: 'cybersecurity',  date: '2026-03-30', readMin: 11 },
-  { id: 'ai-chronicles',      title: 'AI Chronicles: gamification con Gemini',                   preview: 'Un esperimento in cui Gemini scrive avventure testuali a turni, con regole, stato persistente e un piccolo motore di affidabilità narrativa.',              tag: 'ai-engineering', date: '2026-03-14', readMin: 6  },
-];
-
-const QUICK_ACTIONS = [
-  { kind: 'page' as const, title: 'Go to Home',  hint: 'navigate', href: '/'      },
-  { kind: 'page' as const, title: 'Go to Work',  hint: 'navigate', href: '/work'  },
-  { kind: 'page' as const, title: 'Go to About', hint: 'navigate', href: '/about' },
-  { kind: 'cmd'  as const, title: 'Subscribe via RSS', hint: 'action' },
-];
 ---
 
-<Layout title="cascioli. — Notes">
-  <Navbar />
+<Layout
+  title="cascioli. — Notes"
+  description="Note di Simone Cascioli su Flutter, AI engineering, cybersecurity e sviluppo indipendente. Saggi brevi, frammenti di codice, idee a metà."
+  tickerText="LATEST POST — Hardening Flutter: Production-ready security">
 
   <main class="px-6 ambient">
     <article class="max-w-[760px] mx-auto pt-20 lg:pt-28 pb-32">
@@ -81,7 +66,6 @@ const QUICK_ACTIONS = [
     </button>
   </div>
 
-  <CommandPalette notes={NOTES} quickActions={QUICK_ACTIONS} />
 </Layout>
 
 <style is:global>
@@ -161,82 +145,91 @@ const QUICK_ACTIONS = [
     { id: 'ai-chronicles',      title: 'AI Chronicles: gamification con Gemini',                   preview: 'Un esperimento in cui Gemini scrive avventure testuali a turni, con regole e stato persistente.', tag: 'ai-engineering', date: '2026-03-14', readMin: 6  },
   ];
 
-  const TAG_LABELS = {
+  const TAG_LABELS: Record<string, string> = {
     'flutter-arch':    'flutter',
     'ai-engineering':  'ai',
     'cybersecurity':   'cybersec',
     'independent-dev': 'indie',
   };
 
-  const state = { tag: 'all' };
-  const feedEl  = document.getElementById('feed');
-  const emptyEl = document.getElementById('emptyFeed');
+  let _nc: AbortController | null = null;
 
-  function fmtDate(iso) {
-    return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  }
+  document.addEventListener('astro:page-load', () => {
+    _nc?.abort();
+    _nc = new AbortController();
+    const { signal } = _nc;
 
-  function renderFeed() {
-    const filtered = NOTES_DATA.filter(n => state.tag === 'all' || n.tag === state.tag);
-    const byYear = new Map();
-    filtered.forEach(n => {
-      const y = new Date(n.date).getFullYear();
-      if (!byYear.has(y)) byYear.set(y, []);
-      byYear.get(y).push(n);
-    });
-    const years = [...byYear.keys()].sort((a, b) => b - a);
+    const state = { tag: 'all' };
+    const feedEl  = document.getElementById('feed')!;
+    const emptyEl = document.getElementById('emptyFeed')!;
 
-    if (filtered.length === 0) {
-      emptyEl.classList.remove('hidden');
-      feedEl.innerHTML = '';
-    } else {
-      emptyEl.classList.add('hidden');
-      let html = '';
-      years.forEach(y => {
-        html += `<div class="year-divider"><span class="y-label">${y}</span><span class="y-line"></span></div>`;
-        byYear.get(y).sort((a, b) => b.date.localeCompare(a.date)).forEach(n => {
-          html += `
-            <a href="#" class="note">
-              <div class="note-meta flex items-center gap-3">
-                <span>${fmtDate(n.date)}</span>
-                <span class="text-zinc-700">·</span>
-                <span>${n.readMin} min read</span>
-                <span class="text-zinc-700">·</span>
-                <span class="tag">#${TAG_LABELS[n.tag] || n.tag}</span>
-              </div>
-              <h2 class="note-title mt-3">${n.title}<span class="arrow">↗</span></h2>
-              <p class="note-preview">${n.preview}</p>
-            </a>`;
-        });
-      });
-      feedEl.innerHTML = html;
+    function fmtDate(iso: string) {
+      return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     }
 
-    feedEl.classList.remove('feed-anim');
-    void feedEl.offsetWidth;
-    feedEl.classList.add('feed-anim');
-  }
+    function renderFeed() {
+      const filtered = NOTES_DATA.filter(n => state.tag === 'all' || n.tag === state.tag);
+      const byYear = new Map<number, typeof NOTES_DATA>();
+      filtered.forEach(n => {
+        const y = new Date(n.date).getFullYear();
+        if (!byYear.has(y)) byYear.set(y, []);
+        byYear.get(y)!.push(n);
+      });
+      const years = [...byYear.keys()].sort((a, b) => b - a);
 
-  document.querySelectorAll('#filters .filter-pill').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('is-active')) return;
-      state.tag = btn.dataset.tag;
-      document.querySelectorAll('#filters .filter-pill').forEach(b => b.classList.toggle('is-active', b === btn));
-      renderFeed();
+      if (filtered.length === 0) {
+        emptyEl.classList.remove('hidden');
+        feedEl.innerHTML = '';
+      } else {
+        emptyEl.classList.add('hidden');
+        let html = '';
+        years.forEach(y => {
+          html += `<div class="year-divider"><span class="y-label">${y}</span><span class="y-line"></span></div>`;
+          byYear.get(y)!.sort((a, b) => b.date.localeCompare(a.date)).forEach(n => {
+            html += `
+              <a href="#" class="note">
+                <div class="note-meta flex items-center gap-3">
+                  <span>${fmtDate(n.date)}</span>
+                  <span class="text-zinc-700">·</span>
+                  <span>${n.readMin} min read</span>
+                  <span class="text-zinc-700">·</span>
+                  <span class="tag">#${TAG_LABELS[n.tag] || n.tag}</span>
+                </div>
+                <h2 class="note-title mt-3">${n.title}<span class="arrow">↗</span></h2>
+                <p class="note-preview">${n.preview}</p>
+              </a>`;
+          });
+        });
+        feedEl.innerHTML = html;
+      }
+
+      feedEl.classList.remove('feed-anim');
+      void feedEl.offsetWidth;
+      feedEl.classList.add('feed-anim');
+    }
+
+    document.querySelectorAll('#filters .filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if ((btn as HTMLElement).classList.contains('is-active')) return;
+        state.tag = (btn as HTMLElement).dataset.tag!;
+        document.querySelectorAll('#filters .filter-pill').forEach(b => b.classList.toggle('is-active', b === btn));
+        renderFeed();
+      });
     });
-  });
 
-  // Respond to CommandPalette tag selection
-  document.addEventListener('palette:selectTag', (e) => {
-    const tag = e.detail.tag;
-    state.tag = tag;
-    document.querySelectorAll('#filters .filter-pill').forEach(b => b.classList.toggle('is-active', b.dataset.tag === tag));
+    document.addEventListener('palette:selectTag', (e: Event) => {
+      const tag = (e as CustomEvent).detail.tag;
+      state.tag = tag;
+      document.querySelectorAll('#filters .filter-pill').forEach(b =>
+        b.classList.toggle('is-active', (b as HTMLElement).dataset.tag === tag)
+      );
+      renderFeed();
+    }, { signal });
+
+    document.getElementById('searchTrigger')?.addEventListener('click',  () => (window as any).openCommandPalette?.());
+    document.getElementById('searchTrigger2')?.addEventListener('click', () => (window as any).openCommandPalette?.());
+
     renderFeed();
+    document.dispatchEvent(new CustomEvent('palette:setNotes', { detail: { notes: NOTES_DATA } }));
   });
-
-  // Wire search triggers to palette
-  document.getElementById('searchTrigger')?.addEventListener('click', () => window.openCommandPalette?.());
-  document.getElementById('searchTrigger2')?.addEventListener('click', () => window.openCommandPalette?.());
-
-  renderFeed();
 </script>

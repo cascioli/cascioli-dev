@@ -1,17 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import CommandPalette from '../components/CommandPalette.astro';
-import type { Note, QuickAction } from '../components/CommandPalette.astro';
-
-const NOTES: Note[] = [];
-
-const QUICK_ACTIONS: QuickAction[] = [
-  { kind: 'page', title: 'Go to Home',  hint: 'navigate', href: '/'      },
-  { kind: 'page', title: 'Go to Work',  hint: 'navigate', href: '/work'  },
-  { kind: 'page', title: 'Go to About', hint: 'navigate', href: '/about' },
-  { kind: 'page', title: 'Go to Notes', hint: 'navigate', href: '/notes' },
-];
 
 const EMAIL = 'rent.dev.commercial@gmail.com';
 
@@ -23,8 +11,10 @@ const SOCIALS = [
 ];
 ---
 
-<Layout title="cascioli. — Contact">
-  <Navbar />
+<Layout
+  title="cascioli. — Contact"
+  description="Contatta Simone Cascioli per collaborazioni freelance come Software Architect. Disponibile dal Q3 2026 per progetti AI e cybersecurity."
+  tickerText="AVAILABLE Q3 2026 — Software Architect · AI & Cybersecurity">
 
   <main class="px-6 contact-ambient">
     <article class="max-w-[650px] mx-auto pt-20 lg:pt-28 pb-32">
@@ -109,7 +99,6 @@ const SOCIALS = [
     </article>
   </main>
 
-  <CommandPalette notes={NOTES} quickActions={QUICK_ACTIONS} />
 </Layout>
 
 <style is:global>
@@ -152,37 +141,32 @@ const SOCIALS = [
 </style>
 
 <script>
-  const btn = document.getElementById('copyBtn') as HTMLButtonElement | null;
-  const label = document.getElementById('copyLabel') as HTMLSpanElement | null;
-  const icon = document.getElementById('copyIcon') as SVGElement | null;
+  document.addEventListener('astro:page-load', () => {
+    const btn   = document.getElementById('copyBtn')   as HTMLButtonElement | null;
+    const label = document.getElementById('copyLabel') as HTMLSpanElement   | null;
+    const icon  = document.getElementById('copyIcon')  as SVGElement        | null;
+    if (!btn) return;
 
-  btn?.addEventListener('click', async () => {
-    const email = btn.dataset.email ?? '';
-    try {
-      await navigator.clipboard.writeText(email);
-    } catch {
-      const ta = document.createElement('textarea');
-      ta.value = email;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-    }
-
-    btn.classList.add('copied');
-    if (label) label.textContent = 'Copiato!';
-    if (icon) {
-      icon.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
-    }
-
-    setTimeout(() => {
-      btn.classList.remove('copied');
-      if (label) label.textContent = 'Copia';
-      if (icon) {
-        icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+    btn.addEventListener('click', async () => {
+      const email = btn.dataset.email ?? '';
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = email; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
       }
-    }, 2000);
+
+      btn.classList.add('copied');
+      if (label) label.textContent = 'Copiato!';
+      if (icon)  icon.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        if (label) label.textContent = 'Copia';
+        if (icon)  icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+      }, 2000);
+    });
   });
 </script>

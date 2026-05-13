@@ -1,13 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Ticker from '../components/Ticker.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="cascioli. — Personal site">
-  <Ticker latestItem="LATEST COMMIT — feat(home): wire emerald glow on hover" />
-  <Navbar />
+<Layout
+  title="cascioli. — Personal site"
+  description="Simone Cascioli — Software Architect freelance. Costruisco sistemi AI-native, infrastrutture sicure e interfacce che funzionano davvero."
+  tickerText="LATEST COMMIT — feat(home): wire emerald glow on hover"
+  showFooter={true}>
 
   <!-- HERO -->
   <section class="relative overflow-hidden border-b border-zinc-800/80">
@@ -279,7 +278,6 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <Footer />
 </Layout>
 
 <style is:global>
@@ -318,24 +316,27 @@ import Footer from '../components/Footer.astro';
 </style>
 
 <script>
-  const img = document.getElementById('avatar-img') as HTMLImageElement | null;
-  if (img) {
-    const pre = new Image();
-    pre.src = img.dataset.color!;
-    const frame = img.closest('.avatar-frame') as HTMLElement;
-    frame.addEventListener('mouseenter', () => { img.src = img.dataset.color!; });
-    frame.addEventListener('mouseleave', () => { img.src = img.dataset.bw!; });
-  }
-
-  const heat = document.getElementById('heatmap');
-  if (heat) {
-    const intensity = [0, 0.06, 0.12, 0.2, 0.32, 0.5, 0.75];
-    for (let i = 0; i < 35; i++) {
-      const v = intensity[Math.floor(Math.random() * intensity.length)];
-      const el = document.createElement('div');
-      el.className = 'rounded-[3px]';
-      el.style.background = v === 0 ? 'rgba(63,63,70,0.35)' : `rgba(16,185,129,${v})`;
-      heat.appendChild(el);
+  document.addEventListener('astro:page-load', () => {
+    const img = document.getElementById('avatar-img') as HTMLImageElement | null;
+    if (img) {
+      const pre = new Image();
+      pre.src = img.dataset.color!;
+      const frame = img.closest('.avatar-frame') as HTMLElement;
+      frame.addEventListener('mouseenter', () => { img.src = img.dataset.color!; });
+      frame.addEventListener('mouseleave', () => { img.src = img.dataset.bw!; });
     }
-  }
+
+    const heat = document.getElementById('heatmap');
+    if (heat) {
+      heat.innerHTML = '';
+      const intensity = [0, 0.06, 0.12, 0.2, 0.32, 0.5, 0.75];
+      for (let i = 0; i < 35; i++) {
+        const v = intensity[Math.floor(Math.random() * intensity.length)];
+        const el = document.createElement('div');
+        el.className = 'rounded-[3px]';
+        el.style.background = v === 0 ? 'rgba(63,63,70,0.35)' : `rgba(16,185,129,${v})`;
+        heat.appendChild(el);
+      }
+    }
+  });
 </script>

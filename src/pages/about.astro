@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Ticker from '../components/Ticker.astro';
-import Navbar from '../components/Navbar.astro';
 ---
 
-<Layout title="cascioli. — About" bodyClass="min-h-screen flex flex-col">
-  <Ticker latestItem="NOW READING — designing data-intensive applications" />
-  <Navbar />
+<Layout
+  title="cascioli. — About"
+  description="Chi è Simone Cascioli: Software Architect con focus su AI, cybersecurity e sviluppo indipendente. Stack, filosofia e lavoro in corso."
+  bodyClass="min-h-screen flex flex-col"
+  tickerText="NOW READING — designing data-intensive applications">
 
   <main class="relative flex-1 min-h-0">
     <div class="absolute inset-0 bg-grid pointer-events-none"></div>
@@ -355,12 +355,14 @@ import Navbar from '../components/Navbar.astro';
 </style>
 
 <script>
-  const img = document.getElementById('avatar') as HTMLImageElement | null;
-  if (img) {
-    const pre = new Image();
-    pre.src = img.dataset.color!;
-    const frame = img.closest('.avatar-frame') as HTMLElement;
-    frame.addEventListener('mouseenter', () => { img.src = img.dataset.color!; });
-    frame.addEventListener('mouseleave', () => { img.src = img.dataset.bw!; });
-  }
+  document.addEventListener('astro:page-load', () => {
+    const img = document.getElementById('avatar') as HTMLImageElement | null;
+    if (img) {
+      const pre = new Image();
+      pre.src = img.dataset.color!;
+      const frame = img.closest('.avatar-frame') as HTMLElement;
+      frame.addEventListener('mouseenter', () => { img.src = img.dataset.color!; });
+      frame.addEventListener('mouseleave', () => { img.src = img.dataset.bw!; });
+    }
+  });
 </script>
