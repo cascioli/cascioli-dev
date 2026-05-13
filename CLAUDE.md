@@ -71,7 +71,7 @@ Personal portfolio site. Dark-mode-only, Zinc/Emerald palette, Geist + Geist Mon
 | `/api/osint/scan` | `api/osint/` | Domain OSINT: MX/SPF/DMARC/SSL/CNAME scan, architect score |
 | `/api/contact` | `api/contact/` | Contact form email via Resend, honeypot + CSRF hardening |
 
-Both handlers share the same security pattern: CORS allowlist (`cascioli.dev`, `simonecascioli.it`, `localhost:*`), CSRF guard via `X-Requested-With`, `http.MaxBytesReader`. The OSINT handler also guards against SSRF (blocks private IPs and reserved domain names) and runs MX/SPF/DMARC/SSL/CNAME lookups concurrently with a shared mutex.
+Both handlers share the same security pattern: CORS allowlist (`simonecascioli.it`, `localhost:*`), CSRF guard via `X-Requested-With`, `http.MaxBytesReader`. The OSINT handler also guards against SSRF (blocks private IPs and reserved domain names) and runs MX/SPF/DMARC/SSL/CNAME lookups concurrently with a shared mutex.
 
 ### Contact page features
 

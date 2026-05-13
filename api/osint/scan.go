@@ -434,8 +434,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func isAllowedOrigin(origin string) bool {
-	switch origin {
-	case "https://cascioli.dev", "https://simonecascioli.it":
+	if origin == "https://simonecascioli.it" {
 		return true
 	}
 	return strings.HasPrefix(origin, "http://localhost:")

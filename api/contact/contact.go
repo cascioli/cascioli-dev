@@ -80,7 +80,7 @@ func computeRiskScore(o *osintData) int {
 }
 
 func isAllowedOrigin(origin string) bool {
-	if origin == "https://simonecascioli.it" || origin == "https://cascioli.dev" {
+	if origin == "https://simonecascioli.it" {
 		return true
 	}
 	return strings.HasPrefix(origin, "http://localhost:")
@@ -148,7 +148,7 @@ func buildEmailHTML(name, email, message string, o *osintData, score int) string
 <body style="margin:0;padding:32px;background:#09090b;color:#e4e4e7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.6;">
   <div style="max-width:600px;margin:0 auto;">
     <div style="margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #27272a;">
-      <span style="font-family:monospace;font-size:11px;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;">Contact Form · cascioli.dev</span>
+      <span style="font-family:monospace;font-size:11px;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;">Contact Form · simonecascioli.it</span>
       <h2 style="margin:8px 0 0;color:#fafafa;font-size:20px;font-weight:600;">Nuovo messaggio da %s</h2>
     </div>
     <div style="margin-bottom:16px;">
@@ -161,7 +161,7 @@ func buildEmailHTML(name, email, message string, o *osintData, score int) string
     </div>
     %s
     <div style="margin-top:32px;padding-top:16px;border-top:1px solid #27272a;font-family:monospace;font-size:11px;color:#52525b;">
-      cascioli.dev · architect contact form
+      simonecascioli.it · architect contact form
     </div>
   </div>
 </body>

@@ -1,6 +1,6 @@
-# cascioli.dev
+# simonecascioli.it
 
-Personal portfolio for [Simone Cascioli](https://cascioli.dev) — Software Architect, AI & Cybersecurity.
+Personal portfolio for [Simone Cascioli](https://simonecascioli.it) — Software Architect, AI & Cybersecurity.
 
 ## Stack
 

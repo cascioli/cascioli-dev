@@ -2,7 +2,7 @@
 
 ## Scope
 
-This policy covers the cascioli.dev website and its serverless API endpoints
+This policy covers the simonecascioli.it website and its serverless API endpoints
 (`/api/osint/scan`, `/api/contact/contact`).
 
 ## Reporting a Vulnerability
