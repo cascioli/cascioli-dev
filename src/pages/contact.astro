@@ -583,7 +583,7 @@ const SOCIALS = [
       osintBody.innerHTML = `<span class="osint-dim">$ Encrypting message</span><span class="scan-pulse osint-dim">…</span>`;
 
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch('/api/contact/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
