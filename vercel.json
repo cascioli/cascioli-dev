@@ -6,6 +6,9 @@
   "functions": {
     "api/osint/scan.go": {
       "maxDuration": 10
+    },
+    "api/contact/contact.go": {
+      "maxDuration": 10
     }
   }
 }

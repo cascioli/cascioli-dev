@@ -133,6 +133,41 @@ var cnameProviders = []struct {
 	{"akamaized.net", "Akamai"},
 }
 
+var privateIPRanges = func() []net.IPNet {
+	var ranges []net.IPNet
+	for _, cidr := range []string{
+		"127.0.0.0/8",   // loopback
+		"10.0.0.0/8",    // RFC-1918
+		"172.16.0.0/12", // RFC-1918
+		"192.168.0.0/16", // RFC-1918
+		"169.254.0.0/16", // link-local
+		"100.64.0.0/10",  // shared address space RFC 6598
+		"::1/128",        // IPv6 loopback
+		"fc00::/7",       // IPv6 ULA
+		"fe80::/10",      // IPv6 link-local
+	} {
+		_, ipNet, _ := net.ParseCIDR(cidr)
+		if ipNet != nil {
+			ranges = append(ranges, *ipNet)
+		}
+	}
+	return ranges
+}()
+
+// isPrivateIP returns true for loopback, RFC-1918, link-local, and
+// IPv4-mapped IPv6 addresses (::ffff:x.x.x.x) that map to any of those.
+func isPrivateIP(ip net.IP) bool {
+	if v4 := ip.To4(); v4 != nil {
+		ip = v4
+	}
+	for _, r := range privateIPRanges {
+		if r.Contains(ip) {
+			return true
+		}
+	}
+	return false
+}
+
 func isBlockedDomain(domain string) bool {
 	d := strings.ToLower(domain)
 	for _, blocked := range blockedDomains {
@@ -193,6 +228,14 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// CSRF: require same-origin or X-Requested-With header
+	if !isAllowedOrigin(r.Header.Get("Origin")) && r.Header.Get("X-Requested-With") != "XMLHttpRequest" {
+		w.WriteHeader(http.StatusForbidden)
+		_ = json.NewEncoder(w).Encode(errorResponse{Error: "forbidden"})
+		return
+	}
+
+	r.Body = http.MaxBytesReader(w, r.Body, 1<<10) // 1 KB — domain requests are tiny
 	var body struct {
 		Domain string `json:"domain"`
 	}
@@ -315,8 +358,26 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		dialer := &net.Dialer{Timeout: 4 * time.Second}
-		conn, err := tls.DialWithDialer(dialer, "tcp", domain+":443", &tls.Config{
+		// Resolve IPs first so we can reject private ranges before dialing
+		// and pin the connection to one IP to prevent DNS rebinding.
+		addrs, err := resolver.LookupHost(ctx, domain)
+		if err != nil || len(addrs) == 0 {
+			mu.Lock()
+			result.SSL = &SSLInfo{Valid: false, Issuer: "unreachable"}
+			mu.Unlock()
+			return
+		}
+		for _, addr := range addrs {
+			if ip := net.ParseIP(addr); ip != nil && isPrivateIP(ip) {
+				mu.Lock()
+				result.SSL = &SSLInfo{Valid: false, Issuer: "blocked"}
+				mu.Unlock()
+				return
+			}
+		}
+		// Dial the first resolved IP directly to avoid a second DNS lookup (rebinding).
+		targetAddr := net.JoinHostPort(addrs[0], "443")
+		conn, err := tls.DialWithDialer(&net.Dialer{Timeout: 4 * time.Second}, "tcp", targetAddr, &tls.Config{
 			ServerName: domain,
 		})
 		if err != nil {
@@ -373,10 +434,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func isAllowedOrigin(origin string) bool {
-	if origin == "https://cascioli.dev" {
+	switch origin {
+	case "https://cascioli.dev", "https://simonecascioli.it":
 		return true
 	}
-	// Allow any localhost port for local development (vercel dev, npm run dev, etc.)
 	return strings.HasPrefix(origin, "http://localhost:")
 }
 
