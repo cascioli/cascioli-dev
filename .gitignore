@@ -33,3 +33,9 @@ desktop.ini
 # VS Code settings
 .vscode/
 !.vscode/extensions.json
+
+# Claude Code — track settings.json and hooks/, ignore user-local overrides and session data
+.claude/settings.local.json
+.claude/todos/
+.vercel
+.env*.local

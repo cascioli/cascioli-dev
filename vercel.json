@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "devCommand": "npx astro dev --port $PORT",
+  "functions": {
+    "api/osint/scan.go": {
+      "maxDuration": 10
+    }
+  }
+}

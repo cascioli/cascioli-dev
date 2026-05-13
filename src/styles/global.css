@@ -76,3 +76,19 @@ html, body {
 
 @keyframes blink { 50% { opacity: 0; } }
 .caret { animation: blink 1s steps(1) infinite; }
+
+@keyframes headIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.head-in   { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) both; }
+.head-in-2 { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) 0.08s both; }
+.head-in-3 { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) 0.16s both; }
+.head-in-4 { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) 0.24s both; }
+.head-in-5 { animation: headIn 0.55s cubic-bezier(.22,1,.36,1) 0.32s both; }
+
+@keyframes scanPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+.scan-pulse { animation: scanPulse 1.1s ease-in-out infinite; }

@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Before Writing Code — Duplication Check
+
+**Always run this mental checklist before creating or editing any file:**
+
+1. **Components** — check `src/components/` and `src/layouts/`. If functionality overlaps an existing `.astro` file, extend it instead of creating a new one.
+2. **CSS utilities** — check `src/styles/global.css` first. Shared animations (`headIn`, `dotPulse`, `marquee`, `blink`), layout helpers (`.bg-grid`, `.avatar-frame`), and entry animations (`.head-in-*`) are defined there. **Do not redeclare them in page `<style>` blocks.**
+3. **Page-scoped styles** — only use `<style is:global>` in a page when the styles apply to JavaScript-generated HTML (which bypasses Astro's scoped attribute). Everything else uses Tailwind inline classes.
+4. **API / serverless functions** — check `api/` before adding a new endpoint. Extend existing handlers if the domain overlaps.
+5. **Animations** — do not define a `@keyframes` that already exists in `global.css`. Check before adding any animation.
+
+A `PreToolUse` hook (`.claude/hooks/pre-write-check.ps1`) runs automatically before every `Write`/`Edit` call and echoes the current component list, global CSS classes, and API files as a live reminder.
+
 ## Commands
 
 ```sh
