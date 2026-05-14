@@ -1,56 +1,83 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-const EMAIL = 'info@simonecascioli.it';
+const EMAIL = "info@simonecascioli.it";
 
 const SOCIALS = [
-  { label: 'GitHub',   href: 'https://github.com/simlimone'                  },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/simlimone'             },
-  { label: 'X',        href: 'https://x.com/simlimone'                       },
-  { label: 'Read.cv',  href: 'https://read.cv/simlimone'                     },
+  { label: "GitHub", href: "https://github.com/simlimone" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/simlimone" },
+  { label: "X", href: "https://x.com/simlimone" },
+  { label: "Read.cv", href: "https://read.cv/simlimone" },
 ];
 ---
 
 <Layout
   title="cascioli. — Contact"
   description="Contatta Simone Cascioli per collaborazioni freelance come Software Architect. Disponibile dal Q3 2026 per progetti AI e cybersecurity."
-  tickerText="AVAILABLE Q3 2026 — Software Architect · AI & Cybersecurity">
-
+  tickerText="AVAILABLE Q3 2026 — Software Architect · AI & Cybersecurity"
+>
   <main class="px-6 contact-ambient">
     <article class="max-w-[650px] mx-auto pt-20 lg:pt-28 pb-32">
-
       <!-- eyebrow -->
-      <div class="head-in font-mono text-[11.5px] tracking-[0.22em] uppercase text-emerald-500 mb-6">
+      <div
+        class="head-in font-mono text-[11.5px] tracking-[0.22em] uppercase text-emerald-500 mb-6"
+      >
         Contact &nbsp;·&nbsp; <span class="text-zinc-500">Q3 2026 open</span>
       </div>
 
       <!-- headline -->
-      <h1 class="head-in-2 font-sans font-bold tracking-[-0.03em] text-zinc-50 text-[48px] sm:text-[64px] leading-[1.02] mb-8">
-        Costruiamo qualcosa<br class="hidden sm:block" /> di solido<span class="text-emerald-500">.</span>
+      <h1
+        class="head-in-2 font-sans font-bold tracking-[-0.03em] text-zinc-50 text-[48px] sm:text-[64px] leading-[1.02] mb-8"
+      >
+        Costruiamo qualcosa<br class="hidden sm:block" /> di solido<span
+          class="text-emerald-500">.</span
+        >
       </h1>
 
       <!-- intro -->
-      <p class="head-in-3 text-zinc-400 text-[17px] leading-[1.75] max-w-[55ch] mb-16">
-        Sono disponibile come <strong class="text-zinc-200 font-medium">Software Architect freelance</strong> a partire
-        dal Q3 2026, con focus su sistemi AI-native e infrastrutture di sicurezza.
-        Se stai costruendo qualcosa che richiede solidità architetturale — dalla progettazione
-        al delivery — parliamoci.
+      <p
+        class="head-in-3 text-zinc-400 text-[17px] leading-[1.75] max-w-[55ch] mb-16"
+      >
+        Sono disponibile come <strong class="text-zinc-200 font-medium"
+          >Software Architect freelance</strong
+        > a partire dal Q3 2026, con focus su sistemi AI-native e infrastrutture di
+        sicurezza. Se stai costruendo qualcosa che richiede solidità architetturale
+        — dalla progettazione al delivery — sentiamoci.
       </p>
 
       <!-- email block -->
       <section class="head-in-4 mb-16">
-        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-3">Email</p>
+        <p
+          class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-3"
+        >
+          Email
+        </p>
         <div class="flex flex-wrap items-center gap-4">
-          <a href={`mailto:${EMAIL}`}
-             class="font-sans font-semibold text-[22px] sm:text-[26px] text-zinc-100 hover:text-emerald-400 transition-colors break-all">
+          <a
+            href={`mailto:${EMAIL}`}
+            class="font-sans font-semibold text-[22px] sm:text-[26px] text-zinc-100 hover:text-emerald-400 transition-colors break-all"
+          >
             {EMAIL}
           </a>
-          <button id="copyBtn"
-                  class="copy-btn inline-flex items-center gap-1.5 h-8 px-3 rounded-md border border-zinc-700 text-zinc-400 font-mono text-[12px] hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
-                  data-email={EMAIL}>
-            <svg id="copyIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <button
+            id="copyBtn"
+            class="copy-btn inline-flex items-center gap-1.5 h-8 px-3 rounded-md border border-zinc-700 text-zinc-400 font-mono text-[12px] hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
+            data-email={EMAIL}
+          >
+            <svg
+              id="copyIcon"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+              ></path>
             </svg>
             <span id="copyLabel">Copia</span>
           </button>
@@ -62,19 +89,29 @@ const SOCIALS = [
 
       <!-- socials -->
       <section class="mb-16">
-        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-6">Socials</p>
+        <p
+          class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-6"
+        >
+          Socials
+        </p>
         <ul class="flex flex-col gap-1">
-          {SOCIALS.map((s) => (
-            <li>
-              <a href={s.href}
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="social-link group inline-flex items-center gap-3 py-2 font-sans text-[18px] text-zinc-400 hover:text-zinc-50 transition-colors">
-                <span>{s.label}</span>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-500 text-[14px] translate-x-0 group-hover:translate-x-1 transition-transform">↗</span>
-              </a>
-            </li>
-          ))}
+          {
+            SOCIALS.map((s) => (
+              <li>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-link group inline-flex items-center gap-3 py-2 font-sans text-[18px] text-zinc-400 hover:text-zinc-50 transition-colors"
+                >
+                  <span>{s.label}</span>
+                  <span class="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-500 text-[14px] translate-x-0 group-hover:translate-x-1 transition-transform">
+                    ↗
+                  </span>
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </section>
 
@@ -83,33 +120,67 @@ const SOCIALS = [
 
       <!-- contact form -->
       <section class="head-in-5 mb-16">
-        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-6">Scrivi un messaggio</p>
-        <form id="contactForm" novalidate class="flex flex-col gap-5" data-fallback-email={EMAIL}>
-
+        <p
+          class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-6"
+        >
+          Scrivi un messaggio
+        </p>
+        <form
+          id="contactForm"
+          novalidate
+          class="flex flex-col gap-5"
+          data-fallback-email={EMAIL}
+        >
           <div class="flex flex-col gap-1.5">
-            <label for="fieldName" class="font-mono text-[11px] text-zinc-500 tracking-widest uppercase">Nome</label>
-            <input id="fieldName" name="name" type="text" autocomplete="name" placeholder="Ada Lovelace"
+            <label
+              for="fieldName"
+              class="font-mono text-[11px] text-zinc-500 tracking-widest uppercase"
+              >Nome</label
+            >
+            <input
+              id="fieldName"
+              name="name"
+              type="text"
+              autocomplete="name"
+              placeholder="Ada Lovelace"
               class="field-input h-11 px-4 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[15px] placeholder-zinc-600
-                     focus:outline-none focus:border-emerald-500/50" />
+                     focus:outline-none focus:border-emerald-500/50"
+            />
           </div>
 
           <div class="flex flex-col gap-1.5">
-            <label for="fieldEmail" class="font-mono text-[11px] text-zinc-500 tracking-widest uppercase">Email</label>
-            <input id="fieldEmail" name="email" type="email" autocomplete="email" placeholder="ada@example.com"
+            <label
+              for="fieldEmail"
+              class="font-mono text-[11px] text-zinc-500 tracking-widest uppercase"
+              >Email</label
+            >
+            <input
+              id="fieldEmail"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="ada@example.com"
               class="field-input h-11 px-4 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[15px] placeholder-zinc-600
-                     focus:outline-none focus:border-emerald-500/50" />
+                     focus:outline-none focus:border-emerald-500/50"
+            />
 
             <!-- OSINT terminal -->
-            <div id="osintTerminal"
-                 class="osint-terminal mt-2 rounded-lg border border-zinc-800 bg-zinc-950 font-mono text-[12px]"
-                 aria-live="polite">
+            <div
+              id="osintTerminal"
+              class="osint-terminal mt-2 rounded-lg border border-zinc-800 bg-zinc-950 font-mono text-[12px]"
+              aria-live="polite"
+            >
               <!-- inner wrapper required for grid-row height animation -->
               <div class="osint-terminal-inner">
-                <div class="flex items-center gap-2 px-4 py-2 border-b border-zinc-800/70 bg-zinc-900/50">
+                <div
+                  class="flex items-center gap-2 px-4 py-2 border-b border-zinc-800/70 bg-zinc-900/50"
+                >
                   <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
                   <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
                   <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
-                  <span class="ml-2 text-zinc-600 text-[11px]">osint://domain-scan</span>
+                  <span class="ml-2 text-zinc-600 text-[11px]"
+                    >osint://domain-scan</span
+                  >
                 </div>
                 <div id="osintBody" class="px-4 py-3 space-y-1 text-zinc-400">
                   <span class="text-zinc-700">$ awaiting domain input…</span>
@@ -119,28 +190,64 @@ const SOCIALS = [
           </div>
 
           <div class="flex flex-col gap-1.5">
-            <label for="fieldMsg" class="font-mono text-[11px] text-zinc-500 tracking-widest uppercase">Messaggio</label>
-            <textarea id="fieldMsg" name="message" rows="5" placeholder="Raccontami il progetto…"
+            <label
+              for="fieldMsg"
+              class="font-mono text-[11px] text-zinc-500 tracking-widest uppercase"
+              >Messaggio</label
+            >
+            <textarea
+              id="fieldMsg"
+              name="message"
+              rows="5"
+              placeholder="Raccontami il progetto…"
               class="field-input px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[15px] placeholder-zinc-600 resize-none
-                     focus:outline-none focus:border-emerald-500/50"></textarea>
+                     focus:outline-none focus:border-emerald-500/50"
+            ></textarea>
           </div>
 
           <!-- honeypot: bots fill this, real users never see it -->
           <div class="arch-validation" aria-hidden="true">
-            <label for="architect_validation_token" style="display:none">Do not fill this field</label>
-            <input id="architect_validation_token" name="architect_validation_token" type="text" tabindex="-1" autocomplete="off" value="">
+            <label for="architect_validation_token" style="display:none"
+              >Do not fill this field</label
+            >
+            <input
+              id="architect_validation_token"
+              name="architect_validation_token"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+              value=""
+            />
           </div>
 
-          <button id="submitBtn" type="submit"
+          <button
+            id="submitBtn"
+            type="submit"
             class="self-start inline-flex items-center gap-2 h-10 px-6 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[13px]
-                   hover:bg-emerald-500/20 hover:border-emerald-500/60 transition-all">
+                   hover:bg-emerald-500/20 hover:border-emerald-500/60 transition-all"
+          >
             Invia messaggio
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="22" y1="2" x2="11" y2="13"></line><polygon
+                points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </button>
 
-          <p id="formFeedback" class="form-feedback font-mono text-[12px] text-zinc-500" aria-live="polite"></p>
+          <p
+            id="formFeedback"
+            class="form-feedback font-mono text-[12px] text-zinc-500"
+            aria-live="polite"
+          >
+          </p>
         </form>
       </section>
 
@@ -149,22 +256,37 @@ const SOCIALS = [
 
       <!-- calendar block -->
       <section class="cal-box rounded-xl border border-zinc-800 p-6 sm:p-8">
-        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-3">Prenota una call</p>
-        <p class="text-zinc-400 text-[15px] leading-[1.65] mb-6">
-          30 minuti. Niente formalismi. Raccontami il progetto e vediamo se posso essere utile.
+        <p
+          class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-3"
+        >
+          Prenota una call
         </p>
-        <a href="https://cal.eu/cascioli"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 h-10 px-5 rounded-md bg-zinc-900 border border-zinc-700 text-zinc-200 font-mono text-[13px] hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-zinc-800 transition-all">
+        <p class="text-zinc-400 text-[15px] leading-[1.65] mb-6">
+          30 minuti. Niente formalismi. Raccontami il progetto e vediamo se
+          posso essere utile.
+        </p>
+        <a
+          href="https://cal.eu/cascioli"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 h-10 px-5 rounded-md bg-zinc-900 border border-zinc-700 text-zinc-200 font-mono text-[13px] hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-zinc-800 transition-all"
+        >
           Apri calendario
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+          >
         </a>
       </section>
-
     </article>
   </main>
-
 </Layout>
 
 <style is:global>
@@ -173,12 +295,16 @@ const SOCIALS = [
     min-height: calc(100vh - 64px);
   }
   .contact-ambient::before {
-    content: '';
+    content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(ellipse 60% 50% at 20% 30%, rgba(16,185,129,0.06) 0%, transparent 70%);
+    background: radial-gradient(
+      ellipse 60% 50% at 20% 30%,
+      rgba(16, 185, 129, 0.06) 0%,
+      transparent 70%
+    );
   }
   .contact-ambient > * {
     position: relative;
@@ -191,9 +317,9 @@ const SOCIALS = [
   }
 
   .copy-btn.copied {
-    border-color: rgba(16,185,129,0.5);
-    color: rgb(52,211,153);
-    background: rgba(16,185,129,0.08);
+    border-color: rgba(16, 185, 129, 0.5);
+    color: rgb(52, 211, 153);
+    background: rgba(16, 185, 129, 0.08);
   }
 
   /* .head-in-* and @keyframes headIn defined in global.css */
@@ -207,8 +333,9 @@ const SOCIALS = [
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
-    transition: grid-template-rows 0.38s cubic-bezier(.22,1,.36,1),
-                opacity 0.28s ease;
+    transition:
+      grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.28s ease;
   }
   .osint-terminal.visible {
     grid-template-rows: 1fr;
@@ -220,11 +347,21 @@ const SOCIALS = [
 
   /* .scan-pulse and @keyframes scanPulse defined in global.css */
 
-  .osint-ok   { color: rgb(52 211 153);  } /* emerald-400 */
-  .osint-warn { color: rgb(234 179  8);  } /* yellow-500  */
-  .osint-err  { color: rgb(239  68  68); } /* red-500     */
-  .osint-dim  { color: rgb(113 113 122); } /* zinc-500    */
-  .osint-note { color: rgb(161 161 170); } /* zinc-400    */
+  .osint-ok {
+    color: rgb(52 211 153);
+  } /* emerald-400 */
+  .osint-warn {
+    color: rgb(234 179 8);
+  } /* yellow-500  */
+  .osint-err {
+    color: rgb(239 68 68);
+  } /* red-500     */
+  .osint-dim {
+    color: rgb(113 113 122);
+  } /* zinc-500    */
+  .osint-note {
+    color: rgb(161 161 170);
+  } /* zinc-400    */
 
   .osint-section {
     color: rgb(52 211 153);
@@ -232,7 +369,9 @@ const SOCIALS = [
     letter-spacing: 0.12em;
     margin-top: 0.125rem;
   }
-  .osint-sep { height: 0.35rem; }
+  .osint-sep {
+    height: 0.35rem;
+  }
   .osint-row {
     display: flex;
     align-items: baseline;
@@ -246,7 +385,9 @@ const SOCIALS = [
     font-size: 0.69rem;
     letter-spacing: 0.1em;
   }
-  .osint-score-bar { letter-spacing: -0.03em; }
+  .osint-score-bar {
+    letter-spacing: -0.03em;
+  }
   .osint-cta {
     margin-top: 0.375rem;
     padding: 0.3rem 0.6rem;
@@ -262,26 +403,36 @@ const SOCIALS = [
   }
 
   /* reuse headIn (global.css) at short duration — no separate keyframe needed */
-  .osint-line-in { animation: headIn 0.15s ease both; }
+  .osint-line-in {
+    animation: headIn 0.15s ease both;
+  }
 
   .osint-terminal.alert {
     border-color: rgba(239, 68, 68, 0.45);
     box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.12);
     /* preserve base grid-template-rows and opacity transitions */
-    transition: border-color 0.25s ease, box-shadow 0.25s ease,
-                grid-template-rows 0.38s cubic-bezier(.22,1,.36,1),
-                opacity 0.28s ease;
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.28s ease;
   }
   /* extends .osint-section — only overrides color */
-  .osint-section-alert { color: rgb(239 68 68); }
+  .osint-section-alert {
+    color: rgb(239 68 68);
+  }
   #submitBtn:disabled {
     opacity: 0.35;
     cursor: not-allowed;
     pointer-events: none;
   }
 
-  .form-feedback { min-height: 1.25rem; }
-  .form-feedback:empty { display: none; }
+  .form-feedback {
+    min-height: 1.25rem;
+  }
+  .form-feedback:empty {
+    display: none;
+  }
 
   .arch-validation {
     position: absolute;
@@ -298,7 +449,11 @@ const SOCIALS = [
 </style>
 
 <script>
-  interface SSLInfo { issuer: string; expiry: string; valid: boolean; }
+  interface SSLInfo {
+    issuer: string;
+    expiry: string;
+    valid: boolean;
+  }
   interface ScanData {
     domain: string;
     is_public_provider: boolean;
@@ -311,89 +466,120 @@ const SOCIALS = [
     architect_score: number;
   }
 
-  document.addEventListener('astro:page-load', () => {
-
+  document.addEventListener("astro:page-load", () => {
     const pageAbort = new AbortController();
-    document.addEventListener('astro:before-swap', () => pageAbort.abort(), { once: true });
+    document.addEventListener("astro:before-swap", () => pageAbort.abort(), {
+      once: true,
+    });
 
     // ── copy button ─────────────────────────────────────────────────────────
-    const btn   = document.getElementById('copyBtn')   as HTMLButtonElement | null;
-    const label = document.getElementById('copyLabel') as HTMLSpanElement   | null;
-    const icon  = document.getElementById('copyIcon')  as SVGElement        | null;
+    const btn = document.getElementById("copyBtn") as HTMLButtonElement | null;
+    const label = document.getElementById(
+      "copyLabel",
+    ) as HTMLSpanElement | null;
+    const icon = document.getElementById("copyIcon") as SVGElement | null;
 
-    btn?.addEventListener('click', async () => {
-      const email = btn.dataset.email ?? '';
+    btn?.addEventListener("click", async () => {
+      const email = btn.dataset.email ?? "";
       try {
         await navigator.clipboard.writeText(email);
       } catch {
-        const ta = document.createElement('textarea');
-        ta.value = email; ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+        const ta = document.createElement("textarea");
+        ta.value = email;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
         document.body.removeChild(ta);
       }
-      btn.classList.add('copied');
-      if (label) label.textContent = 'Copiato!';
-      if (icon)  icon.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+      btn.classList.add("copied");
+      if (label) label.textContent = "Copiato!";
+      if (icon)
+        icon.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
       setTimeout(() => {
-        btn.classList.remove('copied');
-        if (label) label.textContent = 'Copia';
-        if (icon)  icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+        btn.classList.remove("copied");
+        if (label) label.textContent = "Copia";
+        if (icon)
+          icon.innerHTML =
+            '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
       }, 2000);
     });
 
     // ── OSINT domain scan ────────────────────────────────────────────────────
-    const emailInput = document.getElementById('fieldEmail')    as HTMLInputElement | null;
-    const terminal   = document.getElementById('osintTerminal') as HTMLDivElement   | null;
-    const osintBody  = document.getElementById('osintBody')     as HTMLDivElement   | null;
-    const submitBtn  = document.getElementById('submitBtn')     as HTMLButtonElement | null;
-    const form       = document.getElementById('contactForm')   as HTMLFormElement  | null;
-    const feedback   = document.getElementById('formFeedback')  as HTMLParagraphElement | null;
+    const emailInput = document.getElementById(
+      "fieldEmail",
+    ) as HTMLInputElement | null;
+    const terminal = document.getElementById(
+      "osintTerminal",
+    ) as HTMLDivElement | null;
+    const osintBody = document.getElementById(
+      "osintBody",
+    ) as HTMLDivElement | null;
+    const submitBtn = document.getElementById(
+      "submitBtn",
+    ) as HTMLButtonElement | null;
+    const form = document.getElementById(
+      "contactForm",
+    ) as HTMLFormElement | null;
+    const feedback = document.getElementById(
+      "formFeedback",
+    ) as HTMLParagraphElement | null;
     if (!emailInput || !terminal || !osintBody) return;
 
     let debounceTimer: number | null = null;
     let activeController: AbortController | null = null;
     let revealTimers: number[] = [];
-    let lastScannedDomain = '';
+    let lastScannedDomain = "";
     let lastOsintData: ScanData | null = null;
     let submitting = false;
 
     function esc(s: string): string {
-      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      return s
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
     }
 
     function extractDomain(email: string): string | null {
-      const at = email.indexOf('@');
+      const at = email.indexOf("@");
       if (at === -1) return null;
-      const domain = email.slice(at + 1).trim().toLowerCase();
-      return /^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?(\.[a-z]{2,})+$/.test(domain) ? domain : null;
+      const domain = email
+        .slice(at + 1)
+        .trim()
+        .toLowerCase();
+      return /^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?(\.[a-z]{2,})+$/.test(domain)
+        ? domain
+        : null;
     }
 
     function clearRevealTimers() {
-      revealTimers.forEach(id => clearTimeout(id));
+      revealTimers.forEach((id) => clearTimeout(id));
       revealTimers = [];
     }
 
     function setAlertState(active: boolean) {
-      terminal.classList.toggle('alert', active);
+      terminal.classList.toggle("alert", active);
       if (submitBtn) submitBtn.disabled = active;
     }
 
     function setLoading(domain: string) {
       clearRevealTimers();
       setAlertState(false);
-      terminal.classList.add('visible');
+      terminal.classList.add("visible");
       osintBody.innerHTML = `<span class="osint-dim">$ scanning </span><span class="osint-ok">${esc(domain)}</span><span class="scan-pulse osint-dim">…</span>`;
     }
 
     function revealLines(lines: { html: string; delay: number }[]) {
-      osintBody.innerHTML = '';
+      osintBody.innerHTML = "";
       lines.forEach(({ html, delay }) => {
         const id = window.setTimeout(() => {
-          const tpl = document.createElement('template');
+          const tpl = document.createElement("template");
           tpl.innerHTML = html;
           const el = tpl.content.firstElementChild as HTMLElement | null;
           if (!el) return;
-          el.classList.add('osint-line-in');
+          el.classList.add("osint-line-in");
           osintBody!.appendChild(el);
         }, delay);
         revealTimers.push(id);
@@ -403,24 +589,48 @@ const SOCIALS = [
     function renderDisposable(domain: string) {
       setAlertState(true);
       revealLines([
-        { delay: 0,   html: `<div class="osint-err">$ scan complete — <span class="osint-err">${esc(domain)}</span></div>` },
-        { delay: 50,  html: `<div class="osint-sep"></div>` },
-        { delay: 100, html: `<div class="osint-section osint-section-alert">[SECURITY ALERT]</div>` },
-        { delay: 180, html: `<div class="osint-row"><span class="osint-err">✗</span><span class="osint-err"> Disposable email domain detected.</span></div>` },
-        { delay: 260, html: `<div class="osint-row"><span class="osint-err">✗</span><span class="osint-err"> Submission blocked to maintain architectural integrity.</span></div>` },
+        {
+          delay: 0,
+          html: `<div class="osint-err">$ scan complete — <span class="osint-err">${esc(domain)}</span></div>`,
+        },
+        { delay: 50, html: `<div class="osint-sep"></div>` },
+        {
+          delay: 100,
+          html: `<div class="osint-section osint-section-alert">[SECURITY ALERT]</div>`,
+        },
+        {
+          delay: 180,
+          html: `<div class="osint-row"><span class="osint-err">✗</span><span class="osint-err"> Disposable email domain detected.</span></div>`,
+        },
+        {
+          delay: 260,
+          html: `<div class="osint-row"><span class="osint-err">✗</span><span class="osint-err"> Submission blocked to maintain architectural integrity.</span></div>`,
+        },
         { delay: 400, html: `<div class="osint-sep"></div>` },
-        { delay: 460, html: `<div class="osint-cta-ok osint-dim">Nice try with the anonymization, but I prefer long-term professional connections.</div>` },
+        {
+          delay: 460,
+          html: `<div class="osint-cta-ok osint-dim">Nice try with the anonymization, but I prefer long-term professional connections.</div>`,
+        },
       ]);
     }
 
     function renderPublicProvider(domain: string) {
       revealLines([
-        { delay: 0,   html: `<div class="osint-dim">$ scan complete — <span class="osint-ok">${esc(domain)}</span></div>` },
-        { delay: 50,  html: `<div class="osint-sep"></div>` },
+        {
+          delay: 0,
+          html: `<div class="osint-dim">$ scan complete — <span class="osint-ok">${esc(domain)}</span></div>`,
+        },
+        { delay: 50, html: `<div class="osint-sep"></div>` },
         { delay: 110, html: `<div class="osint-section">[INFO]</div>` },
-        { delay: 200, html: `<div class="osint-note">Stai usando un provider pubblico. La scansione architettonica è limitata ai domini aziendali/privati.</div>` },
+        {
+          delay: 200,
+          html: `<div class="osint-note">Stai usando un provider pubblico. La scansione architettonica è limitata ai domini aziendali/privati.</div>`,
+        },
         { delay: 360, html: `<div class="osint-sep"></div>` },
-        { delay: 420, html: `<div class="osint-cta-ok osint-dim">Ottima scelta per la privacy personale — per i progetti business analizzeremo insieme la vostra infrastruttura dedicata.</div>` },
+        {
+          delay: 420,
+          html: `<div class="osint-cta-ok osint-dim">Ottima scelta per la privacy personale — per i progetti business analizzeremo insieme la vostra infrastruttura dedicata.</div>`,
+        },
       ]);
     }
 
@@ -435,22 +645,31 @@ const SOCIALS = [
         return;
       }
 
-      const ok   = `<span class="osint-ok">✓</span>`;
+      const ok = `<span class="osint-ok">✓</span>`;
       const warn = `<span class="osint-warn">✗</span>`;
 
       const lines: { html: string; delay: number }[] = [];
 
       // Header
-      lines.push({ delay: 0,   html: `<div class="osint-dim">$ scan complete — <span class="osint-ok">${esc(data.domain)}</span></div>` });
-      lines.push({ delay: 50,  html: `<div class="osint-sep"></div>` });
+      lines.push({
+        delay: 0,
+        html: `<div class="osint-dim">$ scan complete — <span class="osint-ok">${esc(data.domain)}</span></div>`,
+      });
+      lines.push({ delay: 50, html: `<div class="osint-sep"></div>` });
 
       // [INFRASTRUCTURE]
-      lines.push({ delay: 110, html: `<div class="osint-section">[INFRASTRUCTURE]</div>` });
+      lines.push({
+        delay: 110,
+        html: `<div class="osint-section">[INFRASTRUCTURE]</div>`,
+      });
 
       const infra = data.infrastructure
         ? `<span class="osint-note">${esc(data.infrastructure)}</span>`
         : `<span class="osint-dim">unknown</span>`;
-      lines.push({ delay: 180, html: `<div class="osint-row"><span class="osint-key">PROVIDER</span>${infra}</div>` });
+      lines.push({
+        delay: 180,
+        html: `<div class="osint-row"><span class="osint-key">PROVIDER</span>${infra}</div>`,
+      });
 
       let sslHtml: string;
       if (!data.ssl) {
@@ -460,46 +679,79 @@ const SOCIALS = [
       } else {
         sslHtml = `${warn} <span class="osint-err">invalid</span><span class="osint-dim"> · ${esc(data.ssl.issuer)}</span>`;
       }
-      lines.push({ delay: 250, html: `<div class="osint-row"><span class="osint-key">SSL</span>${sslHtml}</div>` });
+      lines.push({
+        delay: 250,
+        html: `<div class="osint-row"><span class="osint-key">SSL</span>${sslHtml}</div>`,
+      });
 
       lines.push({ delay: 320, html: `<div class="osint-sep"></div>` });
 
       // [SECURITY]
-      lines.push({ delay: 380, html: `<div class="osint-section">[SECURITY]</div>` });
+      lines.push({
+        delay: 380,
+        html: `<div class="osint-section">[SECURITY]</div>`,
+      });
 
-      const mxHtml = data.mx.length > 0
-        ? `${ok} <span class="osint-note">${esc(data.mx[0].host)}</span>${data.mx.length > 1 ? `<span class="osint-dim"> +${data.mx.length - 1}</span>` : ''}`
-        : `${warn} <span class="osint-warn">no records</span>`;
-      lines.push({ delay: 450, html: `<div class="osint-row"><span class="osint-key">MX</span>${mxHtml}</div>` });
+      const mxHtml =
+        data.mx.length > 0
+          ? `${ok} <span class="osint-note">${esc(data.mx[0].host)}</span>${data.mx.length > 1 ? `<span class="osint-dim"> +${data.mx.length - 1}</span>` : ""}`
+          : `${warn} <span class="osint-warn">no records</span>`;
+      lines.push({
+        delay: 450,
+        html: `<div class="osint-row"><span class="osint-key">MX</span>${mxHtml}</div>`,
+      });
 
-      const spfTxt = data.spf ? esc(data.spf.slice(0, 52)) + (data.spf.length > 52 ? '…' : '') : null;
+      const spfTxt = data.spf
+        ? esc(data.spf.slice(0, 52)) + (data.spf.length > 52 ? "…" : "")
+        : null;
       const spfHtml = spfTxt
         ? `${ok} <span class="osint-dim">${spfTxt}</span>`
         : `${warn} <span class="osint-warn">missing</span>`;
-      lines.push({ delay: 520, html: `<div class="osint-row"><span class="osint-key">SPF</span>${spfHtml}</div>` });
+      lines.push({
+        delay: 520,
+        html: `<div class="osint-row"><span class="osint-key">SPF</span>${spfHtml}</div>`,
+      });
 
-      const dmarcPolicy = data.dmarc ? esc(data.dmarc.match(/p=([^;]+)/)?.[1] ?? 'configured') : null;
+      const dmarcPolicy = data.dmarc
+        ? esc(data.dmarc.match(/p=([^;]+)/)?.[1] ?? "configured")
+        : null;
       const dmarcHtml = dmarcPolicy
         ? `${ok} <span class="osint-dim">${dmarcPolicy}</span>`
         : `${warn} <span class="osint-warn">missing</span>`;
-      lines.push({ delay: 590, html: `<div class="osint-row"><span class="osint-key">DMARC</span>${dmarcHtml}</div>` });
+      lines.push({
+        delay: 590,
+        html: `<div class="osint-row"><span class="osint-key">DMARC</span>${dmarcHtml}</div>`,
+      });
 
       lines.push({ delay: 660, html: `<div class="osint-sep"></div>` });
 
       // [ARCHITECT SCORE]
-      lines.push({ delay: 720, html: `<div class="osint-section">[ARCHITECT SCORE]</div>` });
+      lines.push({
+        delay: 720,
+        html: `<div class="osint-section">[ARCHITECT SCORE]</div>`,
+      });
 
       const score = data.architect_score;
       const filled = Math.round(score / 5);
-      const empty  = 20 - filled;
-      const barCls = score >= 70 ? 'osint-ok' : score >= 40 ? 'osint-warn' : 'osint-err';
-      const bar    = `<span class="${barCls} osint-score-bar">${'█'.repeat(filled)}${'░'.repeat(empty)}</span>`;
-      lines.push({ delay: 800, html: `<div class="osint-row"><span class="osint-key">SCORE</span>${bar}<span class="${barCls}"> ${score}/100</span></div>` });
+      const empty = 20 - filled;
+      const barCls =
+        score >= 70 ? "osint-ok" : score >= 40 ? "osint-warn" : "osint-err";
+      const bar = `<span class="${barCls} osint-score-bar">${"█".repeat(filled)}${"░".repeat(empty)}</span>`;
+      lines.push({
+        delay: 800,
+        html: `<div class="osint-row"><span class="osint-key">SCORE</span>${bar}<span class="${barCls}"> ${score}/100</span></div>`,
+      });
 
       if (score < 70) {
-        lines.push({ delay: 920, html: `<div class="osint-cta">Note: We should discuss hardening your domain architecture.</div>` });
+        lines.push({
+          delay: 920,
+          html: `<div class="osint-cta">Note: We should discuss hardening your domain architecture.</div>`,
+        });
       } else {
-        lines.push({ delay: 920, html: `<div class="osint-cta-ok osint-dim">Architecture looks solid.</div>` });
+        lines.push({
+          delay: 920,
+          html: `<div class="osint-cta-ok osint-dim">Architecture looks solid.</div>`,
+        });
       }
 
       revealLines(lines);
@@ -519,11 +771,11 @@ const SOCIALS = [
       setLoading(domain);
 
       try {
-        const res = await fetch('/api/osint/scan', {
-          method: 'POST',
+        const res = await fetch("/api/osint/scan", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest',
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
           },
           body: JSON.stringify({ domain }),
           signal: activeController.signal,
@@ -531,116 +783,145 @@ const SOCIALS = [
         if (!res.ok) throw new Error(`status ${res.status}`);
         renderResults(await res.json());
       } catch (err: unknown) {
-        if (err instanceof Error && err.name === 'AbortError') return;
+        if (err instanceof Error && err.name === "AbortError") return;
         renderError(domain);
       }
     }
 
-    emailInput.addEventListener('input', () => {
-      if (debounceTimer !== null) { clearTimeout(debounceTimer); debounceTimer = null; }
-      const domain = extractDomain(emailInput.value);
-      if (!domain) {
-        if (!emailInput.value.includes('@')) {
-          terminal.classList.remove('visible');
-          lastScannedDomain = '';
-          lastOsintData = null;
+    emailInput.addEventListener(
+      "input",
+      () => {
+        if (debounceTimer !== null) {
+          clearTimeout(debounceTimer);
+          debounceTimer = null;
         }
-        // Clear alert whenever domain is null — covers partial edits like
-        // "user@mailinator" where @ is still present but TLD is incomplete.
-        setAlertState(false);
-        return;
-      }
-      debounceTimer = setTimeout(() => { debounceTimer = null; scanDomain(domain); }, 650);
-    }, { signal: pageAbort.signal });
-
-    const nameInput     = document.getElementById('fieldName')                  as HTMLInputElement     | null;
-    const msgInput      = document.getElementById('fieldMsg')                   as HTMLTextAreaElement  | null;
-    const honeypotInput = document.getElementById('architect_validation_token') as HTMLInputElement     | null;
-
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Block if a disposable email alert is active or already submitting
-      if (submitting || terminal.classList.contains('alert')) return;
-      submitting = true;
-
-      const name    = nameInput?.value.trim()     ?? '';
-      const email   = emailInput.value.trim();
-      const message = msgInput?.value.trim()      ?? '';
-      const honeypot = honeypotInput?.value       ?? '';
-
-      if (!name || !email || !message) {
-        if (feedback) feedback.textContent = '> Error: all fields are required.';
-        submitting = false;
-        return;
-      }
-
-      // Pending state
-      if (submitBtn) submitBtn.disabled = true;
-      if (feedback)  feedback.textContent = '';
-      clearRevealTimers();
-      terminal.classList.add('visible');
-      osintBody.innerHTML = `<span class="osint-dim">$ Encrypting message</span><span class="scan-pulse osint-dim">…</span>`;
-
-      try {
-        const res = await fetch('/api/contact/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest',
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            message,
-            architect_validation_token: honeypot,
-            osint: lastOsintData,
-          }),
-          signal: pageAbort.signal,
-        });
-
-        let data: { ok: boolean; message: string };
-        try {
-          data = await res.json();
-        } catch {
-          throw new Error(`HTTP ${res.status} — non-JSON response`);
-        }
-
-        if (data.ok) {
-          revealLines([
-            { delay: 0,   html: `<div class="osint-ok osint-line-in">$ Connection established.</div>` },
-            { delay: 120, html: `<div class="osint-dim osint-line-in" style="margin-top:2px">I'll get back to you shortly.</div>` },
-          ]);
-          if (feedback) {
-            feedback.style.color = 'rgb(52 211 153)';
-            feedback.textContent = 'Message sent.';
+        const domain = extractDomain(emailInput.value);
+        if (!domain) {
+          if (!emailInput.value.includes("@")) {
+            terminal.classList.remove("visible");
+            lastScannedDomain = "";
+            lastOsintData = null;
           }
-          form.reset();
-          lastOsintData    = null;
-          lastScannedDomain = '';
+          // Clear alert whenever domain is null — covers partial edits like
+          // "user@mailinator" where @ is still present but TLD is incomplete.
           setAlertState(false);
+          return;
+        }
+        debounceTimer = setTimeout(() => {
+          debounceTimer = null;
+          scanDomain(domain);
+        }, 650);
+      },
+      { signal: pageAbort.signal },
+    );
+
+    const nameInput = document.getElementById(
+      "fieldName",
+    ) as HTMLInputElement | null;
+    const msgInput = document.getElementById(
+      "fieldMsg",
+    ) as HTMLTextAreaElement | null;
+    const honeypotInput = document.getElementById(
+      "architect_validation_token",
+    ) as HTMLInputElement | null;
+
+    form?.addEventListener(
+      "submit",
+      async (e) => {
+        e.preventDefault();
+
+        // Block if a disposable email alert is active or already submitting
+        if (submitting || terminal.classList.contains("alert")) return;
+        submitting = true;
+
+        const name = nameInput?.value.trim() ?? "";
+        const email = emailInput.value.trim();
+        const message = msgInput?.value.trim() ?? "";
+        const honeypot = honeypotInput?.value ?? "";
+
+        if (!name || !email || !message) {
+          if (feedback)
+            feedback.textContent = "> Error: all fields are required.";
           submitting = false;
-          if (submitBtn) submitBtn.disabled = false;
-        } else {
-          osintBody.innerHTML = `<div class="osint-err osint-line-in">✗ Transmission error — ${esc(data.message ?? 'unknown')}</div>`;
+          return;
+        }
+
+        // Pending state
+        if (submitBtn) submitBtn.disabled = true;
+        if (feedback) feedback.textContent = "";
+        clearRevealTimers();
+        terminal.classList.add("visible");
+        osintBody.innerHTML = `<span class="osint-dim">$ Encrypting message</span><span class="scan-pulse osint-dim">…</span>`;
+
+        try {
+          const res = await fetch("/api/contact/contact", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Requested-With": "XMLHttpRequest",
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              message,
+              architect_validation_token: honeypot,
+              osint: lastOsintData,
+            }),
+            signal: pageAbort.signal,
+          });
+
+          let data: { ok: boolean; message: string };
+          try {
+            data = await res.json();
+          } catch {
+            throw new Error(`HTTP ${res.status} — non-JSON response`);
+          }
+
+          if (data.ok) {
+            revealLines([
+              {
+                delay: 0,
+                html: `<div class="osint-ok osint-line-in">$ Connection established.</div>`,
+              },
+              {
+                delay: 120,
+                html: `<div class="osint-dim osint-line-in" style="margin-top:2px">I'll get back to you shortly.</div>`,
+              },
+            ]);
+            if (feedback) {
+              feedback.style.color = "rgb(52 211 153)";
+              feedback.textContent = "Message sent.";
+            }
+            form.reset();
+            lastOsintData = null;
+            lastScannedDomain = "";
+            setAlertState(false);
+            submitting = false;
+            if (submitBtn) submitBtn.disabled = false;
+          } else {
+            osintBody.innerHTML = `<div class="osint-err osint-line-in">✗ Transmission error — ${esc(data.message ?? "unknown")}</div>`;
+            if (feedback) {
+              feedback.style.color = "";
+              feedback.textContent = `> Error: ${data.message ?? "Something went wrong."}`;
+            }
+            submitting = false;
+            if (submitBtn) submitBtn.disabled = false;
+          }
+        } catch (err: unknown) {
+          if (err instanceof Error && err.name === "AbortError") {
+            submitting = false;
+            return;
+          }
+          osintBody.innerHTML = `<div class="osint-err osint-line-in">✗ Network error — unable to transmit</div>`;
           if (feedback) {
-            feedback.style.color = '';
-            feedback.textContent = `> Error: ${data.message ?? 'Something went wrong.'}`;
+            feedback.style.color = "";
+            feedback.textContent = "> Network error. Try emailing directly.";
           }
           submitting = false;
           if (submitBtn) submitBtn.disabled = false;
         }
-      } catch (err: unknown) {
-        if (err instanceof Error && err.name === 'AbortError') { submitting = false; return; }
-        osintBody.innerHTML = `<div class="osint-err osint-line-in">✗ Network error — unable to transmit</div>`;
-        if (feedback) {
-          feedback.style.color = '';
-          feedback.textContent = '> Network error. Try emailing directly.';
-        }
-        submitting = false;
-        if (submitBtn) submitBtn.disabled = false;
-      }
-    }, { signal: pageAbort.signal });
-
+      },
+      { signal: pageAbort.signal },
+    );
   });
 </script>

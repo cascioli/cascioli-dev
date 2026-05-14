@@ -1,62 +1,108 @@
 ---
-const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 function navItem(path: string, num: string, label: string) {
   const isActive = pathname === path;
   const cls = isActive
-    ? 'px-3 py-2 rounded-md text-zinc-50 bg-zinc-900/60 transition-colors'
-    : 'px-3 py-2 rounded-md hover:text-zinc-50 hover:bg-zinc-900 transition-colors';
+    ? "px-3 py-2 rounded-md text-zinc-50 bg-zinc-900/60 transition-colors"
+    : "px-3 py-2 rounded-md hover:text-zinc-50 hover:bg-zinc-900 transition-colors";
   return { path, num, label, cls };
 }
 
 const navItems = [
-  navItem('/work',    '01.', 'work'),
-  navItem('/about',   '02.', 'about'),
-  navItem('/notes',   '03.', 'notes'),
-  navItem('/contact', '04.', 'contact'),
+  navItem("/work", "01.", "progetti"),
+  navItem("/about", "02.", "chi-sono"),
+  navItem("/notes", "03.", "note"),
+  navItem("/contact", "04.", "contatti"),
 ];
 ---
 
-<header transition:persist="navbar" class="sticky top-0 z-40 backdrop-blur-md bg-zinc-950/70 border-b border-zinc-800/80 shrink-0">
-  <nav class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+<header
+  transition:persist="navbar"
+  class="sticky top-0 z-40 backdrop-blur-md bg-zinc-950/70 border-b border-zinc-800/80 shrink-0"
+>
+  <nav
+    class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between"
+  >
     <a href="/" class="group flex items-baseline gap-0 select-none">
-      <span class="font-sans font-bold text-[22px] tracking-tight text-white">cascioli</span>
-      <span class="ml-[2px] inline-block w-[10px] h-[10px] translate-y-[1px] rounded-full bg-emerald-500 dot-pulse"></span>
+      <span class="font-sans font-bold text-[22px] tracking-tight text-white"
+        >cascioli</span
+      >
+      <span
+        class="ml-[2px] inline-block w-[10px] h-[10px] translate-y-[1px] rounded-full bg-emerald-500 dot-pulse"
+      ></span>
     </a>
 
-    <ul class="hidden md:flex items-center gap-1 font-mono text-[13px] text-zinc-400">
-      {navItems.map((item) => (
-        <li>
-          <a href={item.path} data-nav-path={item.path} class={item.cls}>
-            <span class="text-emerald-500">{item.num}</span> {item.label}
-          </a>
-        </li>
-      ))}
+    <ul
+      class="hidden md:flex items-center gap-1 font-mono text-[13px] text-zinc-400"
+    >
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.path} data-nav-path={item.path} class={item.cls}>
+              <span class="text-emerald-500">{item.num}</span> {item.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
 
     <div class="flex items-center gap-3">
-      <a href="/contact"
-         class="hidden sm:inline-flex items-center gap-2 h-9 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-zinc-950 font-medium text-sm transition-colors border border-emerald-500/70 hover:shadow-[0_0_20px_rgba(16,185,129,0.35)]">
-        Get in touch
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      <a
+        href="/contact"
+        class="hidden sm:inline-flex items-center gap-2 h-9 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-zinc-950 font-medium text-sm transition-colors border border-emerald-500/70 hover:shadow-[0_0_20px_rgba(16,185,129,0.35)]"
+      >
+        Sentiamoci
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+        >
       </a>
-      <button class="md:hidden h-9 w-9 grid place-items-center rounded-md border border-zinc-800 text-zinc-300" aria-label="Menu">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button
+        class="md:hidden h-9 w-9 grid place-items-center rounded-md border border-zinc-800 text-zinc-300"
+        aria-label="Menu"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="3" y1="6" x2="21" y2="6"></line><line
+            x1="3"
+            y1="12"
+            x2="21"
+            y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg
+        >
       </button>
     </div>
   </nav>
 </header>
 
 <script>
-  const ACTIVE   = 'px-3 py-2 rounded-md text-zinc-50 bg-zinc-900/60 transition-colors';
-  const INACTIVE = 'px-3 py-2 rounded-md hover:text-zinc-50 hover:bg-zinc-900 transition-colors';
+  const ACTIVE =
+    "px-3 py-2 rounded-md text-zinc-50 bg-zinc-900/60 transition-colors";
+  const INACTIVE =
+    "px-3 py-2 rounded-md hover:text-zinc-50 hover:bg-zinc-900 transition-colors";
 
   function updateNav() {
-    const path = window.location.pathname.replace(/\/$/, '') || '/';
-    document.querySelectorAll<HTMLAnchorElement>('[data-nav-path]').forEach(a => {
-      a.className = a.dataset.navPath === path ? ACTIVE : INACTIVE;
-    });
+    const path = window.location.pathname.replace(/\/$/, "") || "/";
+    document
+      .querySelectorAll<HTMLAnchorElement>("[data-nav-path]")
+      .forEach((a) => {
+        a.className = a.dataset.navPath === path ? ACTIVE : INACTIVE;
+      });
   }
 
-  document.addEventListener('astro:page-load', updateNav);
+  document.addEventListener("astro:page-load", updateNav);
 </script>
