@@ -4,15 +4,15 @@ import Layout from "../layouts/Layout.astro";
 const EMAIL = "info@simonecascioli.it";
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com/simlimone" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/simlimone" },
+  { label: "GitHub", href: "https://github.com/cascioli" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/simone-cascioli" },
   { label: "X", href: "https://x.com/simlimone" },
   { label: "Read.cv", href: "https://read.cv/simlimone" },
 ];
 ---
 
 <Layout
-  title="cascioli. — Contact"
+  title="cascioli. — Contatti"
   description="Contatta Simone Cascioli per collaborazioni freelance come Software Architect. Disponibile dal Q3 2026 per progetti AI e cybersecurity."
   tickerText="AVAILABLE Q3 2026 — Software Architect · AI & Cybersecurity"
 >
@@ -22,7 +22,7 @@ const SOCIALS = [
       <div
         class="head-in font-mono text-[11.5px] tracking-[0.22em] uppercase text-emerald-500 mb-6"
       >
-        Contact &nbsp;·&nbsp; <span class="text-zinc-500">Q3 2026 open</span>
+        Contatti &nbsp;·&nbsp; <span class="text-zinc-500">Q3 2026 aperto</span>
       </div>
 
       <!-- headline -->
@@ -42,7 +42,7 @@ const SOCIALS = [
           >Software Architect freelance</strong
         > a partire dal Q3 2026, con focus su sistemi AI-native e infrastrutture di
         sicurezza. Se stai costruendo qualcosa che richiede solidità architetturale
-        — dalla progettazione al delivery — sentiamoci.
+        — dalla progettazione al delivery — <a href="https://www.cal.eu/cascioli" target="_blank" rel="noopener noreferrer" class="text-zinc-200 hover:text-emerald-400 transition-colors underline underline-offset-4 decoration-zinc-700 hover:decoration-emerald-500">sentiamoci</a>.
       </p>
 
       <!-- email block -->
@@ -82,37 +82,6 @@ const SOCIALS = [
             <span id="copyLabel">Copia</span>
           </button>
         </div>
-      </section>
-
-      <!-- divider -->
-      <hr class="border-zinc-800/60 mb-16" />
-
-      <!-- socials -->
-      <section class="mb-16">
-        <p
-          class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-6"
-        >
-          Socials
-        </p>
-        <ul class="flex flex-col gap-1">
-          {
-            SOCIALS.map((s) => (
-              <li>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link group inline-flex items-center gap-3 py-2 font-sans text-[18px] text-zinc-400 hover:text-zinc-50 transition-colors"
-                >
-                  <span>{s.label}</span>
-                  <span class="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-500 text-[14px] translate-x-0 group-hover:translate-x-1 transition-transform">
-                    ↗
-                  </span>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
       </section>
 
       <!-- divider -->
@@ -259,11 +228,10 @@ const SOCIALS = [
         <p
           class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-3"
         >
-          Prenota una call
+          Sentiamoci telefonicamente
         </p>
         <p class="text-zinc-400 text-[15px] leading-[1.65] mb-6">
-          30 minuti. Niente formalismi. Raccontami il progetto e vediamo se
-          posso essere utile.
+          30 minuti. Raccontami il progetto e vediamo se posso essere utile.
         </p>
         <a
           href="https://cal.eu/cascioli"
@@ -284,6 +252,37 @@ const SOCIALS = [
             ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
           >
         </a>
+      </section>
+
+      <!-- divider -->
+      <hr class="border-zinc-800/60 mb-16 mt-16" />
+
+      <!-- socials -->
+      <section class="mb-16">
+        <p
+          class="font-mono text-[11px] tracking-[0.2em] uppercase text-zinc-600 mb-6"
+        >
+          Socials
+        </p>
+        <ul class="flex flex-col gap-1">
+          {
+            SOCIALS.map((s) => (
+              <li>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-link group inline-flex items-center gap-3 py-2 font-sans text-[18px] text-zinc-400 hover:text-zinc-50 transition-colors"
+                >
+                  <span>{s.label}</span>
+                  <span class="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-500 text-[14px] translate-x-0 group-hover:translate-x-1 transition-transform">
+                    ↗
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </section>
     </article>
   </main>
