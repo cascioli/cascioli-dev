@@ -1,33 +1,61 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
   title="cascioli. — About"
-  description="Chi è Simone Cascioli: Software Architect con focus su AI, cybersecurity e sviluppo indipendente. Stack, filosofia e lavoro in corso."
+  description="Chi è Simone Cascioli: Software Engineer freelance con 5+ anni di esperienza. Flutter, Go, Python, Cloud Security e AI. Foggia / Bari."
   bodyClass="min-h-screen flex flex-col"
-  tickerText="NOW READING — designing data-intensive applications">
-
+  tickerText="NOW STUDYING — ingegneria informatica · politecnico di bari"
+>
   <main class="relative flex-1 min-h-0">
     <div class="absolute inset-0 bg-grid pointer-events-none"></div>
     <div class="absolute inset-0 bg-radial-about pointer-events-none"></div>
 
     <div class="relative max-w-[1500px] mx-auto px-3 lg:px-6 py-4 lg:py-6">
-      <div class="border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950/85 backdrop-blur-sm shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]">
-
+      <div
+        class="border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950/85 backdrop-blur-sm shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
+      >
         <!-- Editor tabs -->
-        <div class="flex items-stretch h-9 border-b border-zinc-800 bg-[#0a0a0b]">
-          <div class="px-4 inline-flex items-center gap-2 font-mono text-[12px] text-zinc-50 border-r border-zinc-800 relative">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <div
+          class="flex items-stretch h-9 border-b border-zinc-800 bg-[#0a0a0b]"
+        >
+          <div
+            class="px-4 inline-flex items-center gap-2 font-mono text-[12px] text-zinc-50 border-r border-zinc-800 relative"
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#34d399"
+              stroke-width="1.8"
+              ><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
+              ></path><polyline points="14 2 14 8 20 8"></polyline></svg
+            >
             <span class="text-zinc-500">about /</span><span>story.md</span>
             <span class="ml-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-            <span class="absolute left-0 right-0 top-0 h-px bg-emerald-500"></span>
+            <span class="absolute left-0 right-0 top-0 h-px bg-emerald-500"
+            ></span>
           </div>
-          <div class="px-4 inline-flex items-center gap-2 font-mono text-[12px] text-zinc-500 border-r border-zinc-800">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div
+            class="px-4 inline-flex items-center gap-2 font-mono text-[12px] text-zinc-500 border-r border-zinc-800"
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              ><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
+              ></path><polyline points="14 2 14 8 20 8"></polyline></svg
+            >
             <span>meta.yml</span>
           </div>
-          <div class="ml-auto px-4 inline-flex items-center gap-3 font-mono text-[11px] text-zinc-500">
+          <div
+            class="ml-auto px-4 inline-flex items-center gap-3 font-mono text-[11px] text-zinc-500"
+          >
             <span class="text-emerald-400">●</span> saved
             <span class="text-zinc-700">·</span>
             <span>readonly</span>
@@ -36,158 +64,275 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Body grid -->
         <div class="grid grid-cols-12">
-
           <!-- SIDEBAR -->
-          <aside class="col-span-12 lg:col-span-3 border-b lg:border-b-0 lg:border-r border-zinc-800 bg-[#0a0a0b]/85">
+          <aside
+            class="col-span-12 lg:col-span-3 border-b lg:border-b-0 lg:border-r border-zinc-800 bg-[#0a0a0b]/85"
+          >
             <div class="p-6 lg:p-7 flex flex-col gap-8">
-
               <!-- Avatar -->
               <div class="flex flex-col items-center text-center">
                 <div class="avatar-frame block w-[180px] h-[180px]">
-                  <div class="overflow-hidden rounded-full w-full h-full bg-zinc-900 ring-1 ring-zinc-950">
-                    <img id="avatar"
-                         src="/assets/profilo-bn.jpg"
-                         data-bw="/assets/profilo-bn.jpg"
-                         data-color="/assets/profilo-color.jpg"
-                         alt="Cascioli — ritratto"
-                         class="w-full h-full object-cover select-none"
-                         draggable="false" />
+                  <div
+                    class="overflow-hidden rounded-full w-full h-full bg-zinc-900 ring-1 ring-zinc-950"
+                  >
+                    <img
+                      id="avatar"
+                      src="/assets/profilo-bn.jpg"
+                      data-bw="/assets/profilo-bn.jpg"
+                      data-color="/assets/profilo-color.jpg"
+                      alt="Cascioli — ritratto"
+                      class="w-full h-full object-cover select-none"
+                      draggable="false"
+                    />
                   </div>
                 </div>
-                <h2 class="mt-5 font-sans font-bold text-[22px] tracking-tight text-zinc-50 inline-flex items-baseline">
-                  cascioli<span class="ml-[2px] inline-block w-[8px] h-[8px] rounded-full bg-emerald-500"></span>
+                <h2
+                  class="mt-5 font-sans font-bold text-[22px] tracking-tight text-zinc-50 inline-flex items-baseline"
+                >
+                  cascioli<span
+                    class="ml-[2px] inline-block w-[8px] h-[8px] rounded-full bg-emerald-500"
+                  ></span>
                 </h2>
-                <p class="mt-1 font-mono text-[12px] text-zinc-500">designer × frontend dev</p>
+                <p class="mt-1 font-mono text-[12px] text-zinc-500">
+                  software engineer · cloud/ai security
+                </p>
               </div>
 
               <!-- Meta -->
               <div>
-                <div class="section-idx mb-3">Meta-data</div>
+                <div class="section-idx mb-3">Metadati</div>
                 <dl class="font-mono text-[12.5px] space-y-2">
-                  {[
-                    { key: 'location',  val: 'Italy · CET',         accent: false },
-                    { key: 'status',    val: 'always learning',      accent: true  },
-                    { key: 'interests', val: 'UX, DX, perf.',        accent: false },
-                    { key: 'style',     val: 'small teams, long arcs', accent: false },
-                    { key: 'caffeine',  val: 'v.alta ☕',             accent: false },
-                    { key: 'since',     val: '2022',                  accent: false },
-                  ].map(({ key, val, accent }) => (
-                    <div class="grid grid-cols-3 gap-2">
-                      <dt class="col-span-1 text-zinc-500">{key}</dt>
-                      <dd class={`col-span-2 ${accent ? 'text-emerald-400 inline-flex items-center gap-1.5' : 'text-zinc-200'}`}>
-                        {accent && <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 dot-pulse"></span>}
-                        {val}
-                      </dd>
-                    </div>
-                  ))}
+                  {
+                    [
+                      {
+                        key: "località",
+                        val: "Foggia / Bari · CET",
+                        accent: false,
+                      },
+                      { key: "stato", val: "freelance aperto", accent: true },
+                      {
+                        key: "focus",
+                        val: "cloud, AI, cybersec",
+                        accent: false,
+                      },
+                      {
+                        key: "stile",
+                        val: "indipendente, clienti selezionati",
+                        accent: false,
+                      },
+                      { key: "caffeina", val: "v.alta ☕", accent: false },
+                      { key: "dal", val: "2020", accent: false },
+                    ].map(({ key, val, accent }) => (
+                      <div class="grid grid-cols-3 gap-2">
+                        <dt class="col-span-1 text-zinc-500">{key}</dt>
+                        <dd
+                          class={`col-span-2 ${accent ? "text-emerald-400 inline-flex items-center gap-1.5" : "text-zinc-200"}`}
+                        >
+                          {accent && (
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 dot-pulse" />
+                          )}
+                          {val}
+                        </dd>
+                      </div>
+                    ))
+                  }
                 </dl>
               </div>
 
               <!-- Terminal Links -->
               <div>
-                <div class="section-idx mb-3">Terminal links</div>
+                <div class="section-idx mb-3">Links</div>
                 <div class="flex flex-col gap-1">
-                  {[
-                    { prefix: 'github.com/', handle: 'cascioli' },
-                    { prefix: 'linkedin.com/in/', handle: 'cascioli' },
-                    { prefix: 'x.com/', handle: 'cascioli' },
-                    { prefix: 'read.cv/', handle: 'cascioli' },
-                  ].map(({ prefix, handle }) => (
-                    <a href="#" class="term-link">
-                      <span class="caret-glyph">{'>'}</span>
-                      <span class="text-zinc-500">{prefix}</span>{handle}
-                    </a>
-                  ))}
+                  {
+                    [
+                      { prefix: "github.com/", handle: "cascioli" },
+                      { prefix: "linkedin.com/in/", handle: "cascioli" },
+                      { prefix: "x.com/", handle: "cascioli" },
+                      { prefix: "read.cv/", handle: "cascioli" },
+                    ].map(({ prefix, handle }) => (
+                      <a href="#" class="term-link">
+                        <span class="caret-glyph">{">"}</span>
+                        <span class="text-zinc-500">{prefix}</span>
+                        {handle}
+                      </a>
+                    ))
+                  }
                   <a href="mailto:info@simonecascioli.it" class="term-link">
-                    <span class="caret-glyph">{'>'}</span>info@simonecascioli.it
+                    <span class="caret-glyph">{">"}</span>info@simonecascioli.it
                   </a>
                 </div>
               </div>
 
               <!-- Recent commits -->
               <div>
-                <div class="section-idx mb-3">Recent commits</div>
+                <div class="section-idx mb-3">Commit recenti</div>
                 <ul class="font-mono text-[11.5px] space-y-2 text-zinc-500">
-                  <li><span class="text-emerald-500">a1f29c</span> · feat: ship About page</li>
-                  <li><span class="text-emerald-500">9bd03e</span> · refactor: cleanup Work grid</li>
-                  <li><span class="text-emerald-500">7e0c11</span> · chore: bump dependencies</li>
-                  <li><span class="text-emerald-500">3aa8f4</span> · docs: update story.md</li>
+                  <li>
+                    <span class="text-emerald-500">c22d3b</span> · refactor: migrate
+                    domain to simonecascioli.it
+                  </li>
+                  <li>
+                    <span class="text-emerald-500">604ba7</span> · docs: add LICENSE,
+                    SECURITY, README
+                  </li>
+                  <li>
+                    <span class="text-emerald-500">d67b84</span> · fix: update fetch
+                    URL contact API
+                  </li>
+                  <li>
+                    <span class="text-emerald-500">588ada</span> · fix: harden contact
+                    API, split Vite proxy
+                  </li>
                 </ul>
               </div>
-
             </div>
           </aside>
 
           <!-- MAIN STORY -->
-          <article class="col-span-12 lg:col-span-9 px-6 lg:px-14 py-12 lg:py-16">
-
+          <article
+            class="col-span-12 lg:col-span-9 px-6 lg:px-14 py-12 lg:py-16"
+          >
             <header class="mb-14">
               <div class="font-mono text-[12px] text-zinc-500 mb-4">
                 <span class="text-emerald-500">/**</span>
-                <span class="ml-1">about — long-form, plain text, no marketing speak</span>
+                <span class="ml-1"
+                  >chi sono — forma lunga, testo semplice, nessun linguaggio di
+                  marketing</span
+                >
                 <span class="text-emerald-500">*/</span>
               </div>
-              <h1 class="font-sans font-bold tracking-tight text-zinc-50 text-[44px] sm:text-[56px] leading-[1.04]">
-                <span class="h-underline">Hi, I'm Cascioli</span><span class="text-emerald-500">.</span>
+              <h1
+                class="font-sans font-bold tracking-tight text-zinc-50 text-[44px] sm:text-[56px] leading-[1.04]"
+              >
+                <span class="h-underline">Ciao, sono Simone</span><span
+                  class="text-emerald-500">.</span
+                >
               </h1>
-              <p class="mt-6 max-w-[640px] text-zinc-400 text-[17px] leading-relaxed">
-                Designer e frontend developer italiano. Costruisco prodotti digitali utili e veloci — preferibilmente con poche righe di codice, ma quelle giuste.
+              <p
+                class="mt-6 max-w-[640px] text-zinc-400 text-[17px] leading-relaxed"
+              >
+                Software engineer freelance italiano. Costruisco sistemi mobile,
+                backend scalabili e infrastrutture sicure — dal 2020, con pochi
+                intermediari e tanto focus sul prodotto.
               </p>
               <div class="mt-8 flex flex-wrap gap-2">
-                <span class="badge">Italy · CET</span>
-                <span class="badge">Freelance — Q3 2026</span>
-                <span class="badge">Open to collabs</span>
+                <span class="badge">Foggia / Bari · CET</span>
+                <span class="badge">Freelance — disponibile</span>
+                <span class="badge">Aperto a collaborazioni</span>
               </div>
             </header>
 
             <!-- The Story -->
             <section class="mb-16">
               <div class="flex items-baseline gap-3 mb-6">
-                <span class="section-idx">## the_story</span>
-                <span class="font-mono text-[11px] text-zinc-600">— ~ 3 min read</span>
+                <span class="section-idx">## la_storia</span>
+                <span class="font-mono text-[11px] text-zinc-600"
+                  >— ~ 3 min read</span
+                >
               </div>
-              <h2 class="font-sans font-bold tracking-tight text-zinc-50 text-[32px] sm:text-[38px] leading-tight mb-8">
+              <h2
+                class="font-sans font-bold tracking-tight text-zinc-50 text-[32px] sm:text-[38px] leading-tight mb-8"
+              >
                 Ho iniziato perché volevo capire come funzionavano le cose.
               </h2>
               <div class="prose-body max-w-[680px]">
-                <p>Da ragazzino smontavo le interfacce mentalmente: <em>perché un bottone è verde</em>, perché un menù si apre dal basso, perché Google sembra vuoto eppure ci si arriva ovunque. La curiosità è venuta prima del codice. Il codice è arrivato perché, a un certo punto, leggere non bastava più.</p>
-                <p>Il primo progetto vero è stato un sito per un'associazione del mio paese — brutto, lento, ma funzionante. Da lì ho iniziato a cercare la differenza tra <strong>fare qualcosa</strong> e <strong>farla bene</strong>. È una differenza piccola in apparenza e infinita in pratica.</p>
-                <p>Oggi lavoro con piccoli team che vogliono spedire prodotti puliti. La parte tecnica è React, TypeScript, Tailwind, qualche backend in Node o Postgres. Ma la parte vera, quella che mi interessa, è capire <em>chi userà la cosa che sto costruendo</em> e cosa si aspetta — quando ha sonno, quando ha fretta, quando è scocciato.</p>
+                <p>
+                  Da ragazzino smontavo tutto mentalmente: <em
+                    >come funziona questo sistema</em
+                  >, perché quella rete è vulnerabile, perché un'app si blocca
+                  sotto carico. La curiosità è venuta prima del codice. Il
+                  codice è arrivato perché, a un certo punto, leggere non
+                  bastava più.
+                </p>
+                <p>
+                  Ho iniziato a fare progetti reali nel 2020 — app Flutter,
+                  backend serverless, siti per piccoli clienti. Da lì ho
+                  imparato la differenza tra <strong
+                    >far funzionare qualcosa</strong
+                  > e <strong>farlo reggere nel tempo</strong>. È una differenza
+                  piccola in apparenza e infinita in produzione.
+                </p>
+                <p>
+                  Ho provato il settore pubblico — vincitore di concorso da
+                  vice-ispettore tecnico nella Polizia di Stato per il settore
+                  cibernetico — e il privato. Alla fine ho scelto
+                  l'indipendenza: lavoro con clienti selezionati su <em
+                    >sistemi mobile, cloud e sicurezza</em
+                  >, gestendo l'intero ciclo di vita dal brief al deploy. Nel
+                  2024 ho iniziato gli studi di Ingegneria Informatica al
+                  Politecnico di Bari.
+                </p>
               </div>
             </section>
 
             <!-- Vision -->
             <section class="mb-16">
               <div class="flex items-baseline gap-3 mb-6">
-                <span class="section-idx">## vision</span>
+                <span class="section-idx">## visione</span>
               </div>
-              <h2 class="font-sans font-bold tracking-tight text-zinc-50 text-[28px] sm:text-[32px] leading-tight mb-6">
-                Il design è onestà sotto pressione.
+              <h2
+                class="font-sans font-bold tracking-tight text-zinc-50 text-[28px] sm:text-[32px] leading-tight mb-6"
+              >
+                La sicurezza è architettura, non lista di controlli.
               </h2>
               <div class="prose-body max-w-[680px]">
-                <p>Mi piacciono i prodotti che sembrano semplici e non lo sono. Quelli che, all'apparenza, fanno una cosa sola — e la fanno bene, anche quando il browser è lento, la rete pessima e l'utente di malumore.</p>
-                <p>Credo nel <strong>frontend come disciplina</strong>: non è "fare il design" né "fare il codice", è la cucitura tra i due. È dove le decisioni vengono pagate o ripagate. Per questo lavoro vicino sia ai designer sia ai backend — è dove succedono le cose interessanti.</p>
+                <p>
+                  Mi piacciono i sistemi che sembrano semplici e non lo sono.
+                  Quelli che reggono sotto carico, proteggono i dati degli
+                  utenti e non richiedono un manuale per essere usati — anche
+                  quando la rete è lenta e l'infrastruttura di base è pessima.
+                </p>
+                <p>
+                  Credo nella <strong
+                    >sicurezza come proprietà del sistema</strong
+                  >: non è uno strato che si aggiunge alla fine, è una decisione
+                  architetturale che si prende all'inizio. Per questo lavoro
+                  vicino sia al codice sia all'infrastruttura — è lì che si
+                  gioca la partita vera.
+                </p>
               </div>
             </section>
 
             <!-- Philosophy -->
             <section class="mb-16">
               <div class="flex items-baseline gap-3 mb-6">
-                <span class="section-idx">## philosophy</span>
+                <span class="section-idx">## filosofia</span>
               </div>
-              <blockquote class="relative rounded-xl border border-emerald-500/30 bg-emerald-500/[0.04] p-7 lg:p-9 max-w-[760px]">
-                <span class="absolute top-3 left-4 font-mono text-[11px] text-emerald-500/70 tracking-wider">// note</span>
-                <svg class="absolute top-4 right-5 text-emerald-500/40" width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M7 7h4v4H7c0 2 1 3 3 4v2c-3-1-5-3-5-7V7zm8 0h4v4h-4c0 2 1 3 3 4v2c-3-1-5-3-5-7V7z"/>
+              <blockquote
+                class="relative rounded-xl border border-emerald-500/30 bg-emerald-500/[0.04] p-7 lg:p-9 max-w-[760px]"
+              >
+                <span
+                  class="absolute top-3 left-4 font-mono text-[11px] text-emerald-500/70 tracking-wider"
+                  >// note</span
+                >
+                <svg
+                  class="absolute top-4 right-5 text-emerald-500/40"
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M7 7h4v4H7c0 2 1 3 3 4v2c-3-1-5-3-5-7V7zm8 0h4v4h-4c0 2 1 3 3 4v2c-3-1-5-3-5-7V7z"
+                  ></path>
                 </svg>
-                <p class="font-sans text-[22px] sm:text-[24px] leading-[1.5] text-zinc-50 tracking-tight">
-                  Il codice è un mezzo, non un fine. Non credo nelle percentuali di competenza:
-                  <span class="text-emerald-400">in questo settore c'è sempre qualcosa da imparare</span>,
-                  e io scelgo di restare uno studente.
+                <p
+                  class="font-sans text-[22px] sm:text-[24px] leading-[1.5] text-zinc-50 tracking-tight"
+                >
+                  Il codice è un mezzo, non un fine. Non credo nelle percentuali
+                  di competenza:
+                  <span class="text-emerald-400"
+                    >in questo settore c'è sempre qualcosa da imparare</span
+                  >, e io scelgo di restare uno studente.
                 </p>
-                <div class="mt-6 flex items-center gap-3 font-mono text-[12px] text-zinc-500">
+                <div
+                  class="mt-6 flex items-center gap-3 font-mono text-[12px] text-zinc-500"
+                >
                   <span class="h-px w-8 bg-zinc-700"></span>
-                  <span>cascioli<span class="text-emerald-500">.</span></span>
+                  <span
+                    >simone cascioli<span class="text-emerald-500">.</span
+                    ></span
+                  >
                 </div>
               </blockquote>
             </section>
@@ -195,96 +340,204 @@ import Layout from '../layouts/Layout.astro';
             <!-- Tech ecosystem -->
             <section class="mb-16">
               <div class="flex items-baseline justify-between gap-3 mb-6">
-                <span class="section-idx">## tech_ecosystem</span>
-                <span class="font-mono text-[11px] text-zinc-600">no percentages, no progress bars</span>
+                <span class="section-idx">## ecosistema_tech</span>
+                <span class="font-mono text-[11px] text-zinc-600"
+                  >no percentuali, no barre di progresso</span
+                >
               </div>
-              <h2 class="font-sans font-bold tracking-tight text-zinc-50 text-[28px] sm:text-[32px] leading-tight mb-3">
+              <h2
+                class="font-sans font-bold tracking-tight text-zinc-50 text-[28px] sm:text-[32px] leading-tight mb-3"
+              >
                 Strumenti che uso ogni giorno.
               </h2>
               <p class="text-zinc-400 max-w-[640px] mb-8">
-                Non credo nelle skill bar al 73%. Quello che segue è il mio kit: cose con cui sono a mio agio, in continuo aggiornamento, e che cambiano quando ne trovo di migliori.
+                Non credo nelle skill bar al 73%. Quello che segue è il mio kit:
+                cose con cui sono a mio agio, in continuo aggiornamento, e che
+                cambiano quando ne trovo di migliori.
               </p>
               <div class="space-y-7">
-                {[
-                  { label: 'core_stack/',       items: ['React','TypeScript','Next.js','Tailwind CSS','Shadcn/ui','Astro','Vite'] },
-                  { label: 'backend_&_cloud/',  items: ['Node.js','tRPC','Postgres','Drizzle ORM','AWS','Vercel','Cloudflare'] },
-                  { label: 'design_&_tools/',   items: ['Figma','Framer','Linear','Raycast','Arc','Notion','VS Code'] },
-                  { label: 'exploring/',        items: ['Rust','WebAssembly','Local-first','CRDTs','Bun'] },
-                ].map(({ label, items }) => (
-                  <div>
-                    <div class="flex items-center gap-3 mb-3">
-                      <span class="font-mono text-[11px] text-emerald-500">▸ {label}</span>
-                      <span class="h-px flex-1 bg-zinc-800"></span>
+                {
+                  [
+                    {
+                      label: "mobile_&_frontend/",
+                      items: [
+                        "Flutter",
+                        "Dart",
+                        "TypeScript",
+                        "Astro",
+                        "Tailwind CSS",
+                        "HTML/CSS",
+                      ],
+                    },
+                    {
+                      label: "backend_&_cloud/",
+                      items: [
+                        "Go",
+                        "Python",
+                        "Firebase",
+                        "GCP",
+                        "AWS",
+                        "Vercel",
+                        "REST APIs",
+                        "SQL",
+                        "NoSQL",
+                      ],
+                    },
+                    {
+                      label: "security_&_devops/",
+                      items: [
+                        "Docker",
+                        "Linux",
+                        "Git",
+                        "PenTest",
+                        "Cyber Governance",
+                        "Data Privacy",
+                        "OSINT",
+                      ],
+                    },
+                    {
+                      label: "exploring/",
+                      items: [
+                        "AI/ML Integration",
+                        "Cloud Architecture",
+                        "Serverless",
+                        "Sistemi distribuiti",
+                      ],
+                    },
+                  ].map(({ label, items }) => (
+                    <div>
+                      <div class="flex items-center gap-3 mb-3">
+                        <span class="font-mono text-[11px] text-emerald-500">
+                          ▸ {label}
+                        </span>
+                        <span class="h-px flex-1 bg-zinc-800" />
+                      </div>
+                      <div class="flex flex-wrap gap-2">
+                        {items.map((item) => (
+                          <span class="badge">{item}</span>
+                        ))}
+                      </div>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                      {items.map(item => <span class="badge">{item}</span>)}
-                    </div>
-                  </div>
-                ))}
+                  ))
+                }
               </div>
             </section>
 
             <!-- Now -->
             <section class="mb-6">
               <div class="flex items-baseline gap-3 mb-6">
-                <span class="section-idx">## now</span>
-                <span class="font-mono text-[11px] text-zinc-600">— what I'm doing this week</span>
+                <span class="section-idx">## ora</span>
+                <span class="font-mono text-[11px] text-zinc-600"
+                  >— cosa sto facendo al momento</span
+                >
               </div>
               <div class="rounded-xl border border-zinc-800 overflow-hidden">
-                <div class="h-8 px-3 flex items-center gap-2 border-b border-zinc-800 bg-[#0a0a0b]">
-                  <span class="h-2.5 w-2.5 rounded-full bg-emerald-500 dot-pulse"></span>
-                  <span class="font-mono text-[11px] text-zinc-500">~ live · last update Mon 13:42</span>
-                  <span class="ml-auto font-mono text-[11px] text-zinc-600">cascioli@home:~$ cat /now</span>
+                <div
+                  class="h-8 px-3 flex items-center gap-2 border-b border-zinc-800 bg-[#0a0a0b]"
+                >
+                  <span
+                    class="h-2.5 w-2.5 rounded-full bg-emerald-500 dot-pulse"
+                  ></span>
+                  <span class="font-mono text-[11px] text-zinc-500"
+                    >~ live · ultimo aggiornamento Lun 13:42</span
+                  >
+                  <span class="ml-auto font-mono text-[11px] text-zinc-600"
+                    >cascioli@home:~$ cat /now</span
+                  >
                 </div>
                 <div class="p-6 lg:p-8 grid md:grid-cols-3 gap-6 bg-zinc-950">
                   <div class="md:col-span-2">
-                    <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-zinc-500 mb-2">currently diving deep</div>
-                    <h3 class="font-sans font-semibold text-zinc-50 text-xl tracking-tight">
-                      Rust &amp; WebAssembly — costruire engine performanti per il browser
+                    <div
+                      class="font-mono text-[11px] uppercase tracking-[0.16em] text-zinc-500 mb-2"
+                    >
+                      mi sto attualmente dedicando a
+                    </div>
+                    <h3
+                      class="font-sans font-semibold text-zinc-50 text-xl tracking-tight"
+                    >
+                      Ingegneria Informatica al Politecnico di Bari + progetti
+                      freelance
                     </h3>
                     <p class="mt-3 text-zinc-400 leading-relaxed">
-                      Sto portando una piccola libreria di shortcut keyboard da TypeScript a Rust/WASM, per imparare a pensare al di sotto del livello a cui ho lavorato finora. L'obiettivo non è la performance: è capire <em class="text-zinc-200 not-italic underline decoration-emerald-500/40 decoration-from-font">come ragionano</em> i sistemi che ammiro.
+                      Sto combinando la laurea triennale — con focus su sistemi,
+                      architetture cloud e programmazione — con il lavoro
+                      freelance su sistemi mobile e sicurezza. L'obiettivo non è
+                      il titolo: è costruire una base formale attorno a ciò che <em
+                        class="text-zinc-200 not-italic underline decoration-emerald-500/40 decoration-from-font"
+                        >già so fare</em
+                      > sul campo e frequentare un ambiente stimolante e pieno di
+                      persone più esperte di me, da cui imparare il più possibile.
                     </p>
                   </div>
-                  <div class="md:col-span-1 flex flex-col gap-3 font-mono text-[12px]">
-                    {[
-                      { key: 'reading',   val: 'Designing Data-Intensive Apps' },
-                      { key: 'listening', val: 'Lex Fridman, Syntax.fm' },
-                      { key: 'drinking',  val: 'Espresso, doppio' },
-                    ].map(({ key, val }) => (
-                      <div class="flex items-start gap-3">
-                        <span class="text-emerald-500 mt-0.5">▸</span>
-                        <div>
-                          <div class="text-zinc-500">{key}</div>
-                          <div class="text-zinc-200">{val}</div>
+                  <div
+                    class="md:col-span-1 flex flex-col gap-3 font-mono text-[12px]"
+                  >
+                    {
+                      [
+                        {
+                          key: "studiando",
+                          val: "Sistemi di elaborazione, Poliba",
+                        },
+                        {
+                          key: "leggendo",
+                          val: "The Web Application Hacker's Handbook",
+                        },
+                        { key: "bevendo", val: "Espresso, doppio" },
+                      ].map(({ key, val }) => (
+                        <div class="flex items-start gap-3">
+                          <span class="text-emerald-500 mt-0.5">▸</span>
+                          <div>
+                            <div class="text-zinc-500">{key}</div>
+                            <div class="text-zinc-200">{val}</div>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))
+                    }
                   </div>
                 </div>
               </div>
             </section>
 
             <!-- EOF -->
-            <div class="mt-14 pt-8 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-4 font-mono text-[12px] text-zinc-500">
+            <div
+              class="mt-14 pt-8 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-4 font-mono text-[12px] text-zinc-500"
+            >
               <div>
-                <span class="text-emerald-500">// </span>EOF — thanks for reading.
+                <span class="text-emerald-500">// </span>EOF — thanks for
+                reading.
                 <span class="caret text-emerald-500">_</span>
               </div>
               <div class="flex items-center gap-4">
-                <a href="/work" class="hover:text-emerald-400 transition-colors">← prev: work</a>
-                <a href="/#contact" class="hover:text-emerald-400 transition-colors">next: contact →</a>
+                <a href="/work" class="hover:text-emerald-400 transition-colors"
+                  >← prev: work</a
+                >
+                <a
+                  href="/#contact"
+                  class="hover:text-emerald-400 transition-colors"
+                  >next: contact →</a
+                >
               </div>
             </div>
-
           </article>
         </div>
 
         <!-- STATUS BAR -->
-        <div class="h-7 bg-emerald-600/95 text-zinc-950 font-mono text-[11px] flex items-center justify-between px-4">
+        <div
+          class="h-7 bg-emerald-600/95 text-zinc-950 font-mono text-[11px] flex items-center justify-between px-4"
+        >
           <div class="flex items-center gap-4">
             <span class="flex items-center gap-1.5">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9v6a3 3 0 01-3 3H9"/></svg>
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                ><path d="M6 3v12"></path><circle cx="18" cy="6" r="3"
+                ></circle><circle cx="6" cy="18" r="3"></circle><path
+                  d="M18 9v6a3 3 0 01-3 3H9"></path></svg
+              >
               main
             </span>
             <span>↑ 0 ↓ 0</span>
@@ -299,7 +552,6 @@ import Layout from '../layouts/Layout.astro';
             <span>cascioli@dev</span>
           </div>
         </div>
-
       </div>
     </div>
   </main>
@@ -308,61 +560,121 @@ import Layout from '../layouts/Layout.astro';
 <style is:global>
   .bg-radial-about {
     background:
-      radial-gradient(ellipse 70% 55% at 20% 0%, rgba(16,185,129,0.08), transparent 60%),
-      radial-gradient(ellipse 50% 40% at 100% 100%, rgba(16,185,129,0.05), transparent 60%);
+      radial-gradient(
+        ellipse 70% 55% at 20% 0%,
+        rgba(16, 185, 129, 0.08),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 100% 100%,
+        rgba(16, 185, 129, 0.05),
+        transparent 60%
+      );
   }
 
   .badge {
-    display: inline-flex; align-items: center;
-    padding: 4px 10px; border-radius: 6px;
-    background: #18181b; border: 1px solid #27272a;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #18181b;
+    border: 1px solid #27272a;
     color: #a1a1aa;
-    font-family: 'Geist Mono', monospace; font-size: 12px;
-    transition: color 160ms, border-color 160ms, background 160ms, box-shadow 220ms, transform 160ms;
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    transition:
+      color 160ms,
+      border-color 160ms,
+      background 160ms,
+      box-shadow 220ms,
+      transform 160ms;
     cursor: default;
   }
   .badge:hover {
-    color: #fafafa; border-color: rgba(16,185,129,0.6);
-    background: rgba(16,185,129,0.08);
-    box-shadow: 0 0 0 1px rgba(16,185,129,0.35), 0 0 18px rgba(16,185,129,0.20);
+    color: #fafafa;
+    border-color: rgba(16, 185, 129, 0.6);
+    background: rgba(16, 185, 129, 0.08);
+    box-shadow:
+      0 0 0 1px rgba(16, 185, 129, 0.35),
+      0 0 18px rgba(16, 185, 129, 0.2);
     transform: translateY(-1px);
   }
 
   .term-link {
-    display: flex; align-items: center; gap: 8px;
-    padding: 6px 10px; border-radius: 6px;
-    font-family: 'Geist Mono', monospace; font-size: 13px;
-    color: #a1a1aa; border: 1px solid transparent;
-    transition: color 160ms, background 160ms, border-color 160ms;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-family: "Geist Mono", monospace;
+    font-size: 13px;
+    color: #a1a1aa;
+    border: 1px solid transparent;
+    transition:
+      color 160ms,
+      background 160ms,
+      border-color 160ms;
   }
-  .term-link:hover { color: #ffffff; background: rgba(16,185,129,0.07); border-color: rgba(16,185,129,0.35); }
-  .term-link .caret-glyph { color: #10b981; }
+  .term-link:hover {
+    color: #ffffff;
+    background: rgba(16, 185, 129, 0.07);
+    border-color: rgba(16, 185, 129, 0.35);
+  }
+  .term-link .caret-glyph {
+    color: #10b981;
+  }
 
-  .prose-body p { color: #d4d4d8; font-size: 17px; line-height: 1.75; margin-bottom: 1.25em; }
-  .prose-body p strong { color: #fafafa; font-weight: 600; }
-  .prose-body p em { color: #fafafa; font-style: normal; border-bottom: 1px solid rgba(16,185,129,0.45); padding-bottom: 1px; }
+  .prose-body p {
+    color: #d4d4d8;
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 1.25em;
+  }
+  .prose-body p strong {
+    color: #fafafa;
+    font-weight: 600;
+  }
+  .prose-body p em {
+    color: #fafafa;
+    font-style: normal;
+    border-bottom: 1px solid rgba(16, 185, 129, 0.45);
+    padding-bottom: 1px;
+  }
 
   .section-idx {
-    font-family: 'Geist Mono', monospace; font-size: 11px;
-    letter-spacing: 0.18em; text-transform: uppercase; color: #10b981;
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #10b981;
   }
 
   .h-underline {
     display: inline-block;
-    background-image: linear-gradient(180deg, transparent 78%, rgba(16,185,129,0.35) 78%, rgba(16,185,129,0.35) 88%, transparent 88%);
+    background-image: linear-gradient(
+      180deg,
+      transparent 78%,
+      rgba(16, 185, 129, 0.35) 78%,
+      rgba(16, 185, 129, 0.35) 88%,
+      transparent 88%
+    );
     background-repeat: no-repeat;
   }
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    const img = document.getElementById('avatar') as HTMLImageElement | null;
+  document.addEventListener("astro:page-load", () => {
+    const img = document.getElementById("avatar") as HTMLImageElement | null;
     if (img) {
       const pre = new Image();
       pre.src = img.dataset.color!;
-      const frame = img.closest('.avatar-frame') as HTMLElement;
-      frame.addEventListener('mouseenter', () => { img.src = img.dataset.color!; });
-      frame.addEventListener('mouseleave', () => { img.src = img.dataset.bw!; });
+      const frame = img.closest(".avatar-frame") as HTMLElement;
+      frame.addEventListener("mouseenter", () => {
+        img.src = img.dataset.color!;
+      });
+      frame.addEventListener("mouseleave", () => {
+        img.src = img.dataset.bw!;
+      });
     }
   });
 </script>
