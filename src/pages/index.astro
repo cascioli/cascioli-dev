@@ -1,75 +1,143 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
   title="cascioli. — Personal site"
-  description="Simone Cascioli — Software Architect freelance. Costruisco sistemi AI-native, infrastrutture sicure e interfacce che funzionano davvero."
-  tickerText="LATEST COMMIT — feat(home): wire emerald glow on hover"
-  showFooter={true}>
-
+  description="Simone Cascioli — Software Engineer freelance. Flutter, Go, Python e Cloud Security dal 2020. Sistemi mobile, infrastrutture serverless e soluzioni AI-native."
+  tickerText="LATEST COMMIT — refactor: migrate domain from cascioli.dev to simonecascioli.it"
+  showFooter={true}
+>
   <!-- HERO -->
   <section class="relative overflow-hidden border-b border-zinc-800/80">
     <div class="absolute inset-0 bg-grid"></div>
     <div class="absolute inset-0 bg-radial-home"></div>
 
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24 pb-20 lg:pb-28">
+    <div
+      class="relative max-w-7xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24 pb-20 lg:pb-28"
+    >
       <div class="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-
         <!-- LEFT — payoff -->
         <div class="lg:col-span-7 order-2 lg:order-1">
-          <div class="flex items-center gap-2 font-mono text-[12px] text-zinc-500 mb-6">
-            <span class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-            <span class="uppercase tracking-[0.18em]">Hello, world<span class="caret text-emerald-500">_</span></span>
+          <div
+            class="flex items-center gap-2 font-mono text-[12px] text-zinc-500 mb-6"
+          >
+            <span class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"
+            ></span>
+            <span class="uppercase tracking-[0.18em]"
+              >Hello, world<span class="caret text-emerald-500">_</span></span
+            >
           </div>
 
-          <h1 class="font-sans font-bold tracking-tight text-zinc-50 text-[44px] sm:text-[56px] lg:text-[76px] leading-[1.02]">
-            Costruisco<br/>
-            interfacce<br/>
+          <h1
+            class="font-sans font-bold tracking-tight text-zinc-50 text-[44px] sm:text-[56px] lg:text-[76px] leading-[1.02]"
+          >
+            Interfacce pulite,<br />
+            backend<br />
             che <span class="relative inline-block">
-              <span class="text-emerald-500">funzionano</span>
-              <svg class="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 300 10" preserveAspectRatio="none" fill="none">
-                <path d="M2 7 Q 75 1, 150 6 T 298 4" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+              <span class="text-emerald-500">resistono</span>
+              <svg
+                class="absolute -bottom-2 left-0 w-full"
+                height="10"
+                viewBox="0 0 300 10"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M2 7 Q 75 1, 150 6 T 298 4"
+                  stroke="#10b981"
+                  stroke-width="2"
+                  stroke-linecap="round"></path>
               </svg>
             </span><span class="text-emerald-500">.</span>
           </h1>
 
           <p class="mt-8 max-w-xl text-zinc-400 text-lg leading-relaxed">
-            Sono <span class="text-zinc-200">Cascioli</span> — designer &amp; frontend developer.
-            Trasformo idee in prodotti digitali puliti, veloci e accessibili.
-            Lavoro principalmente con <span class="text-zinc-200">React</span>, <span class="text-zinc-200">TypeScript</span> e <span class="text-zinc-200">Tailwind</span>.
+            Sono <span class="text-zinc-200">Simone</span> — software engineer freelance
+            &amp; Cloud/AI Security. Costruisco sistemi mobile, backend scalabili
+            e infrastrutture sicure dal <span class="text-zinc-200">2020</span>.
+            Stack principale: <span class="text-zinc-200">Flutter</span>, <span
+              class="text-zinc-200">Go</span
+            >, <span class="text-zinc-200">Python</span> e architetture <span
+              class="text-zinc-200">Serverless</span
+            >.
           </p>
 
           <div class="mt-10 flex flex-wrap items-center gap-3">
-            <a href="/work"
-               class="inline-flex items-center gap-2 h-12 px-6 rounded-md bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-zinc-950 font-semibold text-sm transition-colors border border-emerald-500/80 hover:shadow-[0_0_28px_rgba(16,185,129,0.35)]">
-              View selected work
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+            <a
+              href="/work"
+              class="inline-flex items-center gap-2 h-12 px-6 rounded-md bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-zinc-950 font-semibold text-sm transition-colors border border-emerald-500/80 hover:shadow-[0_0_28px_rgba(16,185,129,0.35)]"
+            >
+              Vedi i miei progetti preferiti
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M5 12h14"></path><path d="M13 5l7 7-7 7"></path></svg
+              >
             </a>
-            <a href="/#contact"
-               class="inline-flex items-center gap-2 h-12 px-6 rounded-md bg-transparent text-zinc-100 font-medium text-sm border border-zinc-700 hover:border-emerald-500 hover:text-emerald-400 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <a
+              href="/#contact"
+              class="inline-flex items-center gap-2 h-12 px-6 rounded-md bg-transparent text-zinc-100 font-medium text-sm border border-zinc-700 hover:border-emerald-500 hover:text-emerald-400 transition-colors"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M4 4h16v16H4z"></path><path d="M22 6l-10 7L2 6"
+                ></path></svg
+              >
               Contattami
             </a>
-            <a href="#"
-               class="inline-flex items-center gap-2 h-12 px-5 rounded-md text-zinc-400 font-mono text-[13px] hover:text-emerald-400 transition-colors">
+            <a
+              href="#"
+              class="inline-flex items-center gap-2 h-12 px-5 rounded-md text-zinc-400 font-mono text-[13px] hover:text-emerald-400 transition-colors"
+            >
               <span class="text-emerald-500">$</span> curl simonecascioli.it/cv.pdf
             </a>
           </div>
 
           <!-- Stats -->
-          <div class="mt-12 grid grid-cols-3 max-w-lg gap-px bg-zinc-800 border border-zinc-800 rounded-lg overflow-hidden">
+          <div
+            class="mt-12 grid grid-cols-3 max-w-lg gap-px bg-zinc-800 border border-zinc-800 rounded-lg overflow-hidden"
+          >
             <div class="bg-zinc-950 p-4">
-              <div class="font-mono text-[11px] uppercase tracking-wider text-zinc-500">Years</div>
-              <div class="mt-1 text-2xl font-semibold text-zinc-50">4<span class="text-emerald-500">+</span></div>
+              <div
+                class="font-mono text-[11px] uppercase tracking-wider text-zinc-500"
+              >
+                Anni
+              </div>
+              <div class="mt-1 text-2xl font-semibold text-zinc-50">
+                5<span class="text-emerald-500">+</span>
+              </div>
             </div>
             <div class="bg-zinc-950 p-4">
-              <div class="font-mono text-[11px] uppercase tracking-wider text-zinc-500">Projects</div>
-              <div class="mt-1 text-2xl font-semibold text-zinc-50">27</div>
+              <div
+                class="font-mono text-[11px] uppercase tracking-wider text-zinc-500"
+              >
+                Progetti
+              </div>
+              <div class="mt-1 text-2xl font-semibold text-zinc-50">41</div>
             </div>
             <div class="bg-zinc-950 p-4">
-              <div class="font-mono text-[11px] uppercase tracking-wider text-zinc-500">Clients</div>
-              <div class="mt-1 text-2xl font-semibold text-zinc-50">12</div>
+              <div
+                class="font-mono text-[11px] uppercase tracking-wider text-zinc-500"
+              >
+                Clienti
+              </div>
+              <div class="mt-1 text-2xl font-semibold text-zinc-50">
+                25<span class="text-emerald-500">+</span>
+              </div>
             </div>
           </div>
         </div>
@@ -77,41 +145,70 @@ import Layout from '../layouts/Layout.astro';
         <!-- RIGHT — photo -->
         <div class="lg:col-span-5 order-1 lg:order-2">
           <div class="relative flex items-center justify-center">
-            <div class="absolute -top-3 -left-2 lg:-left-6 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400">
-              <span class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+            <div
+              class="absolute -top-3 -left-2 lg:-left-6 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400"
+            >
+              <span class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"
+              ></span>
               <span class="text-emerald-400">online</span>
               <span class="text-zinc-600">·</span>
-              <span>Italy</span>
+              <span>Italia</span>
             </div>
-            <div class="absolute -bottom-3 -right-2 lg:-right-4 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400">
+            <div
+              class="absolute -bottom-3 -right-2 lg:-right-4 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400"
+            >
               <span>v2026.05</span>
               <span class="text-zinc-600">·</span>
               <span class="text-emerald-400">stable</span>
             </div>
 
-            <a href="/about" class="avatar-frame block aspect-square w-[260px] sm:w-[320px] lg:w-[380px]">
-              <div class="overflow-hidden rounded-full w-full h-full bg-zinc-900 ring-1 ring-zinc-950">
-                <img id="avatar-img"
-                     src="/assets/profilo-bn.jpg"
-                     data-bw="/assets/profilo-bn.jpg"
-                     data-color="/assets/profilo-color.jpg"
-                     alt="Cascioli — ritratto"
-                     class="w-full h-full object-cover select-none"
-                     draggable="false" />
+            <a
+              href="/about"
+              class="avatar-frame block aspect-square w-[260px] sm:w-[320px] lg:w-[380px]"
+            >
+              <div
+                class="overflow-hidden rounded-full w-full h-full bg-zinc-900 ring-1 ring-zinc-950"
+              >
+                <img
+                  id="avatar-img"
+                  src="/assets/profilo-bn.jpg"
+                  data-bw="/assets/profilo-bn.jpg"
+                  data-color="/assets/profilo-color.jpg"
+                  alt="Simone Cascioli — ritratto"
+                  class="w-full h-full object-cover select-none"
+                  draggable="false"
+                />
               </div>
             </a>
           </div>
 
           <div class="mt-10 flex flex-wrap justify-center lg:justify-end gap-2">
-            <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400">React</span>
-            <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400">TypeScript</span>
-            <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400">Tailwind</span>
-            <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400">Next.js</span>
-            <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400">Node</span>
-            <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-emerald-400">+ Figma</span>
+            <span
+              class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400"
+              >Flutter</span
+            >
+            <span
+              class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400"
+              >Go</span
+            >
+            <span
+              class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400"
+              >Python</span
+            >
+            <span
+              class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400"
+              >Firebase</span
+            >
+            <span
+              class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-zinc-400"
+              >AI/ML</span
+            >
+            <span
+              class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 font-mono text-[11px] text-emerald-400"
+              >+ Cybersec</span
+            >
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -119,60 +216,121 @@ import Layout from '../layouts/Layout.astro';
   <!-- SELECTED PROJECTS -->
   <section id="work" class="relative">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
-
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div
+        class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"
+      >
         <div>
-          <div class="font-mono text-[12px] tracking-[0.18em] uppercase text-emerald-500 mb-3">
-            <span class="text-zinc-600">01.</span> Selected projects
+          <div
+            class="font-mono text-[12px] tracking-[0.18em] uppercase text-emerald-500 mb-3"
+          >
+            <span class="text-zinc-600">01.</span> Progetti selezionati
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-50">
-            Things I've shipped recently<span class="text-emerald-500">.</span>
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-50"
+          >
+            Cose che ho costruito ultimamente<span class="text-emerald-500"
+              >.</span
+            >
           </h2>
           <p class="mt-4 max-w-2xl text-zinc-400">
-            Una piccola selezione. Ogni progetto include un breve case study, stack e link al codice — dove disponibile.
+            Una piccola selezione. Ogni progetto include un breve case study,
+            stack e link al codice — dove disponibile.
           </p>
         </div>
-        <a href="/work" class="inline-flex items-center gap-2 self-start md:self-auto font-mono text-[13px] text-zinc-400 hover:text-emerald-400 transition-colors">
-          All projects
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+        <a
+          href="/work"
+          class="inline-flex items-center gap-2 self-start md:self-auto font-mono text-[13px] text-zinc-400 hover:text-emerald-400 transition-colors"
+        >
+          Tutti i progetti
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M5 12h14"></path><path d="M13 5l7 7-7 7"></path></svg
+          >
         </a>
       </div>
 
       <!-- Projects grid -->
       <div class="grid md:grid-cols-2 gap-5">
-
         <!-- Card 1 — featured -->
-        <a href="/work" class="proj-card md:col-span-2 group relative rounded-xl border border-zinc-800 bg-zinc-950 overflow-hidden">
+        <a
+          href="/work"
+          class="proj-card md:col-span-2 group relative rounded-xl border border-zinc-800 bg-zinc-950 overflow-hidden"
+        >
           <div class="grid md:grid-cols-12 gap-0">
             <div class="md:col-span-7 p-7 lg:p-10 flex flex-col">
               <div class="flex items-center justify-between">
-                <div class="font-mono text-[11px] tracking-wider uppercase text-zinc-500">
-                  <span class="text-emerald-500">●</span> Featured · 2026
+                <div
+                  class="font-mono text-[11px] tracking-wider uppercase text-zinc-500"
+                >
+                  <span class="text-emerald-500">●</span> Featured · 2025
                 </div>
-                <svg class="proj-arrow w-5 h-5 text-zinc-500 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                <svg
+                  class="proj-arrow w-5 h-5 text-zinc-500 transition-transform"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+                >
               </div>
-              <h3 class="proj-title mt-6 text-2xl lg:text-3xl font-semibold text-zinc-100 transition-colors">
-                Helio — bookings &amp; calendar for studios
+              <h3
+                class="proj-title mt-6 text-2xl lg:text-3xl font-semibold text-zinc-100 transition-colors"
+              >
+                Lifeport &amp; Symposium — piattaforma mobile full stack
               </h3>
               <p class="mt-3 text-zinc-400 leading-relaxed">
-                SaaS multi-tenant per la gestione di prenotazioni e disponibilità. Ho disegnato il sistema e costruito il frontend con un'architettura modulare.
+                Lifeport: piattaforma affitti "all-inclusive" con contratti
+                digitali e backend scalabile. Symposium: app per corsi e podcast
+                con pagamenti integrati e gestione utenti.
               </p>
-              <div class="mt-6 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400">
-                <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Next.js</span>
-                <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">tRPC</span>
-                <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Postgres</span>
-                <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Tailwind</span>
+              <div
+                class="mt-6 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400"
+              >
+                <span
+                  class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+                  >Flutter</span
+                >
+                <span
+                  class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+                  >Dart</span
+                >
+                <span
+                  class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+                  >Firebase</span
+                >
+                <span
+                  class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+                  >Serverless</span
+                >
               </div>
-              <div class="proj-bar mt-auto pt-8 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"></div>
+              <div
+                class="proj-bar mt-auto pt-8 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"
+              >
+              </div>
             </div>
-            <div class="md:col-span-5 relative border-t md:border-t-0 md:border-l border-zinc-800 bg-zinc-900/40 min-h-[200px]">
+            <div
+              class="md:col-span-5 relative border-t md:border-t-0 md:border-l border-zinc-800 bg-zinc-900/40 min-h-[200px]"
+            >
               <div class="absolute inset-0 p-6 flex flex-col gap-3">
                 <div class="flex items-center gap-1.5">
                   <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
                   <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
                   <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
                 </div>
-                <div id="heatmap" class="flex-1 grid grid-cols-7 grid-rows-5 gap-1.5 mt-2"></div>
+                <div
+                  id="heatmap"
+                  class="flex-1 grid grid-cols-7 grid-rows-5 gap-1.5 mt-2"
+                >
+                </div>
                 <div class="grid grid-cols-3 gap-2 mt-2">
                   <div class="h-8 rounded bg-zinc-800/80"></div>
                   <div class="h-8 rounded bg-zinc-800/80 col-span-2"></div>
@@ -183,77 +341,207 @@ import Layout from '../layouts/Layout.astro';
         </a>
 
         <!-- Card 2 -->
-        <a href="/work" class="proj-card group relative rounded-xl border border-zinc-800 bg-zinc-950 p-7 lg:p-8 overflow-hidden">
+        <a
+          href="/work"
+          class="proj-card group relative rounded-xl border border-zinc-800 bg-zinc-950 p-7 lg:p-8 overflow-hidden"
+        >
           <div class="flex items-center justify-between">
-            <div class="font-mono text-[11px] tracking-wider uppercase text-zinc-500">2025 · Open source</div>
-            <svg class="proj-arrow w-5 h-5 text-zinc-500 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <div
+              class="font-mono text-[11px] tracking-wider uppercase text-zinc-500"
+            >
+              2025 · Open source
+            </div>
+            <svg
+              class="proj-arrow w-5 h-5 text-zinc-500 transition-transform"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+            >
           </div>
-          <h3 class="proj-title mt-5 text-xl lg:text-2xl font-semibold text-zinc-100 transition-colors">
-            gridkit — CSS subgrid layout primitives
+          <h3
+            class="proj-title mt-5 text-xl lg:text-2xl font-semibold text-zinc-100 transition-colors"
+          >
+            padel-fame-and-shame — gamification post-partita
           </h3>
-          <p class="mt-2 text-zinc-400">Una piccola libreria headless per costruire layout editoriali. 1.2k stars, zero dipendenze.</p>
-          <div class="mt-5 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400">
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">TypeScript</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">CSS</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Vite</span>
+          <p class="mt-2 text-zinc-400">
+            Magic link auth, cronache AI via Gemini, karma rankings, debiti
+            birra e trading cards condivisibili. PWA mobile-first, zero hardware
+            richiesto.
+          </p>
+          <div
+            class="mt-5 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400"
+          >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >TypeScript</span
+            >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >Next.js</span
+            >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >PWA</span
+            >
           </div>
-          <div class="proj-bar mt-7 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"></div>
+          <div
+            class="proj-bar mt-7 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"
+          >
+          </div>
         </a>
 
         <!-- Card 3 -->
-        <a href="/work" class="proj-card group relative rounded-xl border border-zinc-800 bg-zinc-950 p-7 lg:p-8 overflow-hidden">
+        <a
+          href="/work"
+          class="proj-card group relative rounded-xl border border-zinc-800 bg-zinc-950 p-7 lg:p-8 overflow-hidden"
+        >
           <div class="flex items-center justify-between">
-            <div class="font-mono text-[11px] tracking-wider uppercase text-zinc-500">2025 · Client</div>
-            <svg class="proj-arrow w-5 h-5 text-zinc-500 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <div
+              class="font-mono text-[11px] tracking-wider uppercase text-zinc-500"
+            >
+              2025 · Open source
+            </div>
+            <svg
+              class="proj-arrow w-5 h-5 text-zinc-500 transition-transform"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+            >
           </div>
-          <h3 class="proj-title mt-5 text-xl lg:text-2xl font-semibold text-zinc-100 transition-colors">
-            Nordbrew — e-commerce per micro-birrificio
+          <h3
+            class="proj-title mt-5 text-xl lg:text-2xl font-semibold text-zinc-100 transition-colors"
+          >
+            osint-risk-mapper — digital footprint scanner
           </h3>
-          <p class="mt-2 text-zinc-400">Redesign completo del sito vendite, da Shopify a uno stack custom headless. +38% conversion.</p>
-          <div class="mt-5 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400">
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Astro</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Stripe</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Sanity</span>
+          <p class="mt-2 text-zinc-400">
+            Tool OSINT per mappare impronte digitali e valutare rischi di
+            cybersecurity. Threat intelligence e risk assessment automatizzato.
+          </p>
+          <div
+            class="mt-5 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400"
+          >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >Python</span
+            >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >OSINT</span
+            >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >AGPL-3.0</span
+            >
           </div>
-          <div class="proj-bar mt-7 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"></div>
+          <div
+            class="proj-bar mt-7 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"
+          >
+          </div>
         </a>
 
         <!-- Card 4 -->
-        <a href="/work" class="proj-card group relative rounded-xl border border-zinc-800 bg-zinc-950 p-7 lg:p-8 overflow-hidden">
+        <a
+          href="/work"
+          class="proj-card group relative rounded-xl border border-zinc-800 bg-zinc-950 p-7 lg:p-8 overflow-hidden"
+        >
           <div class="flex items-center justify-between">
-            <div class="font-mono text-[11px] tracking-wider uppercase text-zinc-500">2024 · Internal tool</div>
-            <svg class="proj-arrow w-5 h-5 text-zinc-500 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <div
+              class="font-mono text-[11px] tracking-wider uppercase text-zinc-500"
+            >
+              2025 · Open source
+            </div>
+            <svg
+              class="proj-arrow w-5 h-5 text-zinc-500 transition-transform"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+            >
           </div>
-          <h3 class="proj-title mt-5 text-xl lg:text-2xl font-semibold text-zinc-100 transition-colors">
-            Pilot — dashboard di osservabilità
+          <h3
+            class="proj-title mt-5 text-xl lg:text-2xl font-semibold text-zinc-100 transition-colors"
+          >
+            segnalatore-urbano-ai — reporter urbano AI
           </h3>
-          <p class="mt-2 text-zinc-400">Pannello interno per il monitoraggio di servizi e job; metriche real-time, alert e replay degli eventi.</p>
-          <div class="mt-5 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400">
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">React</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">WebSockets</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">D3</span>
+          <p class="mt-2 text-zinc-400">
+            Foto → Gemini identifica il problema → GPS estratto automaticamente
+            → email pre-compilata all'ufficio comunale corretto. Mappa pubblica,
+            zero login.
+          </p>
+          <div
+            class="mt-5 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400"
+          >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >Python</span
+            >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >Gemini</span
+            >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >OpenStreetMap</span
+            >
           </div>
-          <div class="proj-bar mt-7 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"></div>
+          <div
+            class="proj-bar mt-7 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"
+          >
+          </div>
         </a>
 
         <!-- Card 5 -->
-        <a href="/work" class="proj-card group relative rounded-xl border border-zinc-800 bg-zinc-950 p-7 lg:p-8 overflow-hidden">
+        <a
+          href="/work"
+          class="proj-card group relative rounded-xl border border-zinc-800 bg-zinc-950 p-7 lg:p-8 overflow-hidden"
+        >
           <div class="flex items-center justify-between">
-            <div class="font-mono text-[11px] tracking-wider uppercase text-zinc-500">2024 · Experiment</div>
-            <svg class="proj-arrow w-5 h-5 text-zinc-500 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <div
+              class="font-mono text-[11px] tracking-wider uppercase text-zinc-500"
+            >
+              2025 · DevOps
+            </div>
+            <svg
+              class="proj-arrow w-5 h-5 text-zinc-500 transition-transform"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+            >
           </div>
-          <h3 class="proj-title mt-5 text-xl lg:text-2xl font-semibold text-zinc-100 transition-colors">
-            Cassetto — note app, local-first
+          <h3
+            class="proj-title mt-5 text-xl lg:text-2xl font-semibold text-zinc-100 transition-colors"
+          >
+            fuzzyrouter — subdomain typo catcher
           </h3>
-          <p class="mt-2 text-zinc-400">Un editor markdown minimal, CRDT sync, end-to-end encryption. Costruito in due weekend.</p>
-          <div class="mt-5 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400">
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Tauri</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Yjs</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Rust</span>
+          <p class="mt-2 text-zinc-400">
+            Microservice Docker leggero che intercetta sottodomini errati e
+            redirige al match più vicino via fuzzy matching (distanza di
+            Levenshtein).
+          </p>
+          <div
+            class="mt-5 flex flex-wrap gap-2 font-mono text-[11px] text-zinc-400"
+          >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >Go</span
+            >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >Docker</span
+            >
+            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800"
+              >DNS</span
+            >
           </div>
-          <div class="proj-bar mt-7 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"></div>
+          <div
+            class="proj-bar mt-7 h-[2px] w-12 bg-emerald-500/80 transition-all duration-500"
+          >
+          </div>
         </a>
-
       </div>
     </div>
   </section>
@@ -261,80 +549,123 @@ import Layout from '../layouts/Layout.astro';
   <!-- CONTACT -->
   <section id="contact" class="border-t border-zinc-800/80">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28 text-center">
-      <div class="font-mono text-[12px] tracking-[0.18em] uppercase text-emerald-500 mb-4">
+      <div
+        class="font-mono text-[12px] tracking-[0.18em] uppercase text-emerald-500 mb-4"
+      >
         <span class="text-zinc-600">04.</span> Contact
       </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-50 mb-6">
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-50 mb-6"
+      >
         Parliamoci<span class="text-emerald-500">.</span>
       </h2>
       <p class="max-w-xl mx-auto text-zinc-400 text-lg leading-relaxed mb-10">
-        Hai un progetto in mente? Sono disponibile per collaborazioni freelance a partire da Q3 2026.
+        Hai un progetto in mente? Sono disponibile per collaborazioni freelance
+        a partire da Q3 2026.
       </p>
-      <a href="mailto:info@simonecascioli.it"
-         class="inline-flex items-center gap-2 h-12 px-8 rounded-md bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-zinc-950 font-semibold text-sm transition-colors border border-emerald-500/80 hover:shadow-[0_0_28px_rgba(16,185,129,0.35)]">
+      <a
+        href="mailto:info@simonecascioli.it"
+        class="inline-flex items-center gap-2 h-12 px-8 rounded-md bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-zinc-950 font-semibold text-sm transition-colors border border-emerald-500/80 hover:shadow-[0_0_28px_rgba(16,185,129,0.35)]"
+      >
         info@simonecascioli.it
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+        >
       </a>
     </div>
   </section>
-
 </Layout>
 
 <style is:global>
   .bg-radial-home {
     background:
-      radial-gradient(ellipse 90% 60% at 70% 20%, rgba(16,185,129,0.10), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(16,185,129,0.06), transparent 60%);
+      radial-gradient(
+        ellipse 90% 60% at 70% 20%,
+        rgba(16, 185, 129, 0.1),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 0% 100%,
+        rgba(16, 185, 129, 0.06),
+        transparent 60%
+      );
   }
 
   .proj-card {
     position: relative;
-    transition: border-color 220ms ease, box-shadow 320ms ease, transform 220ms ease, background-color 220ms ease;
+    transition:
+      border-color 220ms ease,
+      box-shadow 320ms ease,
+      transform 220ms ease,
+      background-color 220ms ease;
   }
   .proj-card::after {
     content: "";
-    position: absolute; inset: 0;
+    position: absolute;
+    inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    box-shadow: 0 0 0 0 rgba(16,185,129,0);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
     transition: box-shadow 320ms ease;
   }
   .proj-card:hover {
-    border-color: rgba(16,185,129,0.55);
-    background-color: rgba(16,185,129,0.025);
+    border-color: rgba(16, 185, 129, 0.55);
+    background-color: rgba(16, 185, 129, 0.025);
     transform: translateY(-2px);
   }
   .proj-card:hover::after {
     box-shadow:
-      0 0 0 1px rgba(16,185,129,0.35),
-      0 0 24px rgba(16,185,129,0.18),
-      0 0 60px rgba(16,185,129,0.10);
+      0 0 0 1px rgba(16, 185, 129, 0.35),
+      0 0 24px rgba(16, 185, 129, 0.18),
+      0 0 60px rgba(16, 185, 129, 0.1);
   }
-  .proj-card:hover .proj-arrow { transform: translate(3px, -3px); color: #10b981; }
-  .proj-card:hover .proj-title { color: #ffffff; }
-  .proj-card:hover .proj-bar   { width: 100%; }
+  .proj-card:hover .proj-arrow {
+    transform: translate(3px, -3px);
+    color: #10b981;
+  }
+  .proj-card:hover .proj-title {
+    color: #ffffff;
+  }
+  .proj-card:hover .proj-bar {
+    width: 100%;
+  }
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    const img = document.getElementById('avatar-img') as HTMLImageElement | null;
+  document.addEventListener("astro:page-load", () => {
+    const img = document.getElementById(
+      "avatar-img",
+    ) as HTMLImageElement | null;
     if (img) {
       const pre = new Image();
       pre.src = img.dataset.color!;
-      const frame = img.closest('.avatar-frame') as HTMLElement;
-      frame.addEventListener('mouseenter', () => { img.src = img.dataset.color!; });
-      frame.addEventListener('mouseleave', () => { img.src = img.dataset.bw!; });
+      const frame = img.closest(".avatar-frame") as HTMLElement;
+      frame.addEventListener("mouseenter", () => {
+        img.src = img.dataset.color!;
+      });
+      frame.addEventListener("mouseleave", () => {
+        img.src = img.dataset.bw!;
+      });
     }
 
-    const heat = document.getElementById('heatmap');
+    const heat = document.getElementById("heatmap");
     if (heat) {
-      heat.innerHTML = '';
+      heat.innerHTML = "";
       const intensity = [0, 0.06, 0.12, 0.2, 0.32, 0.5, 0.75];
       for (let i = 0; i < 35; i++) {
         const v = intensity[Math.floor(Math.random() * intensity.length)];
-        const el = document.createElement('div');
-        el.className = 'rounded-[3px]';
-        el.style.background = v === 0 ? 'rgba(63,63,70,0.35)' : `rgba(16,185,129,${v})`;
+        const el = document.createElement("div");
+        el.className = "rounded-[3px]";
+        el.style.background =
+          v === 0 ? "rgba(63,63,70,0.35)" : `rgba(16,185,129,${v})`;
         heat.appendChild(el);
       }
     }
