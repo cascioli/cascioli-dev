@@ -1,112 +1,309 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  title="cascioli. — Work"
+  title="cascioli. — Progetti"
   description="Progetti selezionati di Simone Cascioli: app mobile, sistemi AI, strumenti di sicurezza e architetture backend in Go, Flutter e Python."
   bodyClass="min-h-screen flex flex-col"
-  tickerText="LATEST COMMIT — feat(work): IDE-style archive">
-
+  tickerText="LATEST COMMIT — feat(work): IDE-style archive"
+>
   <!-- IDE SHELL -->
   <main class="relative flex-1 min-h-0">
     <div class="absolute inset-0 bg-grid pointer-events-none"></div>
     <div class="absolute inset-0 bg-radial-work pointer-events-none"></div>
 
-    <div class="relative max-w-[1600px] mx-auto px-3 lg:px-6 py-4 lg:py-6 h-[calc(100vh-105px)] min-h-[760px]">
-      <div class="h-full grid grid-cols-12 gap-0 border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950/85 backdrop-blur-sm shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]">
-
+    <div
+      class="relative max-w-[1600px] mx-auto px-3 lg:px-6 py-4 lg:py-6 h-[calc(100vh-105px)] min-h-[760px]"
+    >
+      <div
+        class="h-full grid grid-cols-12 gap-0 border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950/85 backdrop-blur-sm shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
+      >
         <!-- SIDEBAR -->
-        <aside class="col-span-12 md:col-span-3 border-r border-zinc-800 flex flex-col min-h-0 bg-[#0a0a0b]">
-          <div class="h-10 px-4 flex items-center justify-between border-b border-zinc-800 shrink-0">
-            <div class="flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] uppercase text-zinc-500">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l2-3h6l2 3h8v12a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"/></svg>
+        <aside
+          class="col-span-12 md:col-span-3 border-r border-zinc-800 flex flex-col min-h-0 bg-[#0a0a0b]"
+        >
+          <div
+            class="h-10 px-4 flex items-center justify-between border-b border-zinc-800 shrink-0"
+          >
+            <div
+              class="flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] uppercase text-zinc-500"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M3 7l2-3h6l2 3h8v12a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"
+                ></path></svg
+              >
               Explorer
             </div>
             <div class="flex items-center gap-1 text-zinc-600">
-              <button class="h-6 w-6 grid place-items-center hover:text-zinc-300" title="Refresh">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15A9 9 0 1 1 5.64 5.64L23 10"/></svg>
+              <button
+                class="h-6 w-6 grid place-items-center hover:text-zinc-300"
+                title="Refresh"
+              >
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  ><polyline points="23 4 23 10 17 10"></polyline><path
+                    d="M20.49 15A9 9 0 1 1 5.64 5.64L23 10"></path></svg
+                >
               </button>
-              <button class="h-6 w-6 grid place-items-center hover:text-zinc-300" title="Collapse all">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              <button
+                class="h-6 w-6 grid place-items-center hover:text-zinc-300"
+                title="Collapse all"
+              >
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  ><polyline points="6 9 12 15 18 9"></polyline></svg
+                >
               </button>
             </div>
           </div>
 
-          <div class="px-4 py-2 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 border-b border-zinc-800/60 shrink-0">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+          <div
+            class="px-4 py-2 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 border-b border-zinc-800/60 shrink-0"
+          >
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 6 15 12 9 18"></polyline></svg
+            >
             <span>cascioli — projects</span>
           </div>
 
-          <nav class="flex-1 min-h-0 overflow-y-auto py-1 font-mono text-[13px]" id="tree">
-            <button class="folder-row is-active w-full text-left px-3 py-1.5 flex items-center gap-2 text-zinc-300" data-filter="all">
-              <svg class="chev shrink-0 text-zinc-600" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-              <svg class="shrink-0 text-emerald-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l2-3h6l2 3h8v12a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"/></svg>
+          <nav
+            class="flex-1 min-h-0 overflow-y-auto py-1 font-mono text-[13px]"
+            id="tree"
+          >
+            <button
+              class="folder-row is-active w-full text-left px-3 py-1.5 flex items-center gap-2 text-zinc-300"
+              data-filter="all"
+            >
+              <svg
+                class="chev shrink-0 text-zinc-600"
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><polyline points="9 6 15 12 9 18"></polyline></svg
+              >
+              <svg
+                class="shrink-0 text-emerald-500"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                ><path d="M3 7l2-3h6l2 3h8v12a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"
+                ></path></svg
+              >
               <span class="truncate">projects</span>
               <span class="ml-auto text-[11px] text-zinc-600">14</span>
             </button>
 
             <div class="pl-3">
-              {[
-                { id: 'web-apps',    count: 5 },
-                { id: 'open-source', count: 3 },
-                { id: 'experiments', count: 4 },
-                { id: 'archive',     count: 2 },
-              ].map(({ id, count }) => (
-                <button class="folder-row w-full text-left px-3 py-1.5 flex items-center gap-2 text-zinc-400" data-filter={id}>
-                  <svg class="chev shrink-0 text-zinc-600" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-                  <svg class="shrink-0 text-zinc-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l2-3h6l2 3h8v12a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"/></svg>
-                  <span class="truncate">{id}</span>
-                  <span class="ml-auto text-[11px] text-zinc-600">{count}</span>
-                </button>
-              ))}
+              {
+                [
+                  { id: "web-apps", count: 5 },
+                  { id: "open-source", count: 3 },
+                  { id: "experiments", count: 4 },
+                  { id: "archive", count: 2 },
+                ].map(({ id, count }) => (
+                  <button
+                    class="folder-row w-full text-left px-3 py-1.5 flex items-center gap-2 text-zinc-400"
+                    data-filter={id}
+                  >
+                    <svg
+                      class="chev shrink-0 text-zinc-600"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="9 6 15 12 9 18" />
+                    </svg>
+                    <svg
+                      class="shrink-0 text-zinc-500"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <path d="M3 7l2-3h6l2 3h8v12a1 1 0 01-1 1H4a1 1 0 01-1-1V7z" />
+                    </svg>
+                    <span class="truncate">{id}</span>
+                    <span class="ml-auto text-[11px] text-zinc-600">
+                      {count}
+                    </span>
+                  </button>
+                ))
+              }
             </div>
 
             <div class="mt-3 px-3 space-y-1 text-zinc-600">
-              {['README.md','package.json','.env.local'].map((f) => (
-                <div class="flex items-center gap-2 px-2 py-1">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                  <span>{f}</span>
-                </div>
-              ))}
+              {
+                ["README.md", "package.json", ".env.local"].map((f) => (
+                  <div class="flex items-center gap-2 px-2 py-1">
+                    <svg
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <>
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                      </>
+                    </svg>
+                    <span>{f}</span>
+                  </div>
+                ))
+              }
             </div>
           </nav>
 
           <!-- Tech filter -->
           <div class="border-t border-zinc-800 px-4 py-4 shrink-0">
             <div class="flex items-center justify-between mb-3">
-              <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">Tech stack</div>
-              <button id="clearTech" class="font-mono text-[10px] uppercase tracking-wider text-zinc-600 hover:text-emerald-400 transition-colors">clear</button>
+              <div
+                class="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500"
+              >
+                Tech stack
+              </div>
+              <button
+                id="clearTech"
+                class="font-mono text-[10px] uppercase tracking-wider text-zinc-600 hover:text-emerald-400 transition-colors"
+                >clear</button
+              >
             </div>
-            <div id="techFilter" class="grid grid-cols-2 gap-y-2 gap-x-3 font-mono text-[12px] text-zinc-400">
-              {['React','TypeScript','Next.js','Rust','Node','Tailwind','Astro','Postgres'].map((t) => (
-                <label class="flex items-center gap-2 cursor-pointer hover:text-zinc-200">
-                  <input type="checkbox" class="check" value={t}/> {t}
-                </label>
-              ))}
+            <div
+              id="techFilter"
+              class="grid grid-cols-2 gap-y-2 gap-x-3 font-mono text-[12px] text-zinc-400"
+            >
+              {
+                [
+                  "React",
+                  "TypeScript",
+                  "Next.js",
+                  "Rust",
+                  "Node",
+                  "Tailwind",
+                  "Astro",
+                  "Postgres",
+                ].map((t) => (
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-zinc-200">
+                    <input type="checkbox" class="check" value={t} /> {t}
+                  </label>
+                ))
+              }
             </div>
           </div>
         </aside>
 
         <!-- MAIN VIEW -->
-        <section class="col-span-12 md:col-span-9 flex flex-col min-h-0 bg-zinc-950 relative">
-
+        <section
+          class="col-span-12 md:col-span-9 flex flex-col min-h-0 bg-zinc-950 relative"
+        >
           <!-- Tab bar -->
-          <div class="flex items-stretch h-9 border-b border-zinc-800 shrink-0 bg-[#0a0a0b] overflow-x-auto">
+          <div
+            class="flex items-stretch h-9 border-b border-zinc-800 shrink-0 bg-[#0a0a0b] overflow-x-auto"
+          >
             <div class="tab is-active" data-tab="index">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span class="text-zinc-500">projects /</span><span>index.tsx</span>
-              <svg class="ml-1 text-zinc-600 hover:text-zinc-300" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                ><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
+                ></path><polyline points="14 2 14 8 20 8"></polyline></svg
+              >
+              <span class="text-zinc-500">projects /</span><span>index.tsx</span
+              >
+              <svg
+                class="ml-1 text-zinc-600 hover:text-zinc-300"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                ><line x1="18" y1="6" x2="6" y2="18"></line><line
+                  x1="6"
+                  y1="6"
+                  x2="18"
+                  y2="18"></line></svg
+              >
             </div>
             <div class="tab" data-tab="readme">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                ><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
+                ></path><polyline points="14 2 14 8 20 8"></polyline></svg
+              >
               <span>README.md</span>
-              <svg class="ml-1 text-zinc-600 hover:text-zinc-300" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <svg
+                class="ml-1 text-zinc-600 hover:text-zinc-300"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                ><line x1="18" y1="6" x2="6" y2="18"></line><line
+                  x1="6"
+                  y1="6"
+                  x2="18"
+                  y2="18"></line></svg
+              >
             </div>
           </div>
 
           <!-- Breadcrumb + search -->
-          <div class="h-8 px-5 flex items-center font-mono text-[11px] text-zinc-500 border-b border-zinc-800/80 shrink-0">
+          <div
+            class="h-8 px-5 flex items-center font-mono text-[11px] text-zinc-500 border-b border-zinc-800/80 shrink-0"
+          >
             <span class="text-zinc-600">~ /</span>
             <span class="px-1">cascioli</span>
             <span class="text-zinc-700">›</span>
@@ -114,11 +311,30 @@ import Layout from '../layouts/Layout.astro';
             <span class="text-zinc-700">›</span>
             <span class="px-1 text-zinc-300" id="crumbFolder">all</span>
             <span class="ml-3 text-zinc-700">·</span>
-            <span class="ml-3"><span id="visibleCount">14</span> / 14 items</span>
+            <span class="ml-3"
+              ><span id="visibleCount">14</span> / 14 items</span
+            >
             <span class="ml-auto flex items-center gap-3">
               <span class="flex items-center gap-1.5">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input id="searchInput" type="text" placeholder="search projects…" class="bg-transparent outline-none placeholder:text-zinc-700 text-zinc-300 w-44"/>
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  ><circle cx="11" cy="11" r="8"></circle><line
+                    x1="21"
+                    y1="21"
+                    x2="16.65"
+                    y2="16.65"></line></svg
+                >
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="search projects…"
+                  class="bg-transparent outline-none placeholder:text-zinc-700 text-zinc-300 w-44"
+                />
               </span>
               <span class="text-zinc-700">|</span>
               <span>UTF-8</span>
@@ -130,27 +346,60 @@ import Layout from '../layouts/Layout.astro';
           <!-- Table -->
           <div class="flex-1 min-h-0 overflow-y-auto">
             <table class="w-full text-left font-mono text-[13px]">
-              <thead class="sticky top-0 z-10 bg-zinc-950 border-b border-zinc-800">
+              <thead
+                class="sticky top-0 z-10 bg-zinc-950 border-b border-zinc-800"
+              >
                 <tr class="text-zinc-500">
-                  <th class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 pl-5 pr-2 w-[36%]">name</th>
-                  <th class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[34%]">stack</th>
-                  <th class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[8%]">year</th>
-                  <th class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[14%]">status</th>
-                  <th class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[8%] text-right pr-5">↗</th>
+                  <th
+                    class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 pl-5 pr-2 w-[36%]"
+                    >name</th
+                  >
+                  <th
+                    class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[34%]"
+                    >stack</th
+                  >
+                  <th
+                    class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[8%]"
+                    >year</th
+                  >
+                  <th
+                    class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[14%]"
+                    >status</th
+                  >
+                  <th
+                    class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[8%] text-right pr-5"
+                    >↗</th
+                  >
                 </tr>
               </thead>
               <tbody id="projectsBody"></tbody>
             </table>
-            <div id="empty" class="hidden p-10 text-center text-zinc-600 font-mono text-sm">
-              <span class="text-emerald-500">$</span> no projects match the current filters.
+            <div
+              id="empty"
+              class="hidden p-10 text-center text-zinc-600 font-mono text-sm"
+            >
+              <span class="text-emerald-500">$</span> no projects match the current
+              filters.
             </div>
           </div>
 
           <!-- Status bar -->
-          <div class="h-7 shrink-0 bg-emerald-600/95 text-zinc-950 font-mono text-[11px] flex items-center justify-between px-4">
+          <div
+            class="h-7 shrink-0 bg-emerald-600/95 text-zinc-950 font-mono text-[11px] flex items-center justify-between px-4"
+          >
             <div class="flex items-center gap-4">
               <span class="flex items-center gap-1.5">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9v6a3 3 0 01-3 3H9"/></svg>
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  ><path d="M6 3v12"></path><circle cx="18" cy="6" r="3"
+                  ></circle><circle cx="6" cy="18" r="3"></circle><path
+                    d="M18 9v6a3 3 0 01-3 3H9"></path></svg
+                >
                 main
               </span>
               <span>↑ 0 ↓ 0</span>
@@ -167,20 +416,52 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <!-- PREVIEW PANEL -->
-          <aside id="preview" class="preview-panel is-closed absolute top-0 right-0 h-full w-full md:w-[52%] lg:w-[44%] xl:w-[40%] border-l border-zinc-800 bg-[#0a0a0b] z-20 flex flex-col">
-            <div class="h-9 border-b border-zinc-800 flex items-center px-4 shrink-0">
-              <div class="flex items-center gap-2 font-mono text-[11px] text-zinc-500">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <aside
+            id="preview"
+            class="preview-panel is-closed absolute top-0 right-0 h-full w-full md:w-[52%] lg:w-[44%] xl:w-[40%] border-l border-zinc-800 bg-[#0a0a0b] z-20 flex flex-col"
+          >
+            <div
+              class="h-9 border-b border-zinc-800 flex items-center px-4 shrink-0"
+            >
+              <div
+                class="flex items-center gap-2 font-mono text-[11px] text-zinc-500"
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  ><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                  ></path><circle cx="12" cy="12" r="3"></circle></svg
+                >
                 <span>Preview —</span>
                 <span class="text-zinc-300" id="previewName">helio.ts</span>
               </div>
-              <button id="closePreview" class="ml-auto h-6 w-6 grid place-items-center text-zinc-500 hover:text-zinc-200" title="Close (Esc)">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <button
+                id="closePreview"
+                class="ml-auto h-6 w-6 grid place-items-center text-zinc-500 hover:text-zinc-200"
+                title="Close (Esc)"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  ><line x1="18" y1="6" x2="6" y2="18"></line><line
+                    x1="6"
+                    y1="6"
+                    x2="18"
+                    y2="18"></line></svg
+                >
               </button>
             </div>
-            <div id="previewBody" class="flex-1 min-h-0 overflow-y-auto p-6"></div>
+            <div id="previewBody" class="flex-1 min-h-0 overflow-y-auto p-6">
+            </div>
           </aside>
-
         </section>
       </div>
     </div>
@@ -190,233 +471,538 @@ import Layout from '../layouts/Layout.astro';
 <style is:global>
   .bg-radial-work {
     background:
-      radial-gradient(ellipse 60% 60% at 80% 0%, rgba(16,185,129,0.08), transparent 60%),
-      radial-gradient(ellipse 50% 40% at 0% 100%, rgba(16,185,129,0.05), transparent 60%);
+      radial-gradient(
+        ellipse 60% 60% at 80% 0%,
+        rgba(16, 185, 129, 0.08),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 0% 100%,
+        rgba(16, 185, 129, 0.05),
+        transparent 60%
+      );
   }
 
   tr.proj-row {
-    transition: background-color 180ms ease, box-shadow 220ms ease, color 180ms ease;
+    transition:
+      background-color 180ms ease,
+      box-shadow 220ms ease,
+      color 180ms ease;
     position: relative;
   }
   tr.proj-row:hover {
-    background-color: rgba(16,185,129,0.045);
-    box-shadow: inset 0 1px 0 0 rgba(16,185,129,0.35), inset 0 -1px 0 0 rgba(16,185,129,0.35), 0 0 24px rgba(16,185,129,0.10);
+    background-color: rgba(16, 185, 129, 0.045);
+    box-shadow:
+      inset 0 1px 0 0 rgba(16, 185, 129, 0.35),
+      inset 0 -1px 0 0 rgba(16, 185, 129, 0.35),
+      0 0 24px rgba(16, 185, 129, 0.1);
   }
-  tr.proj-row:hover .proj-name { color: #ffffff; }
-  tr.proj-row:hover .proj-arrow { color: #10b981; transform: translate(2px, -2px); }
+  tr.proj-row:hover .proj-name {
+    color: #ffffff;
+  }
+  tr.proj-row:hover .proj-arrow {
+    color: #10b981;
+    transform: translate(2px, -2px);
+  }
   tr.proj-row.is-active {
-    background-color: rgba(16,185,129,0.08);
-    box-shadow: inset 0 1px 0 0 rgba(16,185,129,0.55), inset 0 -1px 0 0 rgba(16,185,129,0.55);
+    background-color: rgba(16, 185, 129, 0.08);
+    box-shadow:
+      inset 0 1px 0 0 rgba(16, 185, 129, 0.55),
+      inset 0 -1px 0 0 rgba(16, 185, 129, 0.55);
   }
-  tr.proj-row.is-active .proj-name { color: #ffffff; }
-  tr.proj-row.is-active td:first-child { box-shadow: inset 3px 0 0 0 #10b981; }
+  tr.proj-row.is-active .proj-name {
+    color: #ffffff;
+  }
+  tr.proj-row.is-active td:first-child {
+    box-shadow: inset 3px 0 0 0 #10b981;
+  }
 
-  .folder-row { transition: background-color 140ms ease, color 140ms ease; }
-  .folder-row:hover { background-color: rgba(255,255,255,0.04); color: #fafafa; }
+  .folder-row {
+    transition:
+      background-color 140ms ease,
+      color 140ms ease;
+  }
+  .folder-row:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #fafafa;
+  }
   .folder-row.is-active {
-    background-color: rgba(16,185,129,0.08);
+    background-color: rgba(16, 185, 129, 0.08);
     color: #fafafa;
     box-shadow: inset 2px 0 0 0 #10b981;
   }
 
-  .chev { transition: transform 160ms ease; }
+  .chev {
+    transition: transform 160ms ease;
+  }
 
   .pill {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 2px 8px; border-radius: 999px;
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-size: 11px; line-height: 1.4;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 11px;
+    line-height: 1.4;
     border: 1px solid;
   }
-  .pill .d { width: 6px; height: 6px; border-radius: 999px; }
-  .pill-prod { color: #34d399; border-color: rgba(16,185,129,0.35); background: rgba(16,185,129,0.08); }
-  .pill-prod .d { background: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.6); }
-  .pill-wip  { color: #fbbf24; border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.07); }
-  .pill-wip  .d { background: #f59e0b; }
-  .pill-arch { color: #a1a1aa; border-color: rgba(82,82,91,0.6); background: rgba(39,39,42,0.6); }
-  .pill-arch .d { background: #71717a; }
-  .pill-beta { color: #93c5fd; border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.07); }
-  .pill-beta .d { background: #60a5fa; }
+  .pill .d {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+  }
+  .pill-prod {
+    color: #34d399;
+    border-color: rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.08);
+  }
+  .pill-prod .d {
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  }
+  .pill-wip {
+    color: #fbbf24;
+    border-color: rgba(245, 158, 11, 0.35);
+    background: rgba(245, 158, 11, 0.07);
+  }
+  .pill-wip .d {
+    background: #f59e0b;
+  }
+  .pill-arch {
+    color: #a1a1aa;
+    border-color: rgba(82, 82, 91, 0.6);
+    background: rgba(39, 39, 42, 0.6);
+  }
+  .pill-arch .d {
+    background: #71717a;
+  }
+  .pill-beta {
+    color: #93c5fd;
+    border-color: rgba(59, 130, 246, 0.35);
+    background: rgba(59, 130, 246, 0.07);
+  }
+  .pill-beta .d {
+    background: #60a5fa;
+  }
 
-  .preview-panel { transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease; }
-  .preview-panel.is-closed { transform: translateX(100%); opacity: 0; pointer-events: none; }
+  .preview-panel {
+    transition:
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 200ms ease;
+  }
+  .preview-panel.is-closed {
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
 
   .stack-tag {
-    display: inline-flex; align-items: center;
-    padding: 1px 6px; border-radius: 4px;
-    font-family: 'Geist Mono', monospace; font-size: 10.5px;
-    color: #a1a1aa; background: rgba(39,39,42,0.7); border: 1px solid #27272a;
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: "Geist Mono", monospace;
+    font-size: 10.5px;
+    color: #a1a1aa;
+    background: rgba(39, 39, 42, 0.7);
+    border: 1px solid #27272a;
     line-height: 1.5;
   }
-  tr.proj-row:hover .stack-tag { color: #d4d4d8; border-color: #3f3f46; }
+  tr.proj-row:hover .stack-tag {
+    color: #d4d4d8;
+    border-color: #3f3f46;
+  }
 
   .check {
-    appearance: none; -webkit-appearance: none;
-    width: 14px; height: 14px; border-radius: 3px;
-    border: 1px solid #3f3f46; background: #18181b;
-    display: inline-grid; place-content: center;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid #3f3f46;
+    background: #18181b;
+    display: inline-grid;
+    place-content: center;
     cursor: pointer;
-    transition: border-color 140ms ease, background 140ms ease;
+    transition:
+      border-color 140ms ease,
+      background 140ms ease;
   }
-  .check:hover { border-color: #52525b; }
-  .check:checked { background: #10b981; border-color: #10b981; }
+  .check:hover {
+    border-color: #52525b;
+  }
+  .check:checked {
+    background: #10b981;
+    border-color: #10b981;
+  }
   .check:checked::after {
-    content: ""; width: 8px; height: 5px;
-    border-left: 2px solid #052e1f; border-bottom: 2px solid #052e1f;
+    content: "";
+    width: 8px;
+    height: 5px;
+    border-left: 2px solid #052e1f;
+    border-bottom: 2px solid #052e1f;
     transform: rotate(-45deg) translate(0px, -1px);
   }
 
   .tab {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 0 14px; height: 36px;
-    font-family: 'Geist Mono', monospace; font-size: 12px;
-    color: #71717a; border-right: 1px solid #27272a;
-    background: #0a0a0b; cursor: pointer;
-    transition: color 140ms ease, background 140ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+    height: 36px;
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    color: #71717a;
+    border-right: 1px solid #27272a;
+    background: #0a0a0b;
+    cursor: pointer;
+    transition:
+      color 140ms ease,
+      background 140ms ease;
     position: relative;
   }
-  .tab:hover { color: #d4d4d8; }
-  .tab.is-active { color: #fafafa; background: #09090b; }
+  .tab:hover {
+    color: #d4d4d8;
+  }
+  .tab.is-active {
+    color: #fafafa;
+    background: #09090b;
+  }
   .tab.is-active::after {
     content: "";
-    position: absolute; left: 0; right: 0; top: 0; height: 1px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
     background: #10b981;
   }
   .tab.is-active::before {
     content: "";
-    position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
     background: #09090b;
   }
 </style>
 
 <script>
-const PROJECTS: any[] = [
-  { id: 'helio',      name: 'helio.ts',      folder: 'web-apps',    title: 'Helio — bookings & calendar for studios',         desc: 'SaaS multi-tenant per la gestione di prenotazioni e disponibilità. Architettura modulare, sync calendari esterni, billing.',                          stack: ['Next.js','TypeScript','Postgres','Tailwind'], year: 2026, status: 'production', featured: true,  links: { github: 'github.com/cascioli/helio',     demo: 'helio.app' } },
-  { id: 'nordbrew',   name: 'nordbrew.tsx',   folder: 'web-apps',    title: 'Nordbrew — e-commerce per micro-birrificio',       desc: 'Redesign completo del sito vendite, da Shopify a uno stack headless custom. +38% conversion, -42% LCP.',                                            stack: ['Astro','Tailwind','Node'],                     year: 2025, status: 'production', featured: false, links: { github: 'github.com/cascioli/nordbrew',  demo: 'nordbrew.it' } },
-  { id: 'pilot',      name: 'pilot.tsx',      folder: 'web-apps',    title: 'Pilot — dashboard di osservabilità',               desc: 'Pannello interno per monitoring di servizi e job. Metriche real-time, alert e replay degli eventi.',                                               stack: ['React','TypeScript','Node'],                   year: 2024, status: 'production', featured: false, links: { github: null,                            demo: null } },
-  { id: 'orbit',      name: 'orbit.tsx',      folder: 'web-apps',    title: 'Orbit — CRM minimale per studi creativi',          desc: 'Gestione clienti, pipeline e fatturazione. Costruito su tRPC con un editor di documenti collaborativo.',                                           stack: ['Next.js','TypeScript','Postgres'],             year: 2025, status: 'wip',        featured: false, links: { github: 'github.com/cascioli/orbit',     demo: null } },
-  { id: 'lumen',      name: 'lumen.tsx',      folder: 'web-apps',    title: 'Lumen — knowledge base per team distribuiti',      desc: 'Wiki interna con full-text search, suggerimenti AI e permessi granulari per spazi di lavoro.',                                                    stack: ['React','Node','Postgres'],                     year: 2023, status: 'archived',   featured: false, links: { github: null,                            demo: null } },
-  { id: 'gridkit',    name: 'gridkit.ts',     folder: 'open-source', title: 'gridkit — CSS subgrid layout primitives',          desc: 'Piccola libreria headless per costruire layout editoriali. 1.2k stars, zero dipendenze.',                                                         stack: ['TypeScript','Tailwind'],                       year: 2025, status: 'production', featured: false, links: { github: 'github.com/cascioli/gridkit',   demo: 'gridkit.dev' } },
-  { id: 'kbd',        name: 'kbd.rs',         folder: 'open-source', title: 'kbd — keyboard shortcut engine',                   desc: 'Motore di scorciatoie per webapp scritte in Rust + WASM. Resolver di sequenze, supporto chord.',                                                    stack: ['Rust','TypeScript'],                           year: 2024, status: 'beta',       featured: false, links: { github: 'github.com/cascioli/kbd',       demo: null } },
-  { id: 'inkpad',     name: 'inkpad.tsx',     folder: 'open-source', title: 'inkpad — markdown editor headless',                desc: 'Editor markdown estendibile, plugin system, focus su accessibilità e performance.',                                                              stack: ['React','TypeScript'],                          year: 2024, status: 'production', featured: false, links: { github: 'github.com/cascioli/inkpad',   demo: null } },
-  { id: 'cassetto',   name: 'cassetto.ts',    folder: 'experiments', title: 'Cassetto — note app, local-first',                 desc: 'Editor markdown minimal, CRDT sync e crittografia end-to-end. Costruito in due weekend.',                                                         stack: ['Rust','TypeScript'],                           year: 2024, status: 'wip',        featured: false, links: { github: 'github.com/cascioli/cassetto', demo: null } },
-  { id: 'choros',     name: 'choros.tsx',     folder: 'experiments', title: 'Choros — generative music interface',              desc: 'UI sperimentale per comporre loop sequenze via gesti su trackpad. Web Audio + Tone.js.',                                                          stack: ['React','TypeScript'],                          year: 2025, status: 'wip',        featured: false, links: { github: 'github.com/cascioli/choros',   demo: 'choros.lab' } },
-  { id: 'photon',     name: 'photon.tsx',     folder: 'experiments', title: 'Photon — playground motion design',                desc: 'Mini-engine per timeline animations, scrubber, esportazione frame-by-frame.',                                                                      stack: ['React','TypeScript'],                          year: 2024, status: 'beta',       featured: false, links: { github: 'github.com/cascioli/photon',   demo: null } },
-  { id: 'fragmenta',  name: 'fragmenta.ts',   folder: 'experiments', title: 'Fragmenta — micro-CMS file-based',                 desc: 'CMS senza database: contenuti in file system, hot-reload, rendering edge.',                                                                        stack: ['Node','TypeScript'],                           year: 2023, status: 'archived',   featured: false, links: { github: 'github.com/cascioli/fragmenta',demo: null } },
-  { id: 'velvet',     name: 'velvet.tsx',     folder: 'archive',     title: 'Velvet — portfolio template',                      desc: 'Tema portfolio per designer, leggero e print-ready. Pensionato a favore di gridkit.',                                                              stack: ['Astro','Tailwind'],                            year: 2022, status: 'archived',   featured: false, links: { github: null,                            demo: null } },
-  { id: 'mosaic',     name: 'mosaic.tsx',     folder: 'archive',     title: 'Mosaic — photo gallery builder',                   desc: 'Builder per gallerie fotografiche, masonry layout, ottimizzazione immagini server-side.',                                                          stack: ['Node','TypeScript'],                           year: 2021, status: 'archived',   featured: false, links: { github: null,                            demo: null } },
-];
+  const PROJECTS: any[] = [
+    {
+      id: "helio",
+      name: "helio.ts",
+      folder: "web-apps",
+      title: "Helio — bookings & calendar for studios",
+      desc: "SaaS multi-tenant per la gestione di prenotazioni e disponibilità. Architettura modulare, sync calendari esterni, billing.",
+      stack: ["Next.js", "TypeScript", "Postgres", "Tailwind"],
+      year: 2026,
+      status: "production",
+      featured: true,
+      links: { github: "github.com/cascioli/helio", demo: "helio.app" },
+    },
+    {
+      id: "nordbrew",
+      name: "nordbrew.tsx",
+      folder: "web-apps",
+      title: "Nordbrew — e-commerce per micro-birrificio",
+      desc: "Redesign completo del sito vendite, da Shopify a uno stack headless custom. +38% conversion, -42% LCP.",
+      stack: ["Astro", "Tailwind", "Node"],
+      year: 2025,
+      status: "production",
+      featured: false,
+      links: { github: "github.com/cascioli/nordbrew", demo: "nordbrew.it" },
+    },
+    {
+      id: "pilot",
+      name: "pilot.tsx",
+      folder: "web-apps",
+      title: "Pilot — dashboard di osservabilità",
+      desc: "Pannello interno per monitoring di servizi e job. Metriche real-time, alert e replay degli eventi.",
+      stack: ["React", "TypeScript", "Node"],
+      year: 2024,
+      status: "production",
+      featured: false,
+      links: { github: null, demo: null },
+    },
+    {
+      id: "orbit",
+      name: "orbit.tsx",
+      folder: "web-apps",
+      title: "Orbit — CRM minimale per studi creativi",
+      desc: "Gestione clienti, pipeline e fatturazione. Costruito su tRPC con un editor di documenti collaborativo.",
+      stack: ["Next.js", "TypeScript", "Postgres"],
+      year: 2025,
+      status: "wip",
+      featured: false,
+      links: { github: "github.com/cascioli/orbit", demo: null },
+    },
+    {
+      id: "lumen",
+      name: "lumen.tsx",
+      folder: "web-apps",
+      title: "Lumen — knowledge base per team distribuiti",
+      desc: "Wiki interna con full-text search, suggerimenti AI e permessi granulari per spazi di lavoro.",
+      stack: ["React", "Node", "Postgres"],
+      year: 2023,
+      status: "archived",
+      featured: false,
+      links: { github: null, demo: null },
+    },
+    {
+      id: "gridkit",
+      name: "gridkit.ts",
+      folder: "open-source",
+      title: "gridkit — CSS subgrid layout primitives",
+      desc: "Piccola libreria headless per costruire layout editoriali. 1.2k stars, zero dipendenze.",
+      stack: ["TypeScript", "Tailwind"],
+      year: 2025,
+      status: "production",
+      featured: false,
+      links: { github: "github.com/cascioli/gridkit", demo: "gridkit.dev" },
+    },
+    {
+      id: "kbd",
+      name: "kbd.rs",
+      folder: "open-source",
+      title: "kbd — keyboard shortcut engine",
+      desc: "Motore di scorciatoie per webapp scritte in Rust + WASM. Resolver di sequenze, supporto chord.",
+      stack: ["Rust", "TypeScript"],
+      year: 2024,
+      status: "beta",
+      featured: false,
+      links: { github: "github.com/cascioli/kbd", demo: null },
+    },
+    {
+      id: "inkpad",
+      name: "inkpad.tsx",
+      folder: "open-source",
+      title: "inkpad — markdown editor headless",
+      desc: "Editor markdown estendibile, plugin system, focus su accessibilità e performance.",
+      stack: ["React", "TypeScript"],
+      year: 2024,
+      status: "production",
+      featured: false,
+      links: { github: "github.com/cascioli/inkpad", demo: null },
+    },
+    {
+      id: "cassetto",
+      name: "cassetto.ts",
+      folder: "experiments",
+      title: "Cassetto — note app, local-first",
+      desc: "Editor markdown minimal, CRDT sync e crittografia end-to-end. Costruito in due weekend.",
+      stack: ["Rust", "TypeScript"],
+      year: 2024,
+      status: "wip",
+      featured: false,
+      links: { github: "github.com/cascioli/cassetto", demo: null },
+    },
+    {
+      id: "choros",
+      name: "choros.tsx",
+      folder: "experiments",
+      title: "Choros — generative music interface",
+      desc: "UI sperimentale per comporre loop sequenze via gesti su trackpad. Web Audio + Tone.js.",
+      stack: ["React", "TypeScript"],
+      year: 2025,
+      status: "wip",
+      featured: false,
+      links: { github: "github.com/cascioli/choros", demo: "choros.lab" },
+    },
+    {
+      id: "photon",
+      name: "photon.tsx",
+      folder: "experiments",
+      title: "Photon — playground motion design",
+      desc: "Mini-engine per timeline animations, scrubber, esportazione frame-by-frame.",
+      stack: ["React", "TypeScript"],
+      year: 2024,
+      status: "beta",
+      featured: false,
+      links: { github: "github.com/cascioli/photon", demo: null },
+    },
+    {
+      id: "fragmenta",
+      name: "fragmenta.ts",
+      folder: "experiments",
+      title: "Fragmenta — micro-CMS file-based",
+      desc: "CMS senza database: contenuti in file system, hot-reload, rendering edge.",
+      stack: ["Node", "TypeScript"],
+      year: 2023,
+      status: "archived",
+      featured: false,
+      links: { github: "github.com/cascioli/fragmenta", demo: null },
+    },
+    {
+      id: "velvet",
+      name: "velvet.tsx",
+      folder: "archive",
+      title: "Velvet — portfolio template",
+      desc: "Tema portfolio per designer, leggero e print-ready. Pensionato a favore di gridkit.",
+      stack: ["Astro", "Tailwind"],
+      year: 2022,
+      status: "archived",
+      featured: false,
+      links: { github: null, demo: null },
+    },
+    {
+      id: "mosaic",
+      name: "mosaic.tsx",
+      folder: "archive",
+      title: "Mosaic — photo gallery builder",
+      desc: "Builder per gallerie fotografiche, masonry layout, ottimizzazione immagini server-side.",
+      stack: ["Node", "TypeScript"],
+      year: 2021,
+      status: "archived",
+      featured: false,
+      links: { github: null, demo: null },
+    },
+  ];
 
-const STATUS_PILL: Record<string, { cls: string; label: string }> = {
-  production: { cls: 'pill-prod', label: 'production' },
-  wip:        { cls: 'pill-wip',  label: 'wip'        },
-  archived:   { cls: 'pill-arch', label: 'archived'   },
-  beta:       { cls: 'pill-beta', label: 'beta'       },
-};
+  const STATUS_PILL: Record<string, { cls: string; label: string }> = {
+    production: { cls: "pill-prod", label: "production" },
+    wip: { cls: "pill-wip", label: "wip" },
+    archived: { cls: "pill-arch", label: "archived" },
+    beta: { cls: "pill-beta", label: "beta" },
+  };
 
-function fileIcon(status: string) {
-  const color = status === 'production' ? '#34d399' : status === 'wip' ? '#f59e0b' : status === 'beta' ? '#60a5fa' : '#71717a';
-  return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
-}
+  function fileIcon(status: string) {
+    const color =
+      status === "production"
+        ? "#34d399"
+        : status === "wip"
+          ? "#f59e0b"
+          : status === "beta"
+            ? "#60a5fa"
+            : "#71717a";
+    return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+  }
 
-let _wc: AbortController | null = null;
+  let _wc: AbortController | null = null;
 
-document.addEventListener('astro:page-load', () => {
-  _wc?.abort();
-  _wc = new AbortController();
-  const { signal } = _wc;
+  document.addEventListener("astro:page-load", () => {
+    _wc?.abort();
+    _wc = new AbortController();
+    const { signal } = _wc;
 
-const state: { folder: string; tech: Set<string>; search: string; activeId: string | null } = { folder: 'all', tech: new Set(), search: '', activeId: null };
+    const state: {
+      folder: string;
+      tech: Set<string>;
+      search: string;
+      activeId: string | null;
+    } = { folder: "all", tech: new Set(), search: "", activeId: null };
 
-const tbody          = document.getElementById('projectsBody');
-const visibleCountEl = document.getElementById('visibleCount');
-const crumbFolderEl  = document.getElementById('crumbFolder');
-const emptyEl        = document.getElementById('empty');
-const statusFolderEl = document.getElementById('statusFolder');
-const statusTechEl   = document.getElementById('statusTech');
+    const tbody = document.getElementById("projectsBody");
+    const visibleCountEl = document.getElementById("visibleCount");
+    const crumbFolderEl = document.getElementById("crumbFolder");
+    const emptyEl = document.getElementById("empty");
+    const statusFolderEl = document.getElementById("statusFolder");
+    const statusTechEl = document.getElementById("statusTech");
 
-function applyFilters() {
-  const q = state.search.trim().toLowerCase();
-  return PROJECTS.filter(p => {
-    if (state.folder !== 'all' && p.folder !== state.folder) return false;
-    if (state.tech.size > 0 && !p.stack.some(s => state.tech.has(s))) return false;
-    if (q && !(p.name.toLowerCase().includes(q) || p.title.toLowerCase().includes(q) || p.stack.join(' ').toLowerCase().includes(q))) return false;
-    return true;
-  });
-}
+    function applyFilters() {
+      const q = state.search.trim().toLowerCase();
+      return PROJECTS.filter((p) => {
+        if (state.folder !== "all" && p.folder !== state.folder) return false;
+        if (state.tech.size > 0 && !p.stack.some((s) => state.tech.has(s)))
+          return false;
+        if (
+          q &&
+          !(
+            p.name.toLowerCase().includes(q) ||
+            p.title.toLowerCase().includes(q) ||
+            p.stack.join(" ").toLowerCase().includes(q)
+          )
+        )
+          return false;
+        return true;
+      });
+    }
 
-function render() {
-  const visible = applyFilters();
-  visibleCountEl.textContent = visible.length;
-  crumbFolderEl.textContent = state.folder;
-  statusFolderEl.textContent = `filter: ${state.folder}`;
-  statusTechEl.textContent = state.tech.size ? `tech: ${[...state.tech].join(', ')}` : 'tech: any';
+    function render() {
+      const visible = applyFilters();
+      visibleCountEl.textContent = visible.length;
+      crumbFolderEl.textContent = state.folder;
+      statusFolderEl.textContent = `filter: ${state.folder}`;
+      statusTechEl.textContent = state.tech.size
+        ? `tech: ${[...state.tech].join(", ")}`
+        : "tech: any";
 
-  if (visible.length === 0) {
-    emptyEl.classList.remove('hidden');
-    tbody.innerHTML = '';
-  } else {
-    emptyEl.classList.add('hidden');
-    tbody.innerHTML = visible.map(p => {
-      const pill = STATUS_PILL[p.status];
-      const active = state.activeId === p.id ? 'is-active' : '';
-      return `
+      if (visible.length === 0) {
+        emptyEl.classList.remove("hidden");
+        tbody.innerHTML = "";
+      } else {
+        emptyEl.classList.add("hidden");
+        tbody.innerHTML = visible
+          .map((p) => {
+            const pill = STATUS_PILL[p.status];
+            const active = state.activeId === p.id ? "is-active" : "";
+            return `
       <tr class="proj-row ${active} cursor-pointer border-b border-zinc-800/60" data-id="${p.id}">
         <td class="py-3 pl-5 pr-2">
           <div class="flex items-center gap-2.5">
             ${fileIcon(p.status)}
             <span class="proj-name text-zinc-200 transition-colors">${p.name}</span>
-            ${p.featured ? '<span class="ml-1 px-1.5 py-0.5 rounded text-[9.5px] uppercase tracking-wider text-emerald-400 border border-emerald-500/30 bg-emerald-500/5">featured</span>' : ''}
+            ${p.featured ? '<span class="ml-1 px-1.5 py-0.5 rounded text-[9.5px] uppercase tracking-wider text-emerald-400 border border-emerald-500/30 bg-emerald-500/5">featured</span>' : ""}
           </div>
           <div class="mt-1 ml-[26px] text-[11.5px] text-zinc-500 truncate max-w-[420px]">${p.title}</div>
         </td>
-        <td class="py-3 px-2"><div class="flex flex-wrap gap-1">${p.stack.map(s => `<span class="stack-tag">${s}</span>`).join('')}</div></td>
+        <td class="py-3 px-2"><div class="flex flex-wrap gap-1">${p.stack.map((s) => `<span class="stack-tag">${s}</span>`).join("")}</div></td>
         <td class="py-3 px-2 text-zinc-400">${p.year}</td>
         <td class="py-3 px-2"><span class="pill ${pill.cls}"><span class="d"></span>${pill.label}</span></td>
         <td class="py-3 px-2 pr-5 text-right">
           <svg class="proj-arrow inline-block text-zinc-600 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
         </td>
       </tr>`;
-    }).join('');
-  }
-}
+          })
+          .join("");
+      }
+    }
 
-document.querySelectorAll('.folder-row').forEach(btn => {
-  btn.addEventListener('click', () => {
-    state.folder = btn.dataset.filter;
-    document.querySelectorAll('.folder-row').forEach(b => b.classList.toggle('is-active', b === btn));
-    render();
-  });
-});
+    document.querySelectorAll(".folder-row").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.folder = btn.dataset.filter;
+        document
+          .querySelectorAll(".folder-row")
+          .forEach((b) => b.classList.toggle("is-active", b === btn));
+        render();
+      });
+    });
 
-document.querySelectorAll('#techFilter input[type="checkbox"]').forEach(cb => {
-  cb.addEventListener('change', () => {
-    if (cb.checked) state.tech.add(cb.value); else state.tech.delete(cb.value);
-    render();
-  });
-});
-document.getElementById('clearTech').addEventListener('click', () => {
-  state.tech.clear();
-  document.querySelectorAll('#techFilter input[type="checkbox"]').forEach(cb => cb.checked = false);
-  render();
-});
+    document
+      .querySelectorAll('#techFilter input[type="checkbox"]')
+      .forEach((cb) => {
+        cb.addEventListener("change", () => {
+          if (cb.checked) state.tech.add(cb.value);
+          else state.tech.delete(cb.value);
+          render();
+        });
+      });
+    document.getElementById("clearTech").addEventListener("click", () => {
+      state.tech.clear();
+      document
+        .querySelectorAll('#techFilter input[type="checkbox"]')
+        .forEach((cb) => (cb.checked = false));
+      render();
+    });
 
-document.getElementById('searchInput').addEventListener('input', (e) => {
-  state.search = e.target.value;
-  render();
-});
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      state.search = e.target.value;
+      render();
+    });
 
-const previewEl     = document.getElementById('preview');
-const previewBodyEl = document.getElementById('previewBody');
-const previewNameEl = document.getElementById('previewName');
+    const previewEl = document.getElementById("preview");
+    const previewBodyEl = document.getElementById("previewBody");
+    const previewNameEl = document.getElementById("previewName");
 
-function openPreview(id) {
-  const p = PROJECTS.find(x => x.id === id);
-  if (!p) return;
-  state.activeId = id;
-  previewNameEl.textContent = p.name;
-  const pill = STATUS_PILL[p.status];
-  previewBodyEl.innerHTML = `
+    function openPreview(id) {
+      const p = PROJECTS.find((x) => x.id === id);
+      if (!p) return;
+      state.activeId = id;
+      previewNameEl.textContent = p.name;
+      const pill = STATUS_PILL[p.status];
+      previewBodyEl.innerHTML = `
     <div class="font-mono text-[11px] text-zinc-500 mb-3">
       <span class="text-zinc-600">~/</span>cascioli/projects/<span class="text-emerald-400">${p.folder}</span>/<span class="text-zinc-200">${p.name}</span>
     </div>
@@ -433,57 +1019,73 @@ function openPreview(id) {
       </div>
       <div class="bg-[#0a0a0b] p-3 col-span-2">
         <div class="font-mono text-[10px] uppercase tracking-wider text-zinc-500 mb-1.5">Stack</div>
-        <div class="flex flex-wrap gap-1">${p.stack.map(s => `<span class="stack-tag">${s}</span>`).join('')}</div>
+        <div class="flex flex-wrap gap-1">${p.stack.map((s) => `<span class="stack-tag">${s}</span>`).join("")}</div>
       </div>
     </div>
     <div class="mt-6 space-y-2">
-      ${p.links.github ? `
+      ${
+        p.links.github
+          ? `
         <a href="#" class="group flex items-center justify-between gap-3 h-11 px-4 rounded-md border border-zinc-800 hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-colors">
           <span class="flex items-center gap-2.5 font-mono text-[12.5px] text-zinc-300 group-hover:text-zinc-50">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
             ${p.links.github}
           </span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-zinc-500 group-hover:text-emerald-400"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-        </a>` : ''}
-      ${p.links.demo ? `
+        </a>`
+          : ""
+      }
+      ${
+        p.links.demo
+          ? `
         <a href="#" class="group flex items-center justify-between gap-3 h-11 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 text-zinc-950 transition-colors border border-emerald-500/80">
           <span class="flex items-center gap-2.5 font-mono text-[12.5px] font-medium">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
             ${p.links.demo}
           </span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-        </a>` : `
+        </a>`
+          : `
         <div class="flex items-center gap-2 h-11 px-4 rounded-md border border-dashed border-zinc-800 font-mono text-[12px] text-zinc-600">
           <span class="text-zinc-700">$</span> demo unavailable — not deployed
-        </div>`}
+        </div>`
+      }
     </div>`;
-  previewEl.classList.remove('is-closed');
-  render();
-}
+      previewEl.classList.remove("is-closed");
+      render();
+    }
 
-function closePreview() {
-  previewEl.classList.add('is-closed');
-  state.activeId = null;
-  render();
-}
+    function closePreview() {
+      previewEl.classList.add("is-closed");
+      state.activeId = null;
+      render();
+    }
 
-document.getElementById('closePreview').addEventListener('click', closePreview);
+    document
+      .getElementById("closePreview")
+      .addEventListener("click", closePreview);
 
-tbody.addEventListener('click', (e) => {
-  const row = e.target.closest('tr.proj-row');
-  if (row) openPreview(row.dataset.id);
-});
+    tbody.addEventListener("click", (e) => {
+      const row = e.target.closest("tr.proj-row");
+      if (row) openPreview(row.dataset.id);
+    });
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closePreview();
-}, { signal });
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key === "Escape") closePreview();
+      },
+      { signal },
+    );
 
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('is-active', t === tab));
-  });
-});
+    document.querySelectorAll(".tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document
+          .querySelectorAll(".tab")
+          .forEach((t) => t.classList.toggle("is-active", t === tab));
+      });
+    });
 
-  render();
-}); // astro:page-load
+    render();
+  }); // astro:page-load
 </script>
