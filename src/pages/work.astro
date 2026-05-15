@@ -41,14 +41,15 @@ const folderCounts: Record<string, number> = {
     <div class="absolute inset-0 bg-radial-work pointer-events-none"></div>
 
     <div
-      class="relative max-w-[1600px] mx-auto px-3 lg:px-6 py-4 lg:py-6 h-[calc(100vh-105px)] min-h-[760px]"
+      class="relative max-w-[1600px] mx-auto px-3 lg:px-6 py-4 lg:py-6 md:h-[calc(100vh-105px)] md:min-h-[760px]"
     >
       <div
-        class="h-full grid grid-cols-12 gap-0 border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950/85 backdrop-blur-sm shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
+        class="md:h-full grid grid-cols-12 gap-0 border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950/85 backdrop-blur-sm shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
       >
         <!-- SIDEBAR -->
         <aside
-          class="col-span-12 md:col-span-3 border-r border-zinc-800 flex flex-col min-h-0 bg-[#0a0a0b]"
+          id="sidebar"
+          class="col-span-12 md:col-span-3 border-b md:border-b-0 md:border-r border-zinc-800 flex-col min-h-0 bg-[#0a0a0b]"
         >
           <div
             class="h-10 px-4 flex items-center justify-between border-b border-zinc-800 shrink-0"
@@ -329,19 +330,31 @@ const folderCounts: Record<string, number> = {
 
           <!-- Breadcrumb + search -->
           <div
-            class="h-8 px-5 flex items-center font-mono text-[11px] text-zinc-500 border-b border-zinc-800/80 shrink-0"
+            class="h-8 px-3 sm:px-5 flex items-center font-mono text-[11px] text-zinc-500 border-b border-zinc-800/80 shrink-0"
           >
-            <span class="text-zinc-600">~ /</span>
-            <span class="px-1">cascioli</span>
-            <span class="text-zinc-700">›</span>
-            <span class="px-1">projects</span>
-            <span class="text-zinc-700">›</span>
-            <span class="px-1 text-zinc-300" id="crumbFolder">all</span>
-            <span class="ml-3 text-zinc-700">·</span>
-            <span class="ml-3"
-              ><span id="visibleCount">{folderCounts.all}</span> / {folderCounts.all} items</span
+            <button
+              id="explorerToggle"
+              class="md:hidden flex items-center gap-1.5 text-zinc-500 hover:text-zinc-300 transition-colors mr-3 shrink-0"
+              aria-label="Toggle Explorer"
+              aria-expanded="false"
+              aria-controls="sidebar"
             >
-            <span class="ml-auto flex items-center gap-3">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7l2-3h6l2 3h8v12a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"/>
+              </svg>
+              <span class="uppercase tracking-[0.16em] text-[10px]">Explorer</span>
+            </button>
+            <span class="hidden sm:inline text-zinc-600">~ /</span>
+            <span class="hidden sm:inline px-1">cascioli</span>
+            <span class="hidden sm:inline text-zinc-700">›</span>
+            <span class="hidden sm:inline px-1">projects</span>
+            <span class="hidden sm:inline text-zinc-700">›</span>
+            <span class="px-1 text-zinc-300" id="crumbFolder">all</span>
+            <span class="ml-2 text-zinc-700">·</span>
+            <span class="ml-2"
+              ><span id="visibleCount">{folderCounts.all}</span> / {folderCounts.all}</span
+            >
+            <span class="ml-auto flex items-center gap-2 sm:gap-3">
               <span class="flex items-center gap-1.5">
                 <svg
                   width="11"
@@ -359,14 +372,14 @@ const folderCounts: Record<string, number> = {
                 <input
                   id="searchInput"
                   type="text"
-                  placeholder="search projects…"
-                  class="bg-transparent outline-none placeholder:text-zinc-700 text-zinc-300 w-44"
+                  placeholder="search…"
+                  class="bg-transparent outline-none placeholder:text-zinc-700 text-zinc-300 w-20 sm:w-44"
                 />
               </span>
-              <span class="text-zinc-700">|</span>
-              <span>UTF-8</span>
-              <span class="text-zinc-700">|</span>
-              <span>LF</span>
+              <span class="hidden sm:inline text-zinc-700">|</span>
+              <span class="hidden sm:inline">UTF-8</span>
+              <span class="hidden sm:inline text-zinc-700">|</span>
+              <span class="hidden sm:inline">LF</span>
             </span>
           </div>
 
@@ -382,11 +395,11 @@ const folderCounts: Record<string, number> = {
                     >name</th
                   >
                   <th
-                    class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[34%]"
+                    class="hidden sm:table-cell font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[34%]"
                     >stack</th
                   >
                   <th
-                    class="font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[8%]"
+                    class="hidden sm:table-cell font-normal text-[10.5px] uppercase tracking-[0.16em] py-2.5 px-2 w-[8%]"
                     >year</th
                   >
                   <th
@@ -496,6 +509,14 @@ const folderCounts: Record<string, number> = {
 </Layout>
 
 <style is:global>
+  @media (max-width: 767px) {
+    #sidebar { display: none; }
+    #sidebar.is-open { display: flex; }
+  }
+  @media (min-width: 768px) {
+    #sidebar { display: flex; }
+  }
+
   .bg-radial-work {
     background:
       radial-gradient(
@@ -690,6 +711,13 @@ const folderCounts: Record<string, number> = {
     _wc = new AbortController();
     const { signal } = _wc;
 
+    const sidebar = document.getElementById("sidebar");
+    const explorerToggle = document.getElementById("explorerToggle");
+    explorerToggle?.addEventListener("click", () => {
+      const isOpen = sidebar?.classList.toggle("is-open");
+      explorerToggle.setAttribute("aria-expanded", String(!!isOpen));
+    }, { signal });
+
     const state: {
       folder: string;
       tech: Set<string>;
@@ -703,6 +731,7 @@ const folderCounts: Record<string, number> = {
     const emptyEl = document.getElementById("empty");
     const statusFolderEl = document.getElementById("statusFolder");
     const statusTechEl = document.getElementById("statusTech");
+    if (!tbody || !visibleCountEl || !crumbFolderEl || !emptyEl || !statusFolderEl || !statusTechEl) return;
 
     function applyFilters() {
       const q = state.search.trim().toLowerCase();
@@ -751,8 +780,8 @@ const folderCounts: Record<string, number> = {
           </div>
           <div class="mt-1 ml-[26px] text-[11.5px] text-zinc-500 truncate max-w-[420px]">${esc(p.title)}</div>
         </td>
-        <td class="py-3 px-2"><div class="flex flex-wrap gap-1">${p.stack.map((s) => `<span class="stack-tag">${esc(s)}</span>`).join("")}</div></td>
-        <td class="py-3 px-2 text-zinc-400">${p.year}</td>
+        <td class="hidden sm:table-cell py-3 px-2"><div class="flex flex-wrap gap-1">${p.stack.map((s) => `<span class="stack-tag">${esc(s)}</span>`).join("")}</div></td>
+        <td class="hidden sm:table-cell py-3 px-2 text-zinc-400">${p.year}</td>
         <td class="py-3 px-2"><span class="pill ${pill.cls}"><span class="d"></span>${esc(pill.label)}</span></td>
         <td class="py-3 px-2 pr-5 text-right">
           <svg class="proj-arrow inline-block text-zinc-600 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -770,7 +799,11 @@ const folderCounts: Record<string, number> = {
           .querySelectorAll(".folder-row")
           .forEach((b) => b.classList.toggle("is-active", b === btn));
         render();
-      });
+        if (window.innerWidth < 768) {
+          sidebar?.classList.remove("is-open");
+          explorerToggle?.setAttribute("aria-expanded", "false");
+        }
+      }, { signal });
     });
 
     document
@@ -780,20 +813,20 @@ const folderCounts: Record<string, number> = {
           if (cb.checked) state.tech.add(cb.value);
           else state.tech.delete(cb.value);
           render();
-        });
+        }, { signal });
       });
-    document.getElementById("clearTech").addEventListener("click", () => {
+    document.getElementById("clearTech")?.addEventListener("click", () => {
       state.tech.clear();
       document
         .querySelectorAll('#techFilter input[type="checkbox"]')
-        .forEach((cb) => (cb.checked = false));
+        .forEach((cb: HTMLInputElement) => (cb.checked = false));
       render();
-    });
+    }, { signal });
 
-    document.getElementById("searchInput").addEventListener("input", (e) => {
-      state.search = e.target.value;
+    document.getElementById("searchInput")?.addEventListener("input", (e) => {
+      state.search = (e.target as HTMLInputElement).value;
       render();
-    });
+    }, { signal });
 
     const previewEl = document.getElementById("preview");
     const previewBodyEl = document.getElementById("previewBody");
@@ -873,12 +906,12 @@ const folderCounts: Record<string, number> = {
 
     document
       .getElementById("closePreview")
-      .addEventListener("click", closePreview);
+      ?.addEventListener("click", closePreview, { signal });
 
     tbody.addEventListener("click", (e) => {
-      const row = e.target.closest("tr.proj-row");
-      if (row) openPreview(row.dataset.id);
-    });
+      const row = (e.target as Element).closest("tr.proj-row");
+      if (row) openPreview((row as HTMLElement).dataset.id);
+    }, { signal });
 
     document.addEventListener(
       "keydown",
@@ -893,7 +926,7 @@ const folderCounts: Record<string, number> = {
         document
           .querySelectorAll(".tab")
           .forEach((t) => t.classList.toggle("is-active", t === tab));
-      });
+      }, { signal });
     });
 
     render();
