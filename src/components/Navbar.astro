@@ -70,47 +70,152 @@ const navItems = [
         >
       </a>
       <button
-        class="md:hidden h-9 w-9 grid place-items-center rounded-md border border-zinc-800 text-zinc-300"
+        id="menuToggle"
+        class="md:hidden h-9 w-9 grid place-items-center rounded-md border border-zinc-800 text-zinc-300 hover:border-zinc-700 hover:text-zinc-100 transition-colors"
         aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
       >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><line x1="3" y1="6" x2="21" y2="6"></line><line
-            x1="3"
-            y1="12"
-            x2="21"
-            y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg
-        >
+        <svg id="menuIconOpen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg id="menuIconClose" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
       </button>
     </div>
   </nav>
+
+  <!-- Mobile dropdown -->
+  <div
+    id="mobile-menu"
+    class="menu-closed md:hidden border-t border-zinc-800/80 bg-zinc-950/95 backdrop-blur-md"
+  >
+    <nav class="px-6 py-3 flex flex-col font-mono text-[13px] text-zinc-400">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.path}
+            data-nav-path={item.path}
+            data-mobile-nav
+            class="flex items-center gap-3 px-3 py-3 rounded-md hover:text-zinc-50 hover:bg-zinc-900 transition-colors border-b border-zinc-800/50 last:border-0"
+          >
+            <span class="text-emerald-500 text-[11px]">{item.num}</span>
+            {item.label}
+          </a>
+        ))
+      }
+      <div class="pt-3 pb-1">
+        <a
+          href="https://www.cal.eu/cascioli"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-2 h-10 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-medium text-sm transition-colors border border-emerald-500/70"
+        >
+          Sentiamoci
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg
+          >
+        </a>
+      </div>
+    </nav>
+  </div>
 </header>
 
+<style>
+  #mobile-menu {
+    overflow: hidden;
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      max-height 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 180ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  #mobile-menu.menu-closed {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+  }
+</style>
+
 <script>
-  const ACTIVE =
+  const ACTIVE_MOBILE =
+    "flex items-center gap-3 px-3 py-3 rounded-md text-zinc-50 bg-zinc-900/60 transition-colors border-b border-zinc-800/50 last:border-0";
+  const INACTIVE_MOBILE =
+    "flex items-center gap-3 px-3 py-3 rounded-md hover:text-zinc-50 hover:bg-zinc-900 transition-colors border-b border-zinc-800/50 last:border-0";
+  const ACTIVE_DESKTOP =
     "px-3 py-2 rounded-md text-zinc-50 bg-zinc-900/60 transition-colors";
-  const INACTIVE =
+  const INACTIVE_DESKTOP =
     "px-3 py-2 rounded-md hover:text-zinc-50 hover:bg-zinc-900 transition-colors";
+
+  function isActive(navPath: string, currentPath: string) {
+    return navPath === '/'
+      ? currentPath === '/'
+      : currentPath === navPath || currentPath.startsWith(navPath + '/');
+  }
 
   function updateNav() {
     const path = window.location.pathname.replace(/\/$/, "") || "/";
-    document
-      .querySelectorAll<HTMLAnchorElement>("[data-nav-path]")
-      .forEach((a) => {
-        const navPath = a.dataset.navPath!;
-        const active = navPath === '/'
-          ? path === '/'
-          : path === navPath || path.startsWith(navPath + '/');
-        a.className = active ? ACTIVE : INACTIVE;
-      });
+    document.querySelectorAll<HTMLAnchorElement>("[data-nav-path]:not([data-mobile-nav])").forEach((a) => {
+      a.className = isActive(a.dataset.navPath!, path) ? ACTIVE_DESKTOP : INACTIVE_DESKTOP;
+    });
+    document.querySelectorAll<HTMLAnchorElement>("[data-mobile-nav]").forEach((a) => {
+      a.className = isActive(a.dataset.navPath!, path) ? ACTIVE_MOBILE : INACTIVE_MOBILE;
+    });
   }
 
-  document.addEventListener("astro:page-load", updateNav);
+  function closeMobileMenu() {
+    const menu = document.getElementById("mobile-menu");
+    const toggle = document.getElementById("menuToggle");
+    if (!menu || !toggle) return;
+    menu.classList.add("menu-closed");
+    toggle.setAttribute("aria-expanded", "false");
+    document.getElementById("menuIconOpen")?.classList.remove("hidden");
+    document.getElementById("menuIconClose")?.classList.add("hidden");
+  }
+
+  let _ac: AbortController | null = null;
+
+  document.addEventListener("astro:page-load", () => {
+    _ac?.abort();
+    _ac = new AbortController();
+    const { signal } = _ac;
+
+    closeMobileMenu();
+    updateNav();
+
+    const toggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("mobile-menu");
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", () => {
+      const isOpen = !menu.classList.contains("menu-closed");
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        menu.classList.remove("menu-closed");
+        toggle.setAttribute("aria-expanded", "true");
+        document.getElementById("menuIconOpen")?.classList.add("hidden");
+        document.getElementById("menuIconClose")?.classList.remove("hidden");
+      }
+    }, { signal });
+
+    menu.querySelectorAll<HTMLAnchorElement>("a[data-mobile-nav]").forEach((link) => {
+      link.addEventListener("click", closeMobileMenu, { signal });
+    });
+  });
 </script>
