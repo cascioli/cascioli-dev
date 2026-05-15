@@ -1,0 +1,182 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const SITE = 'https://simonecascioli.it';
+
+const STATUS_CLS: Record<string, string> = {
+  production: 'pill-prod',
+  wip: 'pill-wip',
+  archived: 'pill-arch',
+  beta: 'pill-beta',
+};
+
+const projectSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: project.data.title,
+  description: project.data.description,
+  author: { "@type": "Person", name: "Simone Cascioli", url: SITE },
+  applicationCategory: project.data.applicationCategory ?? "WebApplication",
+  programmingLanguage: project.data.stack,
+  dateCreated: `${project.data.year}-01-01`,
+  operatingSystem: "Web",
+  inLanguage: "it-IT",
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",     item: `${SITE}/` },
+    { "@type": "ListItem", position: 2, name: "Progetti", item: `${SITE}/work` },
+    { "@type": "ListItem", position: 3, name: project.data.title, item: `${SITE}/work/${project.id}` },
+  ],
+};
+
+const pillCls = STATUS_CLS[project.data.status] ?? 'pill-arch';
+const pillLabel = project.data.status;
+---
+
+<Layout
+  title={`${project.data.title} — cascioli.`}
+  description={project.data.description}
+  image={project.data.ogImage}
+  type="website"
+  keywords={project.data.stack.join(', ')}
+  jsonLd={[projectSchema, breadcrumbSchema]}
+  showFooter={false}
+>
+  <main class="px-6 project-detail-ambient">
+    <div class="max-w-[900px] mx-auto pt-20 lg:pt-28 pb-32">
+
+      <!-- Breadcrumb -->
+      <nav class="mb-8 flex items-center gap-2 font-mono text-[11.5px] text-zinc-600">
+        <a href="/" class="hover:text-emerald-400 transition-colors">cascioli.</a>
+        <span>/</span>
+        <a href="/work" class="hover:text-emerald-400 transition-colors">progetti</a>
+        <span>/</span>
+        <span class="text-zinc-400 font-mono">{project.data.title}</span>
+      </nav>
+
+      <!-- Header -->
+      <header class="border-b border-zinc-800 pb-8 mb-8">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div class="font-mono text-[11.5px] tracking-[0.22em] uppercase text-zinc-500 mb-3">
+              ~/cascioli/projects/<span class="text-emerald-400">{project.data.folder}</span>/{project.data.name}
+            </div>
+            <h1 class="project-detail-title">
+              {project.data.title}
+            </h1>
+          </div>
+          <div class="flex items-center gap-3 shrink-0 mt-1">
+            <span class={`pill ${pillCls}`}>
+              <span class="d"></span>
+              {pillLabel}
+            </span>
+            <time datetime={`${project.data.year}-01-01`} class="font-mono text-[12px] text-zinc-500">{project.data.year}</time>
+          </div>
+        </div>
+
+        <p class="mt-5 text-zinc-400 text-[16px] leading-relaxed max-w-[640px]">
+          {project.data.desc}
+        </p>
+
+        <!-- Stack -->
+        <div class="mt-5 flex flex-wrap gap-2">
+          {project.data.stack.map(s => (
+            <span class="stack-tag">{s}</span>
+          ))}
+        </div>
+      </header>
+
+      <!-- Links -->
+      <div class="flex flex-wrap gap-3 mb-12">
+        {project.data.links.github && (
+          <a
+            href={`https://${project.data.links.github}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2.5 h-10 px-4 rounded-md border border-zinc-800 hover:border-emerald-500/60 hover:bg-emerald-500/5 transition-colors font-mono text-[12.5px] text-zinc-300 group-hover:text-zinc-50"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+            </svg>
+            {project.data.links.github}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-zinc-500 group-hover:text-emerald-400">
+              <path d="M7 17L17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+        )}
+        {project.data.links.demo && (
+          <a
+            href={`https://${project.data.links.demo}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 h-10 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 text-zinc-950 transition-colors border border-emerald-500/80 font-mono text-[12.5px] font-medium"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+            {project.data.links.demo}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7"/><path d="M7 7h10v10"/>
+            </svg>
+          </a>
+        )}
+      </div>
+
+      <!-- Body content -->
+      <div class="prose-article">
+        <Content />
+      </div>
+
+      <!-- Footer nav -->
+      <footer class="mt-20 pt-8 border-t border-zinc-900 flex items-center justify-between">
+        <a href="/work" class="inline-flex items-center gap-2 font-mono text-[12.5px] text-zinc-500 hover:text-emerald-400 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>
+          </svg>
+          Tutti i progetti
+        </a>
+        <a href="/contact" class="font-mono text-[12.5px] text-zinc-500 hover:text-emerald-400 transition-colors">
+          collaboriamo ↗
+        </a>
+      </footer>
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  .project-detail-ambient::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 60% 35% at 50% 0%,
+      rgba(16, 185, 129, 0.05),
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .project-detail-title {
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: #fafafa;
+  }
+</style>

@@ -1,5 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+
+const allNotes = await getCollection('notes');
+const sortedNotes = allNotes.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const NOTES_DATA = sortedNotes.map(n => ({
+  id:      n.id,
+  title:   n.data.title,
+  preview: n.data.preview,
+  tag:     n.data.tag,
+  date:    n.data.date.toISOString().slice(0, 10),
+  readMin: n.data.readMin,
+}));
+
+const tagCounts: Record<string, number> = { all: allNotes.length };
+for (const n of allNotes) {
+  tagCounts[n.data.tag] = (tagCounts[n.data.tag] ?? 0) + 1;
+}
 ---
 
 <Layout
@@ -37,19 +55,19 @@ import Layout from "../layouts/Layout.astro";
         class="head-in-4 mt-12 -mx-2 flex flex-wrap items-center gap-1 pb-6 border-b border-zinc-900"
       >
         <button class="filter-pill is-active" data-tag="all"
-          >Tutte <span class="pill-count">5</span></button
+          >Tutte <span class="pill-count">{tagCounts.all}</span></button
         >
         <button class="filter-pill" data-tag="flutter-arch"
-          >Flutter <span class="pill-count">1</span></button
+          >Flutter <span class="pill-count">{tagCounts['flutter-arch'] ?? 0}</span></button
         >
         <button class="filter-pill" data-tag="ai-engineering"
-          >AI <span class="pill-count">2</span></button
+          >AI <span class="pill-count">{tagCounts['ai-engineering'] ?? 0}</span></button
         >
         <button class="filter-pill" data-tag="cybersecurity"
-          >Cybersec <span class="pill-count">1</span></button
+          >Cybersec <span class="pill-count">{tagCounts['cybersecurity'] ?? 0}</span></button
         >
         <button class="filter-pill" data-tag="independent-dev"
-          >Indie <span class="pill-count">1</span></button
+          >Indie <span class="pill-count">{tagCounts['independent-dev'] ?? 0}</span></button
         >
         <button
           id="searchTrigger"
@@ -76,6 +94,7 @@ import Layout from "../layouts/Layout.astro";
       </nav>
 
       <!-- Feed -->
+      <script type="application/json" id="notes-data" set:html={JSON.stringify(NOTES_DATA)} />
       <div id="feed" class="mt-2"></div>
       <div
         id="emptyFeed"
@@ -94,7 +113,7 @@ import Layout from "../layouts/Layout.astro";
         </p>
         <div class="flex items-center gap-5 font-mono text-[12px]">
           <a
-            href="#"
+            href="/rss.xml"
             class="text-zinc-500 hover:text-emerald-400 transition-colors"
             >rss.xml ↗</a
           >
@@ -287,53 +306,12 @@ import Layout from "../layouts/Layout.astro";
 </style>
 
 <script>
-  const NOTES_DATA = [
-    {
-      id: "flutter-hardening",
-      title: "Hardening Flutter: Production-ready security",
-      preview:
-        "Da SSL pinning a obfuscation: come spedire un'app Flutter senza farsi sgridare dal pentester.",
-      tag: "flutter-arch",
-      date: "2026-05-10",
-      readMin: 9,
-    },
-    {
-      id: "gemini-structured",
-      title: "Structured Output con Gemini: trasformare foto in dati",
-      preview:
-        "Pattern per estrarre JSON deterministico da prompt visivi senza perdere la sanità mentale.",
-      tag: "ai-engineering",
-      date: "2026-04-28",
-      readMin: 7,
-    },
-    {
-      id: "fuzzy-router",
-      title: "Fuzzy Matching in Go: la logica dietro fuzzyrouter",
-      preview:
-        "Trie + Levenshtein-lite: come ho costruito un router HTTP che indovina cosa volevi davvero.",
-      tag: "independent-dev",
-      date: "2026-04-12",
-      readMin: 12,
-    },
-    {
-      id: "osint-footprints",
-      title: "Mapping Digital Footprints: OSINT & Cybersec",
-      preview:
-        "Costruire una mappa della propria esposizione pubblica con strumenti open-source.",
-      tag: "cybersecurity",
-      date: "2026-03-30",
-      readMin: 11,
-    },
-    {
-      id: "ai-chronicles",
-      title: "AI Chronicles: gamification con Gemini",
-      preview:
-        "Un esperimento in cui Gemini scrive avventure testuali a turni, con regole e stato persistente.",
-      tag: "ai-engineering",
-      date: "2026-03-14",
-      readMin: 6,
-    },
-  ];
+  const NOTES_DATA: { id: string; title: string; preview: string; tag: string; date: string; readMin: number }[] =
+    JSON.parse(document.getElementById("notes-data")!.textContent!);
+
+  function esc(s: string): string {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
 
   const TAG_LABELS: Record<string, string> = {
     "flutter-arch": "flutter",
@@ -386,7 +364,7 @@ import Layout from "../layouts/Layout.astro";
             .sort((a, b) => b.date.localeCompare(a.date))
             .forEach((n) => {
               html += `
-              <a href="#" class="note">
+              <a href="/notes/${n.id}" class="note">
                 <div class="note-meta flex items-center gap-3">
                   <span>${fmtDate(n.date)}</span>
                   <span class="text-zinc-700">·</span>
@@ -394,8 +372,8 @@ import Layout from "../layouts/Layout.astro";
                   <span class="text-zinc-700">·</span>
                   <span class="tag">#${TAG_LABELS[n.tag] || n.tag}</span>
                 </div>
-                <h2 class="note-title mt-3">${n.title}<span class="arrow">↗</span></h2>
-                <p class="note-preview">${n.preview}</p>
+                <h2 class="note-title mt-3">${esc(n.title)}<span class="arrow">↗</span></h2>
+                <p class="note-preview">${esc(n.preview)}</p>
               </a>`;
             });
         });

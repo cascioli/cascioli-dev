@@ -1,5 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Simone Cascioli",
+  url: "https://simonecascioli.it",
+  jobTitle: "Software Engineer Freelance",
+  description: "Software Engineer freelance con 5+ anni di esperienza. Flutter, Go, Python, Cloud Security e AI. Foggia / Bari.",
+  knowsAbout: ["Flutter", "Dart", "Go", "Python", "TypeScript", "Cloud Security", "AI Engineering", "Cybersecurity", "Serverless"],
+  worksFor: { "@type": "Organization", name: "Freelance" },
+  address: { "@type": "PostalAddress", addressLocality: "Foggia", addressCountry: "IT" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Politecnico di Bari" },
+  sameAs: [
+    "https://github.com/cascioli",
+    "https://twitter.com/simlimone",
+    "https://www.linkedin.com/in/cascioli",
+  ],
+};
 ---
 
 <Layout
@@ -7,6 +25,7 @@ import Layout from "../layouts/Layout.astro";
   description="Chi è Simone Cascioli: Software Engineer freelance con 5+ anni di esperienza. Flutter, Go, Python, Cloud Security e AI. Foggia / Bari."
   bodyClass="min-h-screen flex flex-col"
   tickerText="NOW STUDYING — ingegneria informatica · politecnico di bari"
+  jsonLd={personSchema}
 >
   <main class="relative flex-1 min-h-0">
     <div class="absolute inset-0 bg-grid pointer-events-none"></div>
@@ -145,12 +164,12 @@ import Layout from "../layouts/Layout.astro";
                 <div class="flex flex-col gap-1">
                   {
                     [
-                      { prefix: "github.com/", handle: "cascioli" },
-                      { prefix: "linkedin.com/in/", handle: "cascioli" },
-                      { prefix: "x.com/", handle: "cascioli" },
-                      { prefix: "read.cv/", handle: "cascioli" },
-                    ].map(({ prefix, handle }) => (
-                      <a href="#" class="term-link">
+                      { prefix: "github.com/",     handle: "cascioli", href: "https://github.com/cascioli" },
+                      { prefix: "linkedin.com/in/", handle: "cascioli", href: "https://www.linkedin.com/in/cascioli" },
+                      { prefix: "x.com/",           handle: "simlimone", href: "https://x.com/simlimone" },
+                      { prefix: "read.cv/",          handle: "cascioli", href: "https://read.cv/cascioli" },
+                    ].map(({ prefix, handle, href }) => (
+                      <a href={href} target="_blank" rel="noopener noreferrer" class="term-link">
                         <span class="caret-glyph">{">"}</span>
                         <span class="text-zinc-500">{prefix}</span>
                         {handle}

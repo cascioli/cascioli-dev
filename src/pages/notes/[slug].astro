@@ -1,0 +1,213 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map(note => ({ params: { slug: note.id }, props: { note } }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+
+const SITE = 'https://simonecascioli.it';
+
+const TAG_LABELS: Record<string, string> = {
+  'flutter-arch':    'flutter',
+  'ai-engineering':  'ai',
+  'cybersecurity':   'cybersec',
+  'independent-dev': 'indie',
+};
+
+function fmtDate(d: Date) {
+  return d.toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline:      note.data.title,
+  description:   note.data.description,
+  url:           `${SITE}/notes/${note.id}`,
+  datePublished: note.data.date.toISOString(),
+  inLanguage:    "it-IT",
+  author: { "@type": "Person", name: "Simone Cascioli", url: SITE },
+  publisher: { "@type": "Person", name: "Simone Cascioli", url: SITE },
+  keywords: [note.data.tag],
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE}/notes/${note.id}` },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",  item: `${SITE}/` },
+    { "@type": "ListItem", position: 2, name: "Note",  item: `${SITE}/notes` },
+    { "@type": "ListItem", position: 3, name: note.data.title, item: `${SITE}/notes/${note.id}` },
+  ],
+};
+---
+
+<Layout
+  title={`${note.data.title} — cascioli.`}
+  description={note.data.description}
+  image={note.data.ogImage}
+  type="article"
+  publishedTime={note.data.date.toISOString()}
+  keywords={note.data.tag}
+  jsonLd={[articleSchema, breadcrumbSchema]}
+>
+  <main class="px-6 note-article-ambient">
+    <article class="max-w-[720px] mx-auto pt-20 lg:pt-28 pb-32">
+
+      <!-- Breadcrumb -->
+      <nav class="mb-8 flex items-center gap-2 font-mono text-[11.5px] text-zinc-600">
+        <a href="/" class="hover:text-emerald-400 transition-colors">cascioli.</a>
+        <span>/</span>
+        <a href="/notes" class="hover:text-emerald-400 transition-colors">note</a>
+        <span>/</span>
+        <span class="text-zinc-400 truncate max-w-[240px]">{note.data.title}</span>
+      </nav>
+
+      <!-- Header -->
+      <header>
+        <div class="font-mono text-[11.5px] tracking-[0.22em] uppercase text-emerald-500 mb-5">
+          #{TAG_LABELS[note.data.tag] || note.data.tag}
+        </div>
+        <h1 class="note-article-title">
+          {note.data.title}
+        </h1>
+        <div class="mt-5 flex items-center gap-3 font-mono text-[12.5px] text-zinc-500">
+          <time datetime={note.data.date.toISOString()}>{fmtDate(note.data.date)}</time>
+          <span class="text-zinc-700">·</span>
+          <span>{note.data.readMin} min read</span>
+        </div>
+      </header>
+
+      <!-- Body -->
+      <div class="prose-article mt-14">
+        <Content />
+      </div>
+
+      <!-- Footer nav -->
+      <footer class="mt-20 pt-8 border-t border-zinc-900 flex items-center justify-between">
+        <a href="/notes" class="inline-flex items-center gap-2 font-mono text-[12.5px] text-zinc-500 hover:text-emerald-400 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>
+          </svg>
+          Tutte le note
+        </a>
+        <a href="/contact" class="font-mono text-[12.5px] text-zinc-500 hover:text-emerald-400 transition-colors">
+          saluta ↗
+        </a>
+      </footer>
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  .note-article-ambient::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 50% 30% at 50% 0%,
+      rgba(16, 185, 129, 0.06),
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .note-article-title {
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: #fafafa;
+  }
+
+  .prose-article {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #a1a1aa;
+  }
+  .prose-article h2 {
+    font-family: "Geist", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #e4e4e7;
+    letter-spacing: -0.018em;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-article h3 {
+    font-family: "Geist", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #d4d4d8;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-article p {
+    margin-bottom: 1.25rem;
+  }
+  .prose-article a {
+    color: #34d399;
+    text-decoration: underline;
+    text-decoration-color: rgba(52, 211, 153, 0.35);
+    text-underline-offset: 3px;
+    transition: color 180ms ease, text-decoration-color 180ms ease;
+  }
+  .prose-article a:hover {
+    color: #6ee7b7;
+    text-decoration-color: rgba(110, 231, 183, 0.6);
+  }
+  .prose-article code {
+    font-family: "Geist Mono", monospace;
+    font-size: 14px;
+    background: rgba(39, 39, 42, 0.8);
+    border: 1px solid #3f3f46;
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: #a3e635;
+  }
+  .prose-article pre {
+    background: #0a0a0b;
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .prose-article pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13.5px;
+    color: #d4d4d8;
+  }
+  .prose-article blockquote {
+    border-left: 3px solid #10b981;
+    margin: 1.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    color: #71717a;
+    font-style: italic;
+  }
+  .prose-article ul, .prose-article ol {
+    margin: 1rem 0 1.25rem 1.5rem;
+  }
+  .prose-article li {
+    margin-bottom: 0.4rem;
+  }
+  .prose-article strong {
+    color: #e4e4e7;
+    font-weight: 600;
+  }
+  .prose-article hr {
+    border: none;
+    border-top: 1px solid #27272a;
+    margin: 2.5rem 0;
+  }
+</style>
