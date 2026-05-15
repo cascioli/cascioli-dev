@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { githubAiLoader } from './lib/loaders';
 
 const notesCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/notes' }),
@@ -42,7 +43,23 @@ const projectsCollection = defineCollection({
   }),
 });
 
+const githubNotesCollection = defineCollection({
+  loader: githubAiLoader(),
+  schema: z.object({
+    repoName:     z.string(),
+    stars:        z.number(),
+    techStack:    z.array(z.string()),
+    originalPath: z.string(),
+    aiContent: z.object({
+      website_content: z.string().min(1),
+      linkedin_post:   z.string().min(1),
+      twitter_post:    z.string().min(1),
+    }).optional(),
+  }),
+});
+
 export const collections = {
-  notes:    notesCollection,
-  projects: projectsCollection,
+  notes:        notesCollection,
+  projects:     projectsCollection,
+  github_notes: githubNotesCollection,
 };
