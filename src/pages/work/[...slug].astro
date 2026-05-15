@@ -19,18 +19,33 @@ const STATUS_CLS: Record<string, string> = {
   beta: 'pill-beta',
 };
 
-const projectSchema = {
+const allKeywords = [...project.data.stack, ...(project.data.keywords ?? [])];
+const projectImage = project.data.image ?? project.data.ogImage;
+const dateModified = project.data.lastModified?.toISOString() ?? `${project.data.year}-01-01`;
+
+const projectSchema: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: project.data.title,
-  description: project.data.description,
-  author: { "@type": "Person", name: "Simone Cascioli", url: SITE },
+  name:                project.data.title,
+  description:         project.data.description,
+  author:              { "@type": "Person", name: "Simone Cascioli", url: SITE },
   applicationCategory: project.data.applicationCategory ?? "WebApplication",
   programmingLanguage: project.data.stack,
-  dateCreated: `${project.data.year}-01-01`,
-  operatingSystem: "Web",
-  inLanguage: "it-IT",
+  keywords:            allKeywords,
+  dateModified,
+  operatingSystem:     "Web",
+  inLanguage:          "it-IT",
 };
+
+if (project.data.links.demo) {
+  projectSchema.url = `https://${project.data.links.demo}`;
+}
+if (project.data.links.github) {
+  projectSchema.codeRepository = `https://${project.data.links.github}`;
+}
+if (projectImage) {
+  projectSchema.image = new URL(projectImage, SITE).href;
+}
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -42,16 +57,16 @@ const breadcrumbSchema = {
   ],
 };
 
-const pillCls = STATUS_CLS[project.data.status] ?? 'pill-arch';
+const pillCls   = STATUS_CLS[project.data.status] ?? 'pill-arch';
 const pillLabel = project.data.status;
 ---
 
 <Layout
   title={`${project.data.title} — cascioli.`}
   description={project.data.description}
-  image={project.data.ogImage}
+  image={projectImage}
   type="website"
-  keywords={project.data.stack.join(', ')}
+  keywords={allKeywords.join(', ')}
   jsonLd={[projectSchema, breadcrumbSchema]}
   showFooter={false}
 >

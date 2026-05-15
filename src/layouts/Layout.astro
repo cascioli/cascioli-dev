@@ -16,6 +16,8 @@ interface Props {
   type?: 'website' | 'article';
   keywords?: string;
   publishedTime?: string;
+  modifiedTime?: string;
+  articleTags?: string[];
   jsonLd?: object | object[];
 }
 
@@ -29,6 +31,8 @@ const {
   type = 'website',
   keywords,
   publishedTime,
+  modifiedTime,
+  articleTags,
   jsonLd,
 } = Astro.props;
 
@@ -68,13 +72,10 @@ const DEFAULT_ACTIONS = [
   <meta property="og:locale"      content="it_IT" />
   <meta property="og:site_name"   content="cascioli." />
   <meta property="og:image"       content={ogImage} />
-  <meta property="og:image:type"  content="image/jpeg" />
-  <meta property="og:image:width" content="3024" />
-  <meta property="og:image:height"content="4032" />
   <meta property="og:image:alt"   content={`${title} — simonecascioli.it`} />
 
   <!-- Twitter / X -->
-  <meta name="twitter:card"        content="summary" />
+  <meta name="twitter:card"        content={type === 'article' || image ? "summary_large_image" : "summary"} />
   <meta name="twitter:site"        content="@simlimone" />
   <meta name="twitter:creator"     content="@simlimone" />
   <meta name="twitter:title"       content={title} />
@@ -83,7 +84,9 @@ const DEFAULT_ACTIONS = [
   <meta name="twitter:image:alt"   content={`${title} — simonecascioli.it`} />
 
   {type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+  {type === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
   {type === 'article' && <meta property="article:author" content="https://simonecascioli.it/about" />}
+  {type === 'article' && articleTags && articleTags.map(tag => <meta property="article:tag" content={tag} />)}
 
   <!-- Sitemap + RSS -->
   <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />

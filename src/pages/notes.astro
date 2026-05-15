@@ -2,21 +2,23 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from 'astro:content';
 
-const allNotes = await getCollection('notes');
+const allNotes = await getCollection('notes', ({ data }) => !data.draft);
 const sortedNotes = allNotes.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const NOTES_DATA = sortedNotes.map(n => ({
   id:      n.id,
   title:   n.data.title,
   preview: n.data.preview,
-  tag:     n.data.tag,
+  tags:    n.data.tags,
   date:    n.data.date.toISOString().slice(0, 10),
   readMin: n.data.readMin,
 }));
 
 const tagCounts: Record<string, number> = { all: allNotes.length };
 for (const n of allNotes) {
-  tagCounts[n.data.tag] = (tagCounts[n.data.tag] ?? 0) + 1;
+  for (const t of n.data.tags) {
+    tagCounts[t] = (tagCounts[t] ?? 0) + 1;
+  }
 }
 ---
 
@@ -263,16 +265,7 @@ for (const n of allNotes) {
     background: linear-gradient(to right, #27272a, transparent 90%);
   }
 
-  @keyframes noteFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(6px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  /* @keyframes noteFadeIn defined in global.css */
   .feed-anim .note,
   .feed-anim .year-divider {
     animation: noteFadeIn 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -307,7 +300,7 @@ for (const n of allNotes) {
 </style>
 
 <script>
-  const NOTES_DATA: { id: string; title: string; preview: string; tag: string; date: string; readMin: number }[] =
+  const NOTES_DATA: { id: string; title: string; preview: string; tags: string[]; date: string; readMin: number }[] =
     JSON.parse(document.getElementById("notes-data")!.textContent!);
 
   function esc(s: string): string {
@@ -342,7 +335,7 @@ for (const n of allNotes) {
 
     function renderFeed() {
       const filtered = NOTES_DATA.filter(
-        (n) => state.tag === "all" || n.tag === state.tag,
+        (n) => state.tag === "all" || n.tags.includes(state.tag),
       );
       const byYear = new Map<number, typeof NOTES_DATA>();
       filtered.forEach((n) => {
@@ -371,7 +364,7 @@ for (const n of allNotes) {
                   <span class="text-zinc-700">·</span>
                   <span>${n.readMin} min read</span>
                   <span class="text-zinc-700">·</span>
-                  <span class="tag">#${TAG_LABELS[n.tag] || n.tag}</span>
+                  <span class="tag">#${TAG_LABELS[n.tags[0]] || n.tags[0]}</span>
                 </div>
                 <h2 class="note-title mt-3">${esc(n.title)}<span class="arrow">↗</span></h2>
                 <p class="note-preview">${esc(n.preview)}</p>

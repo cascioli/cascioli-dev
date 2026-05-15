@@ -5,7 +5,10 @@ import { getCollection } from 'astro:content';
 const allProjects = await getCollection('projects');
 
 const PROJECTS_DATA = allProjects
-  .sort((a, b) => b.data.year - a.data.year)
+  .sort((a, b) => {
+    if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+    return b.data.year - a.data.year;
+  })
   .map(p => ({
     id:       p.id,
     name:     p.data.name,
@@ -754,7 +757,7 @@ const folderCounts: Record<string, number> = {
 
     function render() {
       const visible = applyFilters();
-      visibleCountEl.textContent = visible.length;
+      visibleCountEl.textContent = String(visible.length);
       crumbFolderEl.textContent = state.folder;
       statusFolderEl.textContent = `filter: ${state.folder}`;
       statusTechEl.textContent = state.tech.size

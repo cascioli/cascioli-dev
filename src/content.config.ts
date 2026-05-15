@@ -4,14 +4,17 @@ import { glob } from 'astro/loaders';
 const notesCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/notes' }),
   schema: z.object({
-    title:       z.string(),
-    description: z.string(),
-    preview:     z.string(),
-    tag:         z.enum(['flutter-arch', 'ai-engineering', 'cybersecurity', 'independent-dev']),
-    date:        z.coerce.date(),
-    readMin:     z.number().int().positive(),
-    featured:    z.boolean().optional().default(false),
-    ogImage:     z.string().optional(),
+    title:        z.string(),
+    description:  z.string(),
+    preview:      z.string(),
+    tags:         z.array(z.enum(['flutter-arch', 'ai-engineering', 'cybersecurity', 'independent-dev'])),
+    date:         z.coerce.date(),
+    readMin:      z.number().int().positive(),
+    draft:        z.boolean().optional().default(false),
+    featured:     z.boolean().optional().default(false),
+    keywords:     z.array(z.string()).optional(),
+    lastModified: z.coerce.date().optional(),
+    ogImage:      z.string().optional(),
   }),
 });
 
@@ -29,10 +32,13 @@ const projectsCollection = defineCollection({
     featured:             z.boolean().default(false),
     applicationCategory:  z.string().optional(),
     links:       z.object({
-      github: z.string().nullable().default(null),
-      demo:   z.string().nullable().default(null),
+      github: z.string().refine(v => !v.startsWith('http'), { message: 'store bare hostname, e.g. github.com/user/repo' }).nullable().default(null),
+      demo:   z.string().refine(v => !v.startsWith('http'), { message: 'store bare hostname, e.g. myapp.com' }).nullable().default(null),
     }),
-    ogImage:     z.string().optional(),
+    image:        z.string().optional(),
+    keywords:     z.array(z.string()).optional(),
+    lastModified: z.coerce.date().optional(),
+    ogImage:      z.string().optional(),
   }),
 });
 
