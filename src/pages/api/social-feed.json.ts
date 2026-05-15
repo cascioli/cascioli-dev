@@ -1,13 +1,27 @@
 export const prerender = false;
 
+import { timingSafeEqual } from 'node:crypto';
 import type { APIContext } from 'astro';
 import { getCollection } from 'astro:content';
 
+function safeCompare(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  return timingSafeEqual(Buffer.from(a), Buffer.from(b));
+}
+
 export async function GET({ request }: APIContext) {
   const secret = import.meta.env.API_SECRET;
-  const auth   = request.headers.get('Authorization') ?? '';
 
-  if (!secret || auth !== `Bearer ${secret}`) {
+  if (!secret) {
+    console.error('[social-feed] API_SECRET is not configured');
+    return new Response(JSON.stringify({ error: 'server misconfiguration' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const auth = request.headers.get('Authorization') ?? '';
+  if (!safeCompare(auth, `Bearer ${secret}`)) {
     return new Response(JSON.stringify({ error: 'unauthorized' }), {
       status: 401,
       headers: { 'Content-Type': 'application/json' },

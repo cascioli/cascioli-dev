@@ -4,6 +4,23 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const LOG_PATH = 'social_published_log.json';
 const FEED_URL = 'https://simonecascioli.it/api/social-feed.json';
 
+const REQUIRED_ENV = [
+  'API_SECRET',
+  'TWITTER_API_KEY',
+  'TWITTER_API_SECRET',
+  'TWITTER_ACCESS_TOKEN',
+  'TWITTER_ACCESS_SECRET',
+  'LINKEDIN_ACCESS_TOKEN',
+  'LINKEDIN_PERSON_URN',
+] as const;
+
+for (const key of REQUIRED_ENV) {
+  if (!process.env[key]) {
+    console.error(`Missing required env var: ${key}`);
+    process.exit(1);
+  }
+}
+
 const API_SECRET            = process.env.API_SECRET!;
 const TWITTER_API_KEY       = process.env.TWITTER_API_KEY!;
 const TWITTER_API_SECRET    = process.env.TWITTER_API_SECRET!;
@@ -31,6 +48,7 @@ type Log = Record<string, LogEntry>;
 
 async function fetchFeed(): Promise<FeedItem[]> {
   const res = await fetch(FEED_URL, {
+    signal:  AbortSignal.timeout(30_000),
     headers: { Authorization: `Bearer ${API_SECRET}` },
   });
   if (!res.ok) throw new Error(`Feed fetch failed: ${res.status}`);
@@ -44,7 +62,7 @@ async function postTwitter(client: TwitterApi, text: string): Promise<string> {
 
 async function postLinkedIn(text: string): Promise<string> {
   const body = {
-    author:        LINKEDIN_PERSON_URN,
+    author:         LINKEDIN_PERSON_URN,
     lifecycleState: 'PUBLISHED',
     specificContent: {
       'com.linkedin.ugc.ShareContent': {
@@ -66,7 +84,10 @@ async function postLinkedIn(text: string): Promise<string> {
   });
 
   if (!res.ok) throw new Error(`LinkedIn post failed: ${res.status} ${await res.text()}`);
-  return res.headers.get('X-RestLi-Id') ?? res.headers.get('x-restli-id') ?? 'unknown';
+
+  const id = res.headers.get('X-RestLi-Id') ?? res.headers.get('x-restli-id');
+  if (!id) throw new Error(`LinkedIn post succeeded (${res.status}) but returned no post ID`);
+  return id;
 }
 
 async function main() {
