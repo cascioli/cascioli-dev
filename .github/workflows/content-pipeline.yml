@@ -21,42 +21,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Wait for Vercel production deployment
-        env:
-          VERCEL_TOKEN:      ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TEAM_ID:    ${{ secrets.VERCEL_TEAM_ID }}
-        run: |
-          TIMEOUT=600
-          INTERVAL=15
-          ELAPSED=0
-          TEAM_PARAM=""
-          [ -n "$VERCEL_TEAM_ID" ] && TEAM_PARAM="&teamId=$VERCEL_TEAM_ID"
-
-          echo "Polling Vercel for production readiness..."
-          while [ $ELAPSED -lt $TIMEOUT ]; do
-            RESPONSE=$(curl -sf \
-              -H "Authorization: Bearer $VERCEL_TOKEN" \
-              "https://api.vercel.com/v9/projects/$VERCEL_PROJECT_ID/deployments?target=production&limit=1${TEAM_PARAM}")
-
-            STATE=$(echo "$RESPONSE" | jq -r '.deployments[0].readyState // empty')
-
-            if [ "$STATE" = "READY" ]; then
-              echo "Deployment READY."
-              exit 0
-            elif [ "$STATE" = "ERROR" ] || [ "$STATE" = "CANCELED" ]; then
-              echo "Deployment failed: $STATE"
-              exit 1
-            else
-              echo "State: ${STATE:-unknown} — ${ELAPSED}s elapsed, retrying in ${INTERVAL}s..."
-              sleep $INTERVAL
-              ELAPSED=$((ELAPSED + INTERVAL))
-            fi
-          done
-
-          echo "Timeout: deployment not READY after ${TIMEOUT}s"
-          exit 1
-
       - name: Run publishing script
         run: npx tsx src/scripts/publish-social.ts
         env:
