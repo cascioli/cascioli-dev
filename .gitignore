@@ -1,5 +1,8 @@
 # build output
 dist/
+
+# github-service fetch cache
+.cache/
 # generated types
 .astro/
 
