@@ -27,7 +27,7 @@ const SOCIALS = [
 
       <!-- headline -->
       <h1
-        class="head-in-2 font-sans font-bold tracking-[-0.03em] text-zinc-50 text-[48px] sm:text-[64px] leading-[1.02] mb-8"
+        class="head-in-2 font-sans font-bold tracking-[-0.03em] text-zinc-50 text-[30px] sm:text-[48px] lg:text-[64px] leading-[1.15] sm:leading-[1.02] mb-8"
       >
         Costruiamo qualcosa<br class="hidden sm:block" /> di solido<span
           class="text-emerald-500">.</span
@@ -61,7 +61,7 @@ const SOCIALS = [
           </a>
           <button
             id="copyBtn"
-            class="copy-btn inline-flex items-center gap-1.5 h-8 px-3 rounded-md border border-zinc-700 text-zinc-400 font-mono text-[12px] hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
+            class="copy-btn inline-flex items-center gap-1.5 h-11 px-3 rounded-md border border-zinc-700 text-zinc-400 font-mono text-[12px] hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
             data-email={EMAIL}
           >
             <svg
@@ -112,7 +112,7 @@ const SOCIALS = [
               type="text"
               autocomplete="name"
               placeholder="Ada Lovelace"
-              class="field-input h-11 px-4 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[15px] placeholder-zinc-600
+              class="field-input h-11 px-4 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[16px] placeholder-zinc-600
                      focus:outline-none focus:border-emerald-500/50"
             />
           </div>
@@ -129,7 +129,7 @@ const SOCIALS = [
               type="email"
               autocomplete="email"
               placeholder="ada@example.com"
-              class="field-input h-11 px-4 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[15px] placeholder-zinc-600
+              class="field-input h-11 px-4 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[16px] placeholder-zinc-600
                      focus:outline-none focus:border-emerald-500/50"
             />
 
@@ -169,7 +169,7 @@ const SOCIALS = [
               name="message"
               rows="5"
               placeholder="Raccontami il progetto…"
-              class="field-input px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[15px] placeholder-zinc-600 resize-none
+              class="field-input px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 font-sans text-[16px] placeholder-zinc-600 resize-none
                      focus:outline-none focus:border-emerald-500/50"
             ></textarea>
           </div>
@@ -272,10 +272,10 @@ const SOCIALS = [
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="social-link group inline-flex items-center gap-3 py-2 font-sans text-[18px] text-zinc-400 hover:text-zinc-50 transition-colors"
+                  class="social-link group inline-flex items-center gap-3 py-3 min-h-[44px] font-sans text-[18px] text-zinc-400 hover:text-zinc-50 transition-colors"
                 >
                   <span>{s.label}</span>
-                  <span class="opacity-0 group-hover:opacity-100 transition-opacity text-emerald-500 text-[14px] translate-x-0 group-hover:translate-x-1 transition-transform">
+                  <span class="opacity-0 group-hover:opacity-100 text-emerald-500 text-[14px] translate-x-0 group-hover:translate-x-1 transition-all duration-200">
                     ↗
                   </span>
                 </a>

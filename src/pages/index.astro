@@ -74,7 +74,7 @@ const personSchema = {
           </div>
 
           <h1
-            class="font-sans font-bold tracking-tight text-zinc-50 text-[44px] sm:text-[56px] lg:text-[76px] leading-[1.02]"
+            class="font-sans font-bold tracking-tight text-zinc-50 text-[30px] sm:text-[52px] lg:text-[76px] leading-[1.15] sm:leading-[1.02]"
           >
             Interfacce pulite,<br />
             backend<br />
@@ -147,9 +147,11 @@ const personSchema = {
               href="/assets/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 h-12 px-5 rounded-md text-zinc-400 font-mono text-[13px] hover:text-emerald-400 transition-colors"
+              class="inline-flex items-center gap-2 h-12 px-5 rounded-md text-zinc-400 font-mono text-[13px] hover:text-emerald-400 transition-colors min-w-0"
             >
-              <span class="text-emerald-500">$</span> curl simonecascioli.it/assets/cv.pdf
+              <span class="text-emerald-500 shrink-0">$</span>
+              <span class="hidden sm:inline">curl simonecascioli.it/assets/cv.pdf</span>
+              <span class="sm:hidden">cv.pdf</span>
             </a>
           </div>
 
@@ -157,31 +159,31 @@ const personSchema = {
           <div
             class="mt-12 grid grid-cols-3 max-w-lg gap-px bg-zinc-800 border border-zinc-800 rounded-lg overflow-hidden"
           >
-            <div class="bg-zinc-950 p-4">
+            <div class="bg-zinc-950 p-3 sm:p-4">
               <div
-                class="font-mono text-[11px] uppercase tracking-wider text-zinc-500"
+                class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-zinc-500"
               >
                 Anni
               </div>
-              <div class="mt-1 text-2xl font-semibold text-zinc-50">
+              <div class="mt-1 text-xl sm:text-2xl font-semibold text-zinc-50">
                 5<span class="text-emerald-500">+</span>
               </div>
             </div>
-            <div class="bg-zinc-950 p-4">
+            <div class="bg-zinc-950 p-3 sm:p-4">
               <div
-                class="font-mono text-[11px] uppercase tracking-wider text-zinc-500"
+                class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-zinc-500"
               >
                 Progetti
               </div>
-              <div class="mt-1 text-2xl font-semibold text-zinc-50">41</div>
+              <div class="mt-1 text-xl sm:text-2xl font-semibold text-zinc-50">41</div>
             </div>
-            <div class="bg-zinc-950 p-4">
+            <div class="bg-zinc-950 p-3 sm:p-4">
               <div
-                class="font-mono text-[11px] uppercase tracking-wider text-zinc-500"
+                class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-zinc-500"
               >
                 Clienti
               </div>
-              <div class="mt-1 text-2xl font-semibold text-zinc-50">
+              <div class="mt-1 text-xl sm:text-2xl font-semibold text-zinc-50">
                 25<span class="text-emerald-500">+</span>
               </div>
             </div>
