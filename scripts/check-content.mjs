@@ -43,7 +43,12 @@ const projectsSchema = z.object({
 });
 
 async function listMdFiles(dir) {
-  const entries = await readdir(dir, { withFileTypes: true });
+  let entries;
+  try {
+    entries = await readdir(dir, { withFileTypes: true });
+  } catch {
+    return [];
+  }
   const files = [];
   for (const e of entries) {
     const full = join(dir, e.name);
