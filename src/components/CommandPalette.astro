@@ -88,11 +88,18 @@ const { notes, quickActions } = Astro.props;
   }
 </style>
 
-<script define:vars={{ notes, quickActions }}>
-  let paletteNotes = [...notes];
-  const QUICK_ACTIONS = quickActions;
+<script type="application/json" id="palette-data" set:html={JSON.stringify({ quickActions })} />
 
-  document.addEventListener('palette:setNotes', (e) => { paletteNotes = e.detail.notes; });
+<script>
+  let paletteNotes = [];
+  let quickActionsList = [];
+  let activeIdx = 0;
+  let currentList = [];
+
+  let palette = null;
+  let paletteInput = null;
+  let paletteRes = null;
+  let paletteEmpty = null;
 
   const TAG_LABELS = {
     'flutter-arch':    'flutter',
@@ -101,25 +108,20 @@ const { notes, quickActions } = Astro.props;
     'independent-dev': 'indie',
   };
 
-  const palette      = document.getElementById('palette');
-  const paletteInput = document.getElementById('paletteInput');
-  const paletteRes   = document.getElementById('paletteResults');
-  const paletteEmpty = document.getElementById('paletteEmpty');
-
-  let activeIdx = 0;
-  let currentList = [];
-
   function fmtDateShort(iso) {
     return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' });
   }
 
   function openPalette() {
+    if (!palette) return;
     palette.classList.remove('palette-hidden');
     setTimeout(() => paletteInput.focus(), 30);
     paletteInput.value = '';
     renderPalette('');
   }
+
   function closePalette() {
+    if (!palette) return;
     palette.classList.add('palette-hidden');
     paletteInput.blur();
   }
@@ -130,7 +132,7 @@ const { notes, quickActions } = Astro.props;
       .filter(n => !q || n.title.toLowerCase().includes(q) || n.preview.toLowerCase().includes(q) || n.tag.toLowerCase().includes(q))
       .map(n => ({ kind: 'note', title: n.title, hint: '#' + (TAG_LABELS[n.tag] || n.tag) + ' · ' + fmtDateShort(n.date), id: n.id, tag: n.tag }));
 
-    const actionResults = QUICK_ACTIONS.filter(a => !q || a.title.toLowerCase().includes(q));
+    const actionResults = quickActionsList.filter(a => !q || a.title.toLowerCase().includes(q));
     currentList = [...noteResults, ...actionResults];
     activeIdx = 0;
 
@@ -189,8 +191,8 @@ const { notes, quickActions } = Astro.props;
     }
   }
 
-  // Expose open for external triggers
-  window.openCommandPalette = openPalette;
+  // Persistent module-level listeners (registered once)
+  document.addEventListener('palette:setNotes', (e) => { paletteNotes = e.detail.notes; });
 
   document.addEventListener('keydown', (e) => {
     const tgt = e.target;
@@ -199,13 +201,14 @@ const { notes, quickActions } = Astro.props;
 
     if (isMod && (e.key === 'k' || e.key === 'K')) {
       e.preventDefault();
+      if (!palette) return;
       palette.classList.contains('palette-hidden') ? openPalette() : closePalette();
       return;
     }
-    if (e.key === '/' && !inField && palette.classList.contains('palette-hidden')) {
+    if (e.key === '/' && !inField && palette && palette.classList.contains('palette-hidden')) {
       e.preventDefault(); openPalette(); return;
     }
-    if (palette.classList.contains('palette-hidden')) return;
+    if (!palette || palette.classList.contains('palette-hidden')) return;
 
     if (e.key === 'Escape')         { e.preventDefault(); closePalette(); }
     else if (e.key === 'ArrowDown') { e.preventDefault(); if (currentList.length) { activeIdx = (activeIdx + 1) % currentList.length; updateActive(); } }
@@ -213,16 +216,30 @@ const { notes, quickActions } = Astro.props;
     else if (e.key === 'Enter')     { e.preventDefault(); commitActive(); }
   });
 
-  paletteInput.addEventListener('input', (e) => renderPalette(e.target.value));
-  palette.addEventListener('click', (e) => {
-    if (e.target === palette.querySelector('.palette-backdrop')) { closePalette(); return; }
-    const row = e.target.closest('.palette-item');
-    if (row) { activeIdx = parseInt(row.dataset.idx, 10); updateActive(); commitActive(); }
-  });
-  paletteRes.addEventListener('mousemove', (e) => {
-    const row = e.target.closest('.palette-item');
-    if (!row) return;
-    const idx = parseInt(row.dataset.idx, 10);
-    if (idx !== activeIdx) { activeIdx = idx; updateActive(); }
+  window.openCommandPalette = openPalette;
+
+  // Per-navigation: re-acquire fresh element refs and attach element-specific listeners
+  document.addEventListener('astro:page-load', () => {
+    palette      = document.getElementById('palette');
+    paletteInput = document.getElementById('paletteInput');
+    paletteRes   = document.getElementById('paletteResults');
+    paletteEmpty = document.getElementById('paletteEmpty');
+    if (!palette) return;
+
+    const dataEl = document.getElementById('palette-data');
+    if (dataEl) quickActionsList = JSON.parse(dataEl.textContent).quickActions;
+
+    paletteInput.addEventListener('input', (e) => renderPalette(e.target.value));
+    palette.addEventListener('click', (e) => {
+      if (e.target === palette.querySelector('.palette-backdrop')) { closePalette(); return; }
+      const row = e.target.closest('.palette-item');
+      if (row) { activeIdx = parseInt(row.dataset.idx, 10); updateActive(); commitActive(); }
+    });
+    paletteRes.addEventListener('mousemove', (e) => {
+      const row = e.target.closest('.palette-item');
+      if (!row) return;
+      const idx = parseInt(row.dataset.idx, 10);
+      if (idx !== activeIdx) { activeIdx = idx; updateActive(); }
+    });
   });
 </script>
